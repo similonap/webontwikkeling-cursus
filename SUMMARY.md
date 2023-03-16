@@ -1,0 +1,69 @@
+# Table of contents
+
+* [Welkom](README.md)
+
+## TypeScript
+
+* [TypeScript: Variabelen](typescript/typescript-variabelen.md)
+* [TypeScript: Primitive Types](typescript/typescript-primitive-types.md)
+* [TypeScript: Arrays](typescript/typescript-arrays.md)
+* [TypeScript: Tuples](typescript/typescript-tuples.md)
+* [TypeScript: Enum](typescript/typescript-enum.md)
+* [TypeScript: Undefined, null](typescript/typescript-undefined-null.md)
+* [TypeScript: Any, unknown](typescript/typescript-any-unknown.md)
+* [TypeScript: Operators](typescript/typescript-operators.md)
+* [TypeScript: Conditional Statements en Loops](typescript/untitled.md)
+* [TypeScript: Scope](typescript/typescript-scope.md)
+* [TypeScript: Functions](typescript/typescript-functions.md)
+* [TypeScript: Objecten](typescript/typescript-objecten.md)
+* [TypeScript: Callbacks](typescript/typescript-callbacks.md)
+* [TypeScript: Arrays advanced](typescript/typescript-arrays-advanced.md)
+* [TypeScript: Exceptions](typescript/typescript-exceptions.md)
+* [TypeScript: Promises](typescript/typescript-promises.md)
+
+## Express
+
+* [Page 1](express/page-1.md)
+
+***
+
+* [Express Basics](express-basics.md)
+* [Express: EJS](express-ejs.md)
+* [Express: EJS Advanced](express-ejs-advanced.md)
+* [Express: Requests](express-requests.md)
+* [Express: Static files](express-static-files.md)
+* [MongoDB](mongodb.md)
+
+## Labos 2022-2023
+
+* [Labo 1](labos-2022-2023/labo-1/README.md)
+  * [Extra oefeningen](labos-2022-2023/labo-1/extra-oefeningen.md)
+* [Labo 2](labos-2022-2023/labo-2/README.md)
+  * [Extra oefeningen](labos-2022-2023/labo-2/extra-oefeningen.md)
+* [Labo 3](labos-2022-2023/labo-3/README.md)
+  * [Extra oefeningen](labos-2022-2023/labo-3/extra-oefeningen.md)
+* [Labo 4](labos-2022-2023/labo-4/README.md)
+  * [Extra oefeningen](labos-2022-2023/labo-4/extra-oefeningen.md)
+* [Labo 5](labos-2022-2023/labo-5.md)
+* [Labo 6](labos-2022-2023/labo-6.md)
+* [Labo 7](labos-2022-2023/labo-7.md)
+* [Labo 8](labos-2022-2023/week-11.md)
+* [Labo 9](labos-2022-2023/week-12-13.md)
+* [Labo 10](labos-2022-2023/week-7-8.md)
+* [Labo 11-12](labos-2022-2023/labo-11-12.md)
+* [Extra oefeningen](labos-2022-2023/extra-oefeningen.md)
+
+## Labos 2020-2021 <a href="#labos" id="labos"></a>
+
+* [Week 1](labos/labo-1.md)
+* [Week 3](labos/week2.md)
+* [Week 4](labos/week4.md)
+* [Week 5](labos/week-5.md)
+* [Week 6](labos/week-6.md)
+* [Week 7](labos/week-7-8.md)
+* [Herhalingsoefeningen](labos/herhalingsoefeningen.md)
+* [Week 8](labos/week-8.md)
+* [Week 9](labos/week-9.md)
+* [Week 10](labos/week-10.md)
+* [Week 11](labos/week-11.md)
+* [Week 12-13](labos/week-12-13.md)
