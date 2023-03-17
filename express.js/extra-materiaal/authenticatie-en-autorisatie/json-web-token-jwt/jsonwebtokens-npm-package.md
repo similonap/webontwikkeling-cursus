@@ -1,6 +1,6 @@
 # jsonwebtokens NPM package
 
-**jsonwebtoken** is een npm package die wordt gebruikt om JSON Web Tokens ([JWT](../json-web-token-jwt.md)) te maken, verifiëren en decoderen in een nodeJS applicatie.
+**jsonwebtoken** is een npm package die wordt gebruikt om JSON Web Tokens ([JWT](./)) te maken, verifiëren en decoderen in een nodeJS applicatie.
 
 ```
 npm i jsonwebtoken
@@ -87,5 +87,5 @@ console.log(decodedToken); // { username: 'john', email: 'john@gmail.com' }
 ```
 
 {% hint style="danger" %}
-**Let op:**  de `jwt.decode()` functie zal alleen de gebruikersgegevens uit het token halen, de token zelf wordt niet automatisch gevalideerd. Als de token vervalst is of ongeldig is, zal de functie nog steeds een object teruggeven met de gebruikersgegevens. Om de token te valideren en te verifiëren, moet je de `jwt.verify()` functie gebruiken. Je zal dus voornamelijk `jwt.verify` gebruiken.
+**Let op:** de `jwt.decode()` functie zal alleen de gebruikersgegevens uit het token halen, de token zelf wordt niet automatisch gevalideerd. Als de token vervalst is of ongeldig is, zal de functie nog steeds een object teruggeven met de gebruikersgegevens. Om de token te valideren en te verifiëren, moet je de `jwt.verify()` functie gebruiken. Je zal dus voornamelijk `jwt.verify` gebruiken.
 {% endhint %}

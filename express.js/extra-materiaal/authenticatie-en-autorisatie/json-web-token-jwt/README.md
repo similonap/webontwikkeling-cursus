@@ -4,7 +4,7 @@
 
 JSON web tokens (JWT) zijn een manier om informatie op een veilige en standaardiserende manier op te slaan en te verzenden tussen verschillende partijen. Deze tokens bestaan uit drie delen: een header, een payload en een signature. De header bevat informatie over hoe het token is opgebouwd, zoals het type en de hashing algoritme. De payload bevat de informatie die opgeslagen en verzonden moet worden, zoals gebruikersgegevens en toegangsrechten. De signature is een cryptografische hash die gebruikt wordt om de integriteit en authenticiteit van het token te verifiëren. JWT's zijn vaak gebruikt in authenticatie- en autorisatieprocessen in webapplicaties.
 
-### Waarvoor worden JWT's gebruikt en waarom is het nodig?&#x20;
+### Waarvoor worden JWT's gebruikt en waarom is het nodig?
 
 JWT's zijn een handige manier om informatie op te slaan en te verzenden tussen verschillende partijen zonder deze informatie op te slaan in een database. Dit betekent dat JWT's een efficiëntere manier zijn om gebruikers te authenticaten en autoriseren, omdat het verificatieproces op de client-side kan plaatsvinden. JWT's zijn ook veilig, omdat de informatie die opgeslagen is in het token niet makkelijk te lezen is zonder de juiste decoderingstechnieken. Bovendien kan de signature gebruikt worden om te verifiëren dat het token niet is gemanipuleerd tijdens het verzenden. Dit maakt JWT's een veelgebruikt mechanisme in het ontwikkelen van webapplicaties.
 
@@ -21,7 +21,7 @@ Vanwege dit beveiligingsprobleem moet de authenticatie server deze informatie ve
 
 Simpel gezegd, een token is een string die bepaalde informatie bevat die veilig kan worden geverifieerd. Het kan een willekeurige set alfanumerieke tekens zijn die naar een ID in de database verwijzen, of het kan een gecodeerde JSON zijn die door de client zelf kan worden geverifieerd.
 
-### Wat is de JSON Web Token-structuur?&#x20;
+### Wat is de JSON Web Token-structuur?
 
 In zijn compacte vorm bestaan JSON Web Tokens uit drie delen gescheiden door punten (.), namelijk:
 
@@ -39,17 +39,17 @@ Een JWT er meestal als volgt uit.
 header.payload.signature
 ```
 
-<figure><img src="../../.gitbook/assets/image (4) (2) (1).png" alt=""><figcaption><p>Bron: <a href="https://supertokens.com/blog/what-is-jwt">https://supertokens.com/blog/what-is-jwt</a></p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image%20(4)%20(2)%20(1).png" alt=""><figcaption><p>Bron: <a href="https://supertokens.com/blog/what-is-jwt">https://supertokens.com/blog/what-is-jwt</a></p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (18) (1).png" alt=""><figcaption><p><a href="https://jwt.io/#debugger-io">https://jwt.io/#debugger-io</a></p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image%20(18)%20(1).png" alt=""><figcaption><p><a href="https://jwt.io/#debugger-io">https://jwt.io/#debugger-io</a></p></figcaption></figure>
 
 Laten we de verschillende onderdelen opsplitsen.
 
-#### Header&#x20;
+#### Header
 
 De header van een JWT bevat informatie over hoe de token is opgebouwd, zoals het type en de hashing algoritme. Dit is belangrijk om te weten om de token te kunnen decoderen en verifiëren.
 
-De header bestaat doorgaans uit twee delen:&#x20;
+De header bestaat doorgaans uit twee delen:
 
 1. Het type token, dat `JWT` is;
 2. Het ondertekeningsalgoritme dat wordt gebruikt, zoals `HMAC` `SHA256` of `RSA`;
@@ -65,11 +65,11 @@ Bijvoorbeeld:
 
 Vervolgens is deze JSON Base64Url-gecodeerd om het eerste deel van de JWT te vormen.
 
-<figure><img src="../../.gitbook/assets/image (10) (1).png" alt=""><figcaption><p>Encoded header (algorithm and token type)</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image%20(10)%20(1).png" alt=""><figcaption><p>Encoded header (algorithm and token type)</p></figcaption></figure>
 
-#### Payload&#x20;
+#### Payload
 
-Het tweede deel van de token is de payload, die de claims bevat. Claims zijn uitspraken over een entiteit (meestal de gebruiker) en aanvullende gegevens.&#x20;
+Het tweede deel van de token is de payload, die de claims bevat. Claims zijn uitspraken over een entiteit (meestal de gebruiker) en aanvullende gegevens.
 
 De payload bevat de informatie die opgeslagen en verzonden moet worden in de token, zoals gebruikersgegevens en toegangsrechten. Deze informatie wordt gecodeerd in de token zodat het niet makkelijk te lezen is zonder de juiste decoderingstechniëken.
 
@@ -85,7 +85,7 @@ Een JWT kan bijvoorbeeld een claim met de naam `name` bevatten die beweert dat d
 
 Vervolgens de payload ook JSON Base64Url-gecodeerd om het tweede deel van de JWT te vormen.
 
-<figure><img src="../../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption><p>Encoded payload (claims)</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image%20(3)%20(1)%20(1).png" alt=""><figcaption><p>Encoded payload (claims)</p></figcaption></figure>
 
 #### Signature
 
@@ -102,7 +102,7 @@ HMACSHA256(
 
 De handtekening wordt gebruikt om te verifiëren dat het bericht onderweg niet is gewijzigd, en in het geval van tokens die zijn ondertekend met een geheim (`secret`), kan het ook verifiëren dat de afzender van de JWT is wie het zegt te zijn.
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>Encoded header, payload en secret</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image%20(2)%20(1).png" alt=""><figcaption><p>Encoded header, payload en secret</p></figcaption></figure>
 
 ### Zet alles bij elkaar
 
@@ -110,7 +110,7 @@ De uitvoer bestaat uit drie Base64-URL-tekenreeksen gescheiden door punten die g
 
 Het volgende toont een JWT met de vorige header en payload gecodeerd en is ondertekend met een geheim.
 
-<figure><img src="../../.gitbook/assets/image (8) (1).png" alt=""><figcaption><p>Een JWT met de vorige header en payload gecodeerd en ondertekend met een geheim</p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image%20(8)%20(1).png" alt=""><figcaption><p>Een JWT met de vorige header en payload gecodeerd en ondertekend met een geheim</p></figcaption></figure>
 
 {% hint style="info" %}
 Als je met JWT wilt spelen en deze concepten in de praktijk wilt brengen, kan je [jwt.io Debugger](https://jwt.io/#debugger-io) gebruiken om JWT's te decoderen, verifiëren en genereren.
@@ -125,7 +125,7 @@ Wanneer een gebruiker zich succesvol aanmeldt met zijn inloggegevens, genereert 
 3. De gebruiker gebruikt de JWT om toegang te krijgen tot beveiligde bronnen. De JWT wordt meegestuurd in de HTTP-authorization header;
 4. De resource server verifieert vervolgens de authenticiteit van de token met behulp van de "secret" of een public key;
 
-<figure><img src="../../.gitbook/assets/image (1) (2) (1).png" alt=""><figcaption><p><a href="https://dev.to/kcdchennai/how-jwt-json-web-token-authentication-works-21e7">https://dev.to/kcdchennai/how-jwt-json-web-token-authentication-works-21e7</a></p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image%20(1)%20(2)%20(1).png" alt=""><figcaption><p><a href="https://dev.to/kcdchennai/how-jwt-json-web-token-authentication-works-21e7">https://dev.to/kcdchennai/how-jwt-json-web-token-authentication-works-21e7</a></p></figcaption></figure>
 
 {% hint style="info" %}
 Houd er ook mee rekening dat de informatie opgeslagen in JSON Web Tokens, hoewel beschermd tegen manipulatie, voor iedereen leesbaar is. **Plaats geen geheime informatie in de payload of header-elementen van een JWT, tenzij deze versleuteld zijn.**
@@ -133,7 +133,7 @@ Houd er ook mee rekening dat de informatie opgeslagen in JSON Web Tokens, hoewel
 
 Telkens wanneer de gebruiker toegang wil tot een beschermde route of bron, moet de gebruiker in kwestie de JWT mee verzenden in de header van de request. De beveiligde routes van de server controleren op een geldige JWT in de Authorization-header en als deze aanwezig is, krijgt de gebruiker toegang tot beveiligde bronnen.
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (2).png" alt=""><figcaption><p>Bron: <a href="https://www.simplilearn.com/tutorials/nodejs-tutorial/jwt-in-express-js">https://www.simplilearn.com/tutorials/nodejs-tutorial/jwt-in-express-js</a></p></figcaption></figure>
+<figure><img src="../../../../.gitbook/assets/image%20(1)%20(1)%20(2).png" alt=""><figcaption><p>Bron: <a href="https://www.simplilearn.com/tutorials/nodejs-tutorial/jwt-in-express-js">https://www.simplilearn.com/tutorials/nodejs-tutorial/jwt-in-express-js</a></p></figcaption></figure>
 
 #### Resources
 
