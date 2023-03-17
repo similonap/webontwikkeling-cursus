@@ -21,18 +21,28 @@
 * [TypeScript: Exceptions](typescript/typescript-exceptions.md)
 * [TypeScript: Promises](typescript/typescript-promises.md)
 
-## Express
+## Express.js
 
-* [Page 1](express/page-1.md)
-
-***
-
-* [Express Basics](express-basics.md)
-* [Express: EJS](express-ejs.md)
-* [Express: EJS Advanced](express-ejs-advanced.md)
-* [Express: Requests](express-requests.md)
-* [Express: Static files](express-static-files.md)
-* [MongoDB](mongodb.md)
+* [Wat is een backend framework?](express.js/wat-is-een-backend-framework.md)
+* [Basis](express.js/basis.md)
+* [EJS](express.js/ejs.md)
+* [EJS Advanced](express.js/ejs-advanced.md)
+* [Requests](express.js/requests/README.md)
+  * [POST](express.js/requests/POST.md)
+* [Static files](express.js/static-files.md)
+* [MySQL Connector](express.js/mysql-connector/README.md)
+  * [queries uitvoeren](express.js/mysql-connector/queries.md)
+  * [prepared statements](express.js/mysql-connector/prepared-statements.md)
+  * [als onderdeel van een Express applicatie](express.js/mysql-connector/als-onderdeel-van-een-express-applicatie.md)
+* [Cookies](express.js/cookies.md)
+* [Authenticatie en Autorisatie](express.js/authenticatie-en-autorisatie/README.md)
+  * [JSON Web Token (JWT)](express.js/authenticatie-en-autorisatie/json-web-token-jwt.md)
+    * [jsonwebtokens NPM package](express.js/authenticatie-en-autorisatie/json-web-token-jwt/jsonwebtokens-npm-package.md)
+    * [jsonwebtokens veilig opslaan](express.js/authenticatie-en-autorisatie/json-web-token-jwt/jsonwebtokens-opslaan.md)
+  * [Environment Variables](express.js/authenticatie-en-autorisatie/environment-variables.md)
+  * [body-parser NPM package](express.js/authenticatie-en-autorisatie/body-parser-npm-package.md)
+* [CORS](express.js/cors.md)
+* [MongoDB](express.js/mongodb.md)
 
 ## Labos 2022-2023
 
