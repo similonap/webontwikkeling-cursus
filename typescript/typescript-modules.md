@@ -109,7 +109,7 @@ const readline = require('readline-sync');
 
 Dit is een oudere manier om modules te importeren. Je kan dit ook nog steeds gebruiken, maar het is niet meer de manier die wordt aangeraden. De reden waarom we deze niet gebruiken is omdat we gebruik maken van TypeScript en als je require gebruikt kan je geen gebruik maken van de types die bij de module horen.
 
-## DefinitelyTyped <img src="../.gitbook/assets/image (5).png" alt="" data-size="line">
+## Importeren van types
 
 [http://definitelytyped.github.io/](http://definitelytyped.github.io/)
 
@@ -134,10 +134,14 @@ Je kan op de npmjs website heel eenvoudig zien of een bepaalde package TypeScrip
 * Bevat deze een <img src="../.gitbook/assets/image.png" alt="" data-size="line"> tag? Dan kan je deze installeren aan de hand van de bovenstaande commando's
 * Bevat deze een <img src="../.gitbook/assets/image (1).png" alt="" data-size="line"> tag, dan zitten de types al in de npm package en dan hoef je niets te doen.
 
-Bevat deze geen van beide? Dan heb je helemaal geen types en heb je geen voordelen van TypeScript. Je moet dan ook nog een extra aanpassing doen aan je project om deze library toch nog te gebruiken. 
+Bevat deze geen van beide? Dan heb je helemaal geen types en heb je geen voordelen van TypeScript. Je moet dan ook nog een extra aanpassing doen aan je project om deze library toch nog te gebruiken.
 
 Bijvoorbeeld de `rainbow-colors-array` package bevat geen TypeScript support en geen `@types` package. Je kan deze dan toch nog gebruiken door in je project een `types.d.ts` bestand aan te maken met de volgende inhoud.
 
 ```typescript
 declare module 'rainbow-colors-array';
 ```
+
+Dit is ook wat je vscode je aanraad als je over de error hovered als hij de types niet vindt:
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-03-17 at 16.16.10.png" alt=""><figcaption></figcaption></figure>
