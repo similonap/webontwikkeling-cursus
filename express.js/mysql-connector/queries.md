@@ -48,4 +48,3 @@ Ook al krijg je hier maar 1 rij terug zal het resultaat een array zijn. Dit komt
 const [rows_user] = await connection.execute<User[]>('SELECT * FROM `users` WHERE `id` = 1');
 const user = rows_user[0];
 ```
-

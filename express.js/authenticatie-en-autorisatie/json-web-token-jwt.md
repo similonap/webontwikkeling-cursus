@@ -39,9 +39,9 @@ Een JWT er meestal als volgt uit.
 header.payload.signature
 ```
 
-<figure><img src="../../../../.gitbook/assets/image%20(4)%20(2)%20(1).png" alt=""><figcaption><p>Bron: <a href="https://supertokens.com/blog/what-is-jwt">https://supertokens.com/blog/what-is-jwt</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image%20(4)%20(2)%20(1).png" alt=""><figcaption><p>Bron: <a href="https://supertokens.com/blog/what-is-jwt">https://supertokens.com/blog/what-is-jwt</a></p></figcaption></figure>
 
-<figure><img src="../../../../.gitbook/assets/image%20(18)%20(1).png" alt=""><figcaption><p><a href="https://jwt.io/#debugger-io">https://jwt.io/#debugger-io</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image%20(18)%20(1).png" alt=""><figcaption><p><a href="https://jwt.io/#debugger-io">https://jwt.io/#debugger-io</a></p></figcaption></figure>
 
 Laten we de verschillende onderdelen opsplitsen.
 
@@ -65,7 +65,7 @@ Bijvoorbeeld:
 
 Vervolgens is deze JSON Base64Url-gecodeerd om het eerste deel van de JWT te vormen.
 
-<figure><img src="../../../../.gitbook/assets/image%20(10)%20(1).png" alt=""><figcaption><p>Encoded header (algorithm and token type)</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image%20(10)%20(1).png" alt=""><figcaption><p>Encoded header (algorithm and token type)</p></figcaption></figure>
 
 #### Payload
 
@@ -85,7 +85,7 @@ Een JWT kan bijvoorbeeld een claim met de naam `name` bevatten die beweert dat d
 
 Vervolgens de payload ook JSON Base64Url-gecodeerd om het tweede deel van de JWT te vormen.
 
-<figure><img src="../../../../.gitbook/assets/image%20(3)%20(1)%20(1).png" alt=""><figcaption><p>Encoded payload (claims)</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image%20(3)%20(1)%20(1).png" alt=""><figcaption><p>Encoded payload (claims)</p></figcaption></figure>
 
 #### Signature
 
@@ -102,7 +102,7 @@ HMACSHA256(
 
 De handtekening wordt gebruikt om te verifiëren dat het bericht onderweg niet is gewijzigd, en in het geval van tokens die zijn ondertekend met een geheim (`secret`), kan het ook verifiëren dat de afzender van de JWT is wie het zegt te zijn.
 
-<figure><img src="../../../../.gitbook/assets/image%20(2)%20(1).png" alt=""><figcaption><p>Encoded header, payload en secret</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image%20(2)%20(1).png" alt=""><figcaption><p>Encoded header, payload en secret</p></figcaption></figure>
 
 ### Zet alles bij elkaar
 
@@ -110,7 +110,7 @@ De uitvoer bestaat uit drie Base64-URL-tekenreeksen gescheiden door punten die g
 
 Het volgende toont een JWT met de vorige header en payload gecodeerd en is ondertekend met een geheim.
 
-<figure><img src="../../../../.gitbook/assets/image%20(8)%20(1).png" alt=""><figcaption><p>Een JWT met de vorige header en payload gecodeerd en ondertekend met een geheim</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image%20(8)%20(1).png" alt=""><figcaption><p>Een JWT met de vorige header en payload gecodeerd en ondertekend met een geheim</p></figcaption></figure>
 
 {% hint style="info" %}
 Als je met JWT wilt spelen en deze concepten in de praktijk wilt brengen, kan je [jwt.io Debugger](https://jwt.io/#debugger-io) gebruiken om JWT's te decoderen, verifiëren en genereren.
@@ -125,7 +125,7 @@ Wanneer een gebruiker zich succesvol aanmeldt met zijn inloggegevens, genereert 
 3. De gebruiker gebruikt de JWT om toegang te krijgen tot beveiligde bronnen. De JWT wordt meegestuurd in de HTTP-authorization header;
 4. De resource server verifieert vervolgens de authenticiteit van de token met behulp van de "secret" of een public key;
 
-<figure><img src="../../../../.gitbook/assets/image%20(1)%20(2)%20(1).png" alt=""><figcaption><p><a href="https://dev.to/kcdchennai/how-jwt-json-web-token-authentication-works-21e7">https://dev.to/kcdchennai/how-jwt-json-web-token-authentication-works-21e7</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image%20(1)%20(2)%20(1).png" alt=""><figcaption><p><a href="https://dev.to/kcdchennai/how-jwt-json-web-token-authentication-works-21e7">https://dev.to/kcdchennai/how-jwt-json-web-token-authentication-works-21e7</a></p></figcaption></figure>
 
 {% hint style="info" %}
 Houd er ook mee rekening dat de informatie opgeslagen in JSON Web Tokens, hoewel beschermd tegen manipulatie, voor iedereen leesbaar is. **Plaats geen geheime informatie in de payload of header-elementen van een JWT, tenzij deze versleuteld zijn.**
@@ -133,7 +133,7 @@ Houd er ook mee rekening dat de informatie opgeslagen in JSON Web Tokens, hoewel
 
 Telkens wanneer de gebruiker toegang wil tot een beschermde route of bron, moet de gebruiker in kwestie de JWT mee verzenden in de header van de request. De beveiligde routes van de server controleren op een geldige JWT in de Authorization-header en als deze aanwezig is, krijgt de gebruiker toegang tot beveiligde bronnen.
 
-<figure><img src="../../../../.gitbook/assets/image%20(1)%20(1)%20(2).png" alt=""><figcaption><p>Bron: <a href="https://www.simplilearn.com/tutorials/nodejs-tutorial/jwt-in-express-js">https://www.simplilearn.com/tutorials/nodejs-tutorial/jwt-in-express-js</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image%20(1)%20(1)%20(2).png" alt=""><figcaption><p>Bron: <a href="https://www.simplilearn.com/tutorials/nodejs-tutorial/jwt-in-express-js">https://www.simplilearn.com/tutorials/nodejs-tutorial/jwt-in-express-js</a></p></figcaption></figure>
 
 #### Resources
 

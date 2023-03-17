@@ -47,7 +47,7 @@ Gebruik EJS om de HTML pagina te tonen!
   * een image van Pikachu's voorkant (zie sprites)
   * een image van Pikachu's achterkant (zie sprites)
 
-**PRO http://localhost:3000/randomcolor**
+**http://localhost:3000/randomcolor**
 
 * Deze route toont elke keer dat je deze pagina bezoekt een andere kleur.&#x20;
 * Zoek zelf uit hoe je een willekeurige kleur kan berekenen. Probeer zelf eerst iets in elkaar te steken voor je begint te googlen hoe het moet ;)

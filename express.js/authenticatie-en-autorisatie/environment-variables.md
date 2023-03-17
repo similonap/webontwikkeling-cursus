@@ -1,12 +1,12 @@
 # Environment Variables
 
-## Wat zijn Environment Variables?&#x20;
+## Wat zijn Environment Variables?
 
-Letterlijk vertaald betekent het omgevingsvariabelen. Ze bieden informatie over de werkomgeving van een Node project.&#x20;
+Letterlijk vertaald betekent het omgevingsvariabelen. Ze bieden informatie over de werkomgeving van een Node project.
 
 **Omgevingsvariabelen in Node worden gebruikt om:**
 
-* Gevoelige gegevens op te slaan, zoals wachtwoorden, API-referenties en andere informatie die niet rechtstreeks in je code mag worden geschreven om beveiligingsrisico's te voorkomen.&#x20;
+* Gevoelige gegevens op te slaan, zoals wachtwoorden, API-referenties en andere informatie die niet rechtstreeks in je code mag worden geschreven om beveiligingsrisico's te voorkomen.
 * Instellingen te configureren die kunnen verschillen tussen omgevingen. Denk maar aan poorten en verwijzingen naar databanken (development, staging, test of productie).
 
 Je hebt out of the box toegang tot omgevingsvariabelen in Node.js. Wanneer je een Node server opstart, biedt het automatisch toegang tot alle bestaande omgevingsvariabelen door een `env`-object te maken binnen het globale `process` object.
@@ -39,7 +39,7 @@ De eenvoudigste manier om de PORT variabele een waarde te geven, is door deze in
 PORT=3000 node server.js
 ```
 
-Normaliter zie je nu het volgende bericht:  _"The value of PORT is: 3000"_.
+Normaliter zie je nu het volgende bericht: _"The value of PORT is: 3000"_.
 
 Je kan dit patroon herhalen en ook andere variabelen toevoegen. Hier is een voorbeeld van het doorgeven van twee omgevingsvariabelen.
 
@@ -75,7 +75,8 @@ API_URL=**************************
 Een .`env`-bestand is een geweldige manier om al je omgevingsvariabelen op één plek te verzamelen. Zorg er wel voor dat je het `.env`-bestand niet in een version control systeem zoals Git plaatst. Anders bevat je version control historiek referenties van je omgevingsvariabelen. Dit zou een beveiligingsrisico vormen aangezien er gevoelige informatie in je omgevingsvariabelen kan staan.
 
 #### Gebruik in Docker
-In een Docker Compose file kan je een of meerdere `.env`-bestanden inladen door middel van een key `env_file`. Je vindt hiervan een voorbeeld in de [Docker Compose reference](https://docs.docker.com/compose/compose-file/#env_file).
+
+In een Docker Compose file kan je een of meerdere `.env`-bestanden inladen door middel van een key `env_file`. Je vindt hiervan een voorbeeld in de [Docker Compose reference](https://docs.docker.com/compose/compose-file/#env\_file).
 
 Wanneer deze zijn ingeladen, kunnen applicaties in de container de variabelen gebruiken. Een Node.js-applicatie kan bijvoorbeeld `process.env.MYVARIABLE` gebruiken. Ze kunnen ook gebruikt worden in zogenaamde Bash-instructies voor de container (zoals `postStartCommand`), maar daar moet je dan het formaat `$MYVARIABLE` gebruiken.
 

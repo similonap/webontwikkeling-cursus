@@ -1,4 +1,4 @@
-# Cookies & Sessions
+# Cookies
 
 ## Session en cookies
 
