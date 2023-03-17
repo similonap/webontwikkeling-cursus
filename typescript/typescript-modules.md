@@ -134,4 +134,10 @@ Je kan op de npmjs website heel eenvoudig zien of een bepaalde package TypeScrip
 * Bevat deze een <img src="../.gitbook/assets/image.png" alt="" data-size="line"> tag? Dan kan je deze installeren aan de hand van de bovenstaande commando's
 * Bevat deze een <img src="../.gitbook/assets/image (1).png" alt="" data-size="line"> tag, dan zitten de types al in de npm package en dan hoef je niets te doen.
 
-Bevat deze geen van beide? Dan heb je helemaal geen types en heb je geen voordelen van TypeScript. Je moet dan ook nog een extra aanpassing doen aan je project om deze library toch nog te gebruiken.
+Bevat deze geen van beide? Dan heb je helemaal geen types en heb je geen voordelen van TypeScript. Je moet dan ook nog een extra aanpassing doen aan je project om deze library toch nog te gebruiken. 
+
+Bijvoorbeeld de `rainbow-colors-array` package bevat geen TypeScript support en geen `@types` package. Je kan deze dan toch nog gebruiken door in je project een `types.d.ts` bestand aan te maken met de volgende inhoud.
+
+```typescript
+declare module 'rainbow-colors-array';
+```
