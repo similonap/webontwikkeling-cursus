@@ -37,7 +37,7 @@ Ga naar [Github](http://github.com), log in en maak een nieuwe repository aan me
 
 bv:
 
-![](<../.gitbook/assets/les1\_fig3 (1).png>)
+![](../.gitbook/assets/les1\_fig3.png)
 
 Zorg dat jouw repository privaat staat:
 

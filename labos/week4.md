@@ -103,7 +103,7 @@ Je kan ook het volgende gebruiken indien `require` errors blijft geven:\
 multiplyText(3,"flower",Color.Red,"!");
 ```
 
-![](<../.gitbook/assets/image (3).png>)
+![](<../.gitbook/assets/image (3) (1).png>)
 
 ### Commit/push!
 

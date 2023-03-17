@@ -153,13 +153,13 @@ De kolom helemaal links heeft kolomnummer 1, de kolom helemaal rechts heeft kolo
 
 De rij helemaal onderaan heeft rijnummer 1, de rij helemaal bovenaan heeft rijnummer 8.
 
-****![](../../.gitbook/assets/image.png)****
+****![](<../../.gitbook/assets/image (3).png>)****
 
 ### **Geldige zetten paard**
 
 Het paard beweegt zich - in een geldige zet - ofwel twee horizontale velden en één verticaal veld, ofwel twee verticale velden en één horizontaal veld (een L-vorm).
 
-![](<../../.gitbook/assets/image (1).png>)
+![](<../../.gitbook/assets/image (1) (1).png>)
 
 ### Implementatie
 
