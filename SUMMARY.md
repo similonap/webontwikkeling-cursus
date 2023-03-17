@@ -20,6 +20,7 @@
 * [TypeScript: Arrays advanced](typescript/typescript-arrays-advanced.md)
 * [TypeScript: Exceptions](typescript/typescript-exceptions.md)
 * [TypeScript: Promises](typescript/typescript-promises.md)
+* [TypeScript: Modules ](typescript/typescript-modules.md)
 
 ## Express.js
 
