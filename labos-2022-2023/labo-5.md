@@ -4,24 +4,21 @@
 
 We bouwen in deze oefening onze eerste **express** applicatie. Hier onder vind je een overzicht over alle routes die deze applicatie moet aanbieden en wat ze allemaal moeten doen.
 
+**In deze oefening is het nog niet de bedoeling om EJS te gebruiken. We gaan enkel HTML pagina's of json terugsturen.**
+
 **http://localhost:3000**
 
 * Zorg dat `localhost:3000` een html pagina stuurt waarin je een header met de titel van jouw applicatie (kies zelf iets) met een kleine paragraaf die een beschrijving geeft.
-* **Je moet de html pagina doorsturen zonder ejs te gebruiken**
 
 **http://localhost:3000/whoami & http://localhost:3000/whoamijson**
 
-{% hint style="warning" %}
-Gebruik EJS om de HTML pagina te tonen!
-{% endhint %}
-
-*   Maak een globale variabele aan `thisisme` die een object bevat met 3 properties:
+*  Maak een globale variabele aan `thisisme` die een object bevat met 3 properties:
 
     * `name`
     * `age`
     * `profilePic`
 
-    De `profilepic` property bevat een url van een online foto (kies zelf iets)\
+    De `profilepic` property bevat een url van een online foto (kies zelf iets)
 
 * Zorg dat `localhost:3000/whoami` een HTML pagina toont met:
   * de zin "My name is _XXX_ and I am _YYY_ years old" met XXX en YYY de waarden van de properties van de `thisisme` variabel en
@@ -33,10 +30,6 @@ Test met curl -v dat de content-type correct is!
 {% endhint %}
 
 **http://localhost:3000/pikachujson & http://localhost:3000/pikachuhtml**
-
-{% hint style="warning" %}
-Gebruik EJS om de HTML pagina te tonen!
-{% endhint %}
 
 * Doe een API call naar [https://pokeapi.co](https://pokeapi.co)  om de data van Pikachu op te halen en steek die in een globale variabel `pikachu`.
 * Zorg dat `localhost:3000/pikachujson` de data van `pikachu` als JSON terugstuurt
