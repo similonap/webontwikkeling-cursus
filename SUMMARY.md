@@ -32,6 +32,7 @@
 * [Static files](express.js/static-files.md)
 * [MongoDB](express.js/mongodb.md)
 * [Extra materiaal](express.js/extra-materiaal/README.md)
+  * [File upload](express.js/extra-materiaal/file-upload.md)
   * [Cookies](express.js/cookies.md)
   * [Authenticatie en Autorisatie](express.js/authenticatie-en-autorisatie/README.md)
     * [JSON Web Token (JWT)](express.js/authenticatie-en-autorisatie/json-web-token-jwt.md)
