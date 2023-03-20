@@ -48,7 +48,7 @@ Test met curl -v dat de content-type correct is!
 * Deze route toont elke keer dat je deze pagina bezoekt een andere kleur.
 * Zoek zelf uit hoe je een willekeurige kleur kan berekenen. Probeer zelf eerst iets in elkaar te steken voor je begint te googlen hoe het moet.
 
-![](../.gitbook/assets/randomcolor.gif)
+![](../../.gitbook/assets/randomcolor.gif)
 
 **Foutafhandeling**
 

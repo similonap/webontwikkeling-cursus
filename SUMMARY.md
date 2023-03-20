@@ -20,7 +20,7 @@
 * [TypeScript: Arrays advanced](typescript/typescript-arrays-advanced.md)
 * [TypeScript: Exceptions](typescript/typescript-exceptions.md)
 * [TypeScript: Promises](typescript/typescript-promises.md)
-* [TypeScript: Modules ](typescript/typescript-modules.md)
+* [TypeScript: Modules](typescript/typescript-modules.md)
 
 ## Express.js
 
@@ -56,7 +56,8 @@
   * [Extra oefeningen](labos-2022-2023/labo-3/extra-oefeningen.md)
 * [Labo 4](labos-2022-2023/labo-4/README.md)
   * [Extra oefeningen](labos-2022-2023/labo-4/extra-oefeningen.md)
-* [Labo 5](labos-2022-2023/labo-5.md)
+* [Labo 5](labos-2022-2023/labo-5/README.md)
+  * [Extra oefeningen](labos-2022-2023/labo-5/extra-oefeningen.md)
 * [Labo 6](labos-2022-2023/labo-6.md)
 * [Labo 7](labos-2022-2023/labo-7.md)
 * [Labo 8](labos-2022-2023/week-11.md)
