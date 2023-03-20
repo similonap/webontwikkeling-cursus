@@ -159,4 +159,3 @@ app.post('/sendData',(req, res)=>{
     res.send(`Hello ${firstName} ${lastName}`);
 })
 ```
-
