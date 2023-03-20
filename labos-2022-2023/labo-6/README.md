@@ -30,7 +30,7 @@ Je mag geen aanpassingen maken in de `index.ts` file. Het opbouwen van de tabel 
 
 **De output in de browser moet er als volgt uitzien:**
 
-![](<../.gitbook/assets/Screenshot 2022-03-21 at 15.27.43.png>)
+![](<../../.gitbook/assets/Screenshot 2022-03-21 at 15.27.43.png>)
 
 ### Mathservice
 
@@ -77,11 +77,11 @@ Maak een nieuwe express applicatie in een `index.ts` bestand. Zorg voor een GET 
 
 Zorg ervoor dat de volgende images getoond worden als je naar `http://localhost:8888/cats/images` surft. **We maken gebruik van ejs en niet van een statische html bestand.**
 
-{% file src="../.gitbook/assets/cats.zip" %}
+{% file src="../../.gitbook/assets/cats.zip" %}
 
 Zorg voor een **extern css bestand** waar je een eigen style geeft aan de pagina.&#x20;
 
-![](<../.gitbook/assets/Screenshot 2022-03-21 at 20.53.05.png>)
+![](<../../.gitbook/assets/Screenshot 2022-03-21 at 20.53.05.png>)
 
 ### Contact
 
@@ -93,19 +93,19 @@ Maak een nieuwe express applicatie in een `index.ts` bestand.&#x20;
 
 Voorzie een route `/contact` met een apart ejs bestand waar je het volgende contact formulier op laat zien:
 
-![](<../.gitbook/assets/Screenshot 2022-03-21 at 21.01.23.png>)
+![](<../../.gitbook/assets/Screenshot 2022-03-21 at 21.01.23.png>)
 
 
 
 Als de gebruiker alles invult (dit moet niet nagekeken worden) en op submit drukt moet er een POST request gedaan worden naar dezelfde route (maar met een post). Deze route gebruikt een ander ejs bestand. De volgende tekst moet getoond worden. Hier moet uiteraard de naam, email en bericht vervangen worden met het doorgestuurde bericht:
 
-![](<../.gitbook/assets/Screenshot 2022-03-21 at 21.00.28.png>)
+![](<../../.gitbook/assets/Screenshot 2022-03-21 at 21.00.28.png>)
 
 **Uitbreiding:**
 
 Gebruik het include keyword in ejs om het contact formulier terug te importeren onderaan de bevestiging pagina:
 
-![](<../.gitbook/assets/Screenshot 2022-03-21 at 21.09.28.png>)
+![](<../../.gitbook/assets/Screenshot 2022-03-21 at 21.09.28.png>)
 
 **PRO: Contact Uitbreiding**
 
@@ -115,6 +115,6 @@ Dit json bestand wordt bij het opstarten van de applicatie ingelezen en bij elke
 
 Zorg voor een extra veld in de form die toestaat om een file mee te sturen bij het contact formulier.
 
-![](<../.gitbook/assets/Screenshot 2022-03-28 at 11.28.15.png>)
+![](<../../.gitbook/assets/Screenshot 2022-03-28 at 11.28.15.png>)
 
 Gebruik de npm package [https://www.npmjs.com/package/express-fileupload](https://www.npmjs.com/package/express-fileupload) om deze af te handelen. Zorg ervoor dat de bestanden worden opgeslagen in een files directory en dat het pad naar dit bestand mee in de `emails.json` file worden opgeslagen.
