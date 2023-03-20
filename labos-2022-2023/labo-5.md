@@ -49,3 +49,7 @@ Test met curl -v dat de content-type correct is!
 * Zoek zelf uit hoe je een willekeurige kleur kan berekenen. Probeer zelf eerst iets in elkaar te steken voor je begint te googlen hoe het moet.
 
 ![](../.gitbook/assets/randomcolor.gif)
+
+**Foutafhandeling**
+
+Zorg voor een eigen ontworpen 404 pagina die getoond wordt als de gebruiker een route probeert te bezoeken die niet bestaat.
