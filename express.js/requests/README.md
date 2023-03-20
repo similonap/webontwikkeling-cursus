@@ -173,8 +173,6 @@ Tot nu toe heb je dit object al gebruikt voor het uitlezen van query en route pa
 - `req.method`: bevat de HTTP method van de request (GET, POST, PUT, DELETE, etc.)
 - `req.ip`: bevat het IP adres van de client
 
-We gaan nu enkele properties van het Request object bekijken.
-
 ### Request Headers
 
 Request headers zijn een belangrijk onderdeel van een HTTP request. Ze bevatten informatie over de request zelf. Ze worden meegestuurd door de client en kunnen door de server gelezen worden. Headers bevatten bv. informatie over de browser die de request verstuurd, de taal van de client, de versie van de HTTP protocol, etc. Een header bestaat uit een naam en een waarde. 
@@ -238,17 +236,20 @@ app.get('/status',(req,res)=>{
 ```
 
 Hier een tabel met de meest gebruikte status codes:
-| Status Code | Omschrijving |
-| :--- | :--- |
-| 200 | OK |
-| 201 | Created |
-| 204 | No Content |
-| 301 | Moved Permanently |
-| 400 | Bad Request |
-| 401 | Unauthorized |
-| 403 | Forbidden |
-| 404 | Not Found |
-| 500 | Internal Server Error |
+
+| Status Code | Omschrijving | Wanneer te gebruiken |
+| :--- | :--- | :--- |
+| 200 | OK | De request is geslaagd |
+| 201 | Created | De request is geslaagd en een nieuwe resource is aangemaakt |
+| 204 | No Content | De request is geslaagd, maar er is geen inhoud om te tonen |
+| 301 | Moved Permanently | De resource is permanent verplaatst naar een andere URL |
+| 400 | Bad Request | De request is niet correct |
+| 401 | Unauthorized | Missende of niet geslaagde authorisatie |
+| 403 | Forbidden | De client mag deze resource niet bekijken |
+| 404 | Not Found | De resource is niet gevonden |
+| 500 | Internal Server Error | Er is een fout opgetreden op de server |
+
+Het is belangrijk om de juiste status code te gebruiken zodat de client weet of er iets mis is gegaan of niet. En als er iets mis is gegaan, kan de client bv. een foutmelding tonen.
 
 ### Response headers
 
@@ -283,3 +284,24 @@ app.get('/headers',(req,res)=>{
     res.send('<h1>Hello World</h1>');
 })
 ```
+
+### Response Type
+
+De response type wordt automatisch ingesteld op `text/html` wanneer je een response verstuurd. Je kan de response type wijzigen met de method `res.type`:
+
+```typescript
+app.get('/type',(req,res)=>{
+    res.type('text/plain');
+    res.send('Hello World');
+})
+```
+
+Je kan ook de response type instellen op een van de volgende waarden: `html`, `text`, `json`, `xml`. Als je een van deze waarden gebruikt, wordt de content type automatisch ingesteld op de juiste waarde:
+
+| Response Type | Verkorte notatie | Omschrijving |
+| :--- | :--- | :--- |
+| text/html | html | HTML |
+| text/plain | text | Plain text |
+| application/json | json | JSON |
+| application/xml | xml | XML |
+
