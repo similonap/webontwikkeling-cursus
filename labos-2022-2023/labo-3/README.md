@@ -266,8 +266,6 @@ Gebruik nu de groupBy functie dat je ook deze gegevens groepeert aan de hand van
 }
 ```
 
-\
-
 
 
 
