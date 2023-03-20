@@ -4,6 +4,8 @@
 
 We bouwen in deze oefening onze eerste **express** applicatie. Hier onder vind je een overzicht over alle routes die deze applicatie moet aanbieden en wat ze allemaal moeten doen.
 
+Zorg ervoor dat deze applicatie in een aparte map `helloExpress` staat. Maak een `package.json` aan en installeer de nodige packages.
+
 {% hint style="info" %}
 In deze oefening is het nog niet de bedoeling om EJS te gebruiken. We gaan enkel HTML pagina's of json terugsturen.
 {% endhint %}
