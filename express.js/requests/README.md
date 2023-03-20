@@ -242,7 +242,6 @@ Hier een tabel met de meest gebruikte status codes:
 | 200 | OK | De request is geslaagd |
 | 201 | Created | De request is geslaagd en een nieuwe resource is aangemaakt |
 | 204 | No Content | De request is geslaagd, maar er is geen inhoud om te tonen |
-| 301 | Moved Permanently | De resource is permanent verplaatst naar een andere URL |
 | 400 | Bad Request | De request is niet correct |
 | 401 | Unauthorized | Missende of niet geslaagde authorisatie |
 | 403 | Forbidden | De client mag deze resource niet bekijken |
