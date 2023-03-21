@@ -9,7 +9,7 @@ Installeer alle nodige libraries voor te werken met express en ejs.
 Maak een nieuw bestand `index.ts` aan met de volgende inhoud:
 
 ```typescript
-const express = require("express");
+import express from "express";
 const app = express();
 
 app.set("port",3000);
