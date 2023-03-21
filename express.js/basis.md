@@ -58,7 +58,7 @@ We importeren de express module en de nodige types en voeren `express()` uit. He
 We kunnen dit object gebruiken om een aantal settings aan te passen, te beslissen welke url welke data (HTML, JSON, etc.) laadt en de applicatie te starten.
 
 ```typescript
-app.set('port', 3000);
+app.set("port", 3000);
 ```
 
 `app.set` laat ons toe bepaalde properties van onze Express applicatie aan te passen. Het is belangrijk om te definieren op welke poort onze webapplicatie gaat luisteren. Een typische keuze tijdens ontwikkeling is de poort 3000. Dit wil zeggen dat we lokaal naar `http://localhost:3000` zullen moeten gaan.
@@ -152,7 +152,7 @@ res.status(404);
 Dit geeft een custom status code terug. 404 laat jouw browser weten dat de pagina niet gevonden werd. Standaard zal 200 worden teruggegeven, als alles ok is (en als je dus zelf geen status meegeeft).
 
 {% hint style="danger" %}
-Opgelet: De volgorde is hier belangrijk. Zet je deze app.use bovenaan in de applicatie, dan zal geen enkele route meer werken. Plaats die onderaan (maar boven app.listen).&#x20;
+Opgelet: De volgorde is hier belangrijk. Zet je deze app.use bovenaan in de applicatie, dan zal geen enkele route meer werken. Plaats die onderaan (maar boven app.listen).
 {% endhint %}
 
 #### Een simpele API

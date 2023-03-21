@@ -39,7 +39,6 @@
       * [jsonwebtokens NPM package](express.js/authenticatie-en-autorisatie/json-web-token-jwt/jsonwebtokens-npm-package.md)
       * [jsonwebtokens veilig opslaan](express.js/authenticatie-en-autorisatie/json-web-token-jwt/jsonwebtokens-opslaan.md)
     * [Environment Variables](express.js/authenticatie-en-autorisatie/environment-variables.md)
-    * [body-parser NPM package](express.js/authenticatie-en-autorisatie/body-parser-npm-package.md)
   * [MySQL Connector](express.js/mysql-connector/README.md)
     * [queries uitvoeren](express.js/mysql-connector/queries.md)
     * [prepared statements](express.js/mysql-connector/prepared-statements.md)
