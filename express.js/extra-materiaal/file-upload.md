@@ -43,25 +43,47 @@ By default, Multer zal de bestanden hernoemen zodat er geen conflicten ontstaan.
 
 Om een bestand te kunnen uploaden, moeten we de `upload.single()` functie gebruiken. Deze functie heeft 1 parameter nodig: de naam van het inputveld waar het bestand in staat. In ons voorbeeld is dit het inputveld met de naam `file`.
 
+```html
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="avatar" />
+    <input type="submit" value="Upload" />
+</form>
+```
+
 ```typescript
 import express from "express";
+import ejs from "ejs";
+import multer from "multer";
 
 const app = express();
 
+app.set('view engine', 'ejs');
+app.use(express.static("uploads"));
+
 const upload = multer({
-    dest: "uploads/",
+    dest: "uploads",
+});
+
+app.get("/", (req, res) => {
+    res.render("index")
 });
 
 app.post("/upload", upload.single("avatar"), (req, res) => {
     let file = req.file as Express.Multer.File;
     if (file) {
         res.type("text/html");
-        res.send(file.filename);
+        res.send(`<img src="uploads/${file.filename}"/>`);
     } else {
         res.send("No file uploaded");
     }
 });
+
+app.listen(3000, () => {
+    console.log("Server started on port 3000");
+});
 ```
+
+Dit is een voorbeeld van een formulier waarbij we een bestand kunnen uploaden. Als we dit formulier invullen en verzenden, dan wordt het bestand opgeslagen in de map `uploads`. Omdat we aangegeven hebben dat de map `uploads` een statische map is, kunnen we het bestand oproepen via de url `http://localhost:3000/<bestandsnaam>`. In ons voorbeeld is dit bv `http://localhost:3000/5f7b9b0e8b9c4a0b8c9d9e0f`. 
 
 ## Uploaden van meerdere bestanden
 
@@ -72,23 +94,16 @@ Om meerdere bestanden te kunnen uploaden, moeten we de `upload.array()` functie 
     <input type="file" name="photos" multiple />
     <input type="submit" value="Upload" />
 </form>
+```
 
 nu kunnen we de bestanden ophalen via de `req.files` variabele
 
 ```typescript
-import express from "express";
-
-const app = express();
-
-const upload = multer({
-    dest: "uploads/",
-});
-
 app.post("/upload", upload.array("photos", 5), (req, res) => {
     let files = req.files as Express.Multer.File[];
     if (files) {
         res.type("text/html");
-        res.send(files.map((file) => file.filename).join(", "));
+        res.send(files.map((file) => `<img src="${file.filename}"/>`).join("<br/>"));
     } else {
         res.send("No files uploaded");
     }
@@ -108,14 +123,6 @@ Als je een formulier hebt met meerdere file inputs, dan moet je de `upload.field
 ```
 
 ```typescript
-import express from "express";
-
-const app = express();
-
-const upload = multer({
-    dest: "uploads/",
-});
-
 interface FilesDictionary {
     [fieldname: string]: Express.Multer.File[];
 }
@@ -129,13 +136,12 @@ app.post(
     (req, res) => {
         let files = req.files as FilesDictionary
         let avatar = files["avatar"][0];
-        let gallery1 = files["gallery"][0];
-        let gallery2 = files["gallery"][1];
-        // ...
-        let gallery8 = files["gallery"][7];
 
         res.type("text/html");
-        res.send("Upload successful!");
+        res.send(`<h1>Avatar</h1>
+                  <img src="/${avatar.filename}"><br/>
+                  <h1>Photos</h1>
+                  ${files["gallery"].map((file) => `<img src="/${file.filename}">`).join("")}}`);
     }
 );
 ```
