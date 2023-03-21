@@ -208,3 +208,35 @@ Om de JSON data terug te sturen, gebruiken we res.json.
 {% hint style="danger" %}
 Eigenlijk moeten we het type hier niet definieren. res.json zal zelf de content-type van de header aanpassen naar 'application/json'.
 {% endhint %}
+
+#### Async routes
+
+We kunnen ook async routes maken. Dit is handig als we bv. data moeten ophalen uit een API. 
+
+```typescript
+app.get('/users',async (req,res) =>{
+    let response = await fetch('https://jsonplaceholder.typicode.com/users');
+    let data = await response.json();
+    res.type('application/json');
+    res.json(data);
+});
+```
+
+Deze route zal dus eerst de data ophalen van de API en pas daarna terugsturen. De response zal dus niet onmiddellijk terugkomen. De snelheid van de API zal dus ook de snelheid van onze applicatie bepalen.
+
+Wil je niet afhankelijk zijn van de snelheid van een externe API, dan kan je ook bij het opstarten van de server de data ophalen en opslaan in een variabele. Deze variabele kan je dan gebruiken in je routes. Vaak word dit gedaan in de `app.listen` functie. Deze moet dan ook async zijn.
+
+```typescript
+let data : Person[] = [];
+
+app.get('/getData',(req,res)=>{
+    res.type('application/json');
+    res.json(data);
+});
+
+app.listen(app.get('port'), async ()=>{
+    let response = await fetch('https://jsonplaceholder.typicode.com/users');
+    data = await response.json();
+    console.log( '[server] http://localhost:' + app.get('port'));
+});
+```
