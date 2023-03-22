@@ -1,14 +1,12 @@
 # Cookies
 
-## Cookies
-
-### HTTP is stateless
+## HTTP is stateless
 
 HTTP is een stateless protocol. Dit betekent dat de server in principe geen informatie over de client bijhoudt. Als je een webpagina bezoekt, zal de server niet weten of je daarvoor al eens op die pagina bent geweest. Dit is een groot probleem, want hoe kan de server dan bijhouden dat je ingelogd bent? Of dat je een bepaalde product in je winkelmandje hebt gelegd?
 
 Om dit probleem op te lossen, gebruiken we cookies. Een cookie is een klein stukje informatie dat de server naar de client stuurt. De client slaat deze informatie op en stuurt deze informatie bij elke volgende request naar de server. Op die manier kan de server bijhouden welke client welke informatie heeft.
 
-### Cookies in Express
+## Cookies in Express
 
 Als we willen dat Express cookies kan gebruiken, moeten we eerst de cookie-parser middleware installeren:
 
@@ -31,7 +29,7 @@ import cookieParser from 'cookie-parser';
 app.use(cookieParser());
 ```
 
-### Cookie aanmaken
+## Cookie aanmaken
 
 Om een cookie aan te maken, gebruiken we de `res.cookie()` functie. Deze functie heeft twee parameters: de naam van de cookie en de waarde van de cookie.
 
@@ -56,7 +54,7 @@ app.get('/', (req, res) => {
 
 Hoewel dat cookies zeer belangrijk zijn voor authenticatie, is het niet veilig om de waarde van een cookie te vertrouwen. Een gebruiker kan namelijk de waarde van een cookie veranderen in de browser. We zien later nog hoe we dit probleem kunnen oplossen.
 
-### Cookie verwijderen
+## Cookie verwijderen
 
 Om een cookie te verwijderen, gebruiken we de `res.clearCookie()` functie. Deze functie heeft één parameter: de naam van de cookie die we willen verwijderen.
 
@@ -64,7 +62,7 @@ Om een cookie te verwijderen, gebruiken we de `res.clearCookie()` functie. Deze 
 res.clearCookie('name');
 ```
 
-### Cookie opties
+## Cookie opties
 
 De `res.cookie()` functie heeft nog een aantal opties. Hier een overzicht van de belangrijkste opties die we later nog nodig zullen hebben:
 
@@ -78,7 +76,7 @@ Je kan deze opties meegeven als een object als tweede parameter van de `res.cook
 res.cookie('name', 'value', { maxAge: 900000, httpOnly: true });
 ```
 
-### Andere datatypes
+## Andere datatypes
 
 De waarde van een cookie moet een string zijn. Als je een andere datatype wil opslaan in een cookie, dan moet je deze eerst omzetten naar een string. Dit kan je doen met de `JSON.stringify()` functie:
 
@@ -94,7 +92,7 @@ Om deze data weer terug te krijgen, moet je de `JSON.parse()` functie gebruiken:
 const data = JSON.parse(req.cookies.data);
 ```
 
-### Cookies in de browser
+## Cookies in de browser
 
 Als we een cookie aanmaken, dan wordt deze opgeslagen in de browser. We kunnen de cookies bekijken door naar de developer tools te gaan en naar de `Application` tab te gaan. Daar kunnen we de cookies bekijken die de browser heeft opgeslagen.
 
@@ -102,15 +100,15 @@ Als we een cookie aanmaken, dan wordt deze opgeslagen in de browser. We kunnen d
 
 In deze tab kan je ook je cookies aanpassen en verwijderen. Als je de waarde van een cookie aanpast, dan zal de server de nieuwe waarde zien wanneer je de pagina opnieuw laadt. Dit is een groot probleem, want de server kan niet vertrouwen op de waarde van een cookie. Plaats dus nooit gevoelige data in een cookie.
 
-## Sessions
+# Sessions
 
-### Wat is een session?
+## Wat is een session?
 
 Een session is een stukje informatie die de server bijhoudt over een client. Een session wordt opgeslagen op de server en wordt geïdentificeerd door een unieke sessie ID. Deze sessie ID wordt opgeslagen in een cookie op de client. Op die manier kan de server bijhouden welke client welke informatie heeft.
 
 Het voordeel van een session is dat de server meer informatie over de client kan bijhouden. Een cookie is veel beperkter in de hoeveelheid data er kan bij gehouden worden dan een session. Nog een voordeel van een session is dat dit veiliger is dan cookies. Cookies kan je namelijk makkelijk aanpassen in de browser. De data die in een session wordt opgeslagen, kan je niet aanpassen in de browser.
 
-### Hoe werkt een session?
+## Hoe werkt een session?
 
 Een session werkt als volgt:
 
@@ -122,7 +120,9 @@ Een session werkt als volgt:
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-### Express sessions
+## Express sessions
+
+### Installatie
 
 Het is perfect mogelijk om zelf een session systeem te bouwen, maar dit is een tijdrovende klus. Gelukkig zijn er al veel libraries die dit voor ons doen. We gaan gebruik maken van de `express-session` library. We kunnen deze library installeren met de volgende commando:
 
@@ -136,7 +136,7 @@ Deze library heeft geen built-in typescript types, dus we moeten de types van de
 npm install --save-dev @types/express-session
 ```
 
-#### Session middleware
+### Session middleware
 
 We kunnen de `express-session` middleware dan toevoegen aan onze applicatie:
 
@@ -152,7 +152,7 @@ De `secret` parameter is de enige verplichte parameter. Deze parameter wordt geb
 
 By default zal de sessie opgeslagen worden in het geheugen. Dit is niet ideaal, want als de server herstart, dan worden alle sessies verwijderd. Dit gaan we voorlopig negeren, in een productie omgeving moet je dit wel oplossen door bijvoorbeeld de sessies op te slaan in een database. Dit doe je aan de hand van de `store` parameter.
 
-#### Session object
+### Session object
 
 De `express-session` middleware voegt een `session` object toe aan de `Request` object. Dit object bevat alle informatie over de sessie. Vooraleer we de sessie kunnen gebruiken, moeten we een interface toevoegen aan het `express-session` module. Dit doen we door een `declare module` statement toe te voegen aan onze `index.ts` file:
 
