@@ -7,7 +7,7 @@ Tot nu toe hebben we altijd de server handmatig moeten herstarten als we een wij
 Om `nodemon` te installeren voeren we het volgende commando uit:
 
 ```bash
-npm install --save-dev nodemon
+npm install -g nodemon
 ```
 
 ## Gebruik
