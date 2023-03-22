@@ -70,6 +70,13 @@ De `res.cookie()` functie heeft nog een aantal opties. Hier een overzicht van de
 
 * `maxAge`: de levensduur van de cookie in milliseconden. Als deze optie niet wordt meegegeven, dan wordt de cookie verwijderd wanneer de browser wordt afgesloten.
 * `httpOnly`: als deze optie `true` is, dan kan de cookie niet worden gelezen door JavaScript. Dit is een veiligheidsmaatregel om cross-site scripting aanvallen te voorkomen.
+* `secure`: als deze optie `true` is, dan wordt de cookie alleen verstuurd via een beveiligde verbinding (HTTPS). Dit is een veiligheidsmaatregel om cross-site scripting aanvallen te voorkomen.
+
+Je kan deze opties meegeven als een object als tweede parameter van de `res.cookie()` functie:
+
+```typescript
+res.cookie('name', 'value', { maxAge: 900000, httpOnly: true });
+```
 
 ### Cookies in de browser
 
@@ -97,3 +104,73 @@ Een session werkt als volgt:
 - De client stuurt de cookie (`connect.sid=1234567890`) bij elke volgende request naar de server.
 - De server gebruikt de sessie ID om de juiste informatie op te halen uit de database.
 
+### Express sessions
+
+Het is perfect mogelijk om zelf een session systeem te bouwen, maar dit is een tijdrovende klus. Gelukkig zijn er al veel libraries die dit voor ons doen. We gaan gebruik maken van de `express-session` library. We kunnen deze library installeren met de volgende commando:
+
+```bash
+npm install express-session
+```
+
+Deze library heeft geen built-in typescript types, dus we moeten de types van de `express-session` library installeren:
+
+```bash
+npm install --save-dev @types/express-session
+```
+
+#### Session middleware
+
+We kunnen de `express-session` middleware dan toevoegen aan onze applicatie:
+
+```typescript
+import express from 'express';
+
+app.use(session({
+  secret: 'keyboard cat'
+}));
+```
+
+De `secret` parameter is de enige verplichte parameter. Deze parameter wordt gebruikt om de sessie ID te versleutelen. Zo kan niemand de werkelijke sessie ID achterhalen of eventueel zelf een sessie ID genereren. Deze secret moet ten alle tijden geheim blijven. De secret kan je bijvoorbeeld meegeven via een omgevingsvariabelen. 
+
+By default zal de sessie opgeslagen worden in het geheugen. Dit is niet ideaal, want als de server herstart, dan worden alle sessies verwijderd. Dit gaan we voorlopig negeren, in een productie omgeving moet je dit wel oplossen door bijvoorbeeld de sessies op te slaan in een database. Dit doe je aan de hand van de `store` parameter.
+
+### Voorbeeld
+
+We hernemen nu het voorbeeld van de visitor counter. We gaan nu een session gebruiken om bij te houden hoeveel keer een gebruiker een pagina heeft bezocht. 
+
+```typescript
+import express from "express";
+import cookieParser from 'cookie-parser';
+import session  from 'express-session';
+
+const app = express();
+
+app.use(session({ secret: 'keyboard cat' }))
+
+declare module "express-session" {
+    interface Session {
+      visitCount: number;
+    }
+}
+
+app.get("/", (req, res) => {
+    let currentCount;
+    if (req.session.visitCount) {
+        currentCount = req.session.visitCount + 1;
+    } else {
+        currentCount = 1;
+    }
+    req.session.visitCount = currentCount;
+    res.send("You have visited this page " + currentCount + " times.");
+});
+
+app.listen(3000, () => {
+    console.log("Listening on port 3000");
+});
+```
+
+Deze code is bijna identiek aan de code van de visitor counter. Het enige verschil is dat we nu de sessie gebruiken om bij te houden hoe vaak een gebruiker een pagina heeft bezocht.
+
+Je moet hiernaast ook nog de types van de session configureren. Dit doen we door een `declare module` statement toe te voegen. Deze statement zorgt ervoor dat we de types van de `express-session` library kunnen aanpassen. In dit geval voegen we een `visitCount` property toe aan de `Session` interface. Alles wat je in de session wilt opslaan, moet je hier toevoegen. Vergeet dit niet anders krijg je een foutmelding.
+
+Als je nu gaat kijken in de developer tools zie je dat er geen cookie meer wordt opgeslagen met de `visitCount` waarde. Dit komt omdat de `visitCount` waarde niet in de cookie wordt opgeslagen, maar in de session. Je zal wel een cookie zien met de sessie ID.
