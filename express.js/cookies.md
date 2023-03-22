@@ -78,6 +78,22 @@ Je kan deze opties meegeven als een object als tweede parameter van de `res.cook
 res.cookie('name', 'value', { maxAge: 900000, httpOnly: true });
 ```
 
+### Andere datatypes
+
+De waarde van een cookie moet een string zijn. Als je een andere datatype wil opslaan in een cookie, dan moet je deze eerst omzetten naar een string. Dit kan je doen met de `JSON.stringify()` functie:
+
+```typescript
+const data = { name: 'John', age: 30 };
+
+res.cookie('data', JSON.stringify(data));
+```
+
+Om deze data weer terug te krijgen, moet je de `JSON.parse()` functie gebruiken:
+
+```typescript
+const data = JSON.parse(req.cookies.data);
+```
+
 ### Cookies in de browser
 
 Als we een cookie aanmaken, dan wordt deze opgeslagen in de browser. We kunnen de cookies bekijken door naar de developer tools te gaan en naar de `Application` tab te gaan. Daar kunnen we de cookies bekijken die de browser heeft opgeslagen.
@@ -136,7 +152,38 @@ De `secret` parameter is de enige verplichte parameter. Deze parameter wordt geb
 
 By default zal de sessie opgeslagen worden in het geheugen. Dit is niet ideaal, want als de server herstart, dan worden alle sessies verwijderd. Dit gaan we voorlopig negeren, in een productie omgeving moet je dit wel oplossen door bijvoorbeeld de sessies op te slaan in een database. Dit doe je aan de hand van de `store` parameter.
 
-### Voorbeeld
+#### Session object
+
+De `express-session` middleware voegt een `session` object toe aan de `Request` object. Dit object bevat alle informatie over de sessie. Vooraleer we de sessie kunnen gebruiken, moeten we een interface toevoegen aan het `express-session` module. Dit doen we door een `declare module` statement toe te voegen aan onze `index.ts` file:
+
+```typescript
+declare module "express-session" {
+    interface Session {
+      key1: string;
+      key2: number;
+    }
+}
+```
+
+We kunnen nu de sessie gebruiken in onze applicatie:
+
+```typescript
+app.get("/", (req, res) => {
+    req.session.key1 = "value1";
+    req.session.key2 = 2;
+    res.send("Hello world");
+});
+```
+
+en we kunnen deze uitlezen in een andere route:
+
+```typescript
+app.get("/test", (req, res) => {
+    res.send(req.session.key1 + " " + req.session.key2);
+});
+```
+
+### Visitor counter
 
 We hernemen nu het voorbeeld van de visitor counter. We gaan nu een session gebruiken om bij te houden hoeveel keer een gebruiker een pagina heeft bezocht. 
 
@@ -146,12 +193,13 @@ import cookieParser from 'cookie-parser';
 import session  from 'express-session';
 
 const app = express();
+app.set("port", 3000);
 
 app.use(session({ secret: 'keyboard cat' }))
 
 declare module "express-session" {
     interface Session {
-      visitCount: number;
+      visitCount: string;
     }
 }
 
@@ -166,13 +214,12 @@ app.get("/", (req, res) => {
     res.send("You have visited this page " + currentCount + " times.");
 });
 
-app.listen(3000, () => {
-    console.log("Listening on port 3000");
+app.listen(app.get("port"), () => {
+    console.log("Server started on port " + app.get("port"));
 });
 ```
 
 Deze code is bijna identiek aan de code van de visitor counter. Het enige verschil is dat we nu de sessie gebruiken om bij te houden hoe vaak een gebruiker een pagina heeft bezocht.
 
-Je moet hiernaast ook nog de types van de session configureren. Dit doen we door een `declare module` statement toe te voegen. Deze statement zorgt ervoor dat we de types van de `express-session` library kunnen aanpassen. In dit geval voegen we een `visitCount` property toe aan de `Session` interface. Alles wat je in de session wilt opslaan, moet je hier toevoegen. Vergeet dit niet anders krijg je een foutmelding.
-
 Als je nu gaat kijken in de developer tools zie je dat er geen cookie meer wordt opgeslagen met de `visitCount` waarde. Dit komt omdat de `visitCount` waarde niet in de cookie wordt opgeslagen, maar in de session. Je zal wel een cookie zien met de sessie ID.
+
