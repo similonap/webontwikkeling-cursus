@@ -81,7 +81,7 @@ Je kan nu een HTML pagina maken in de `public` folder:
 
 Deze code zal een request doen naar de backend op poort 3000. Als je nu op de knop klikt, zal je een CORS error krijgen:
 
-<figure><img src="../../../.gitbook/assets/Screenshot%202023-03-08%20at%2013.35.35.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot%202023-03-08%20at%2013.35.35.png" alt=""><figcaption></figcaption></figure>
 
 Er zal dus een aanpassing nodig zijn in de backend om dit toch te laten werken.
 
@@ -109,7 +109,7 @@ Als je nu opnieuw op de knop klikt, zal je de data van de backend zien verschijn
 Access-Control-Allow-Origin: *
 ```
 
-<figure><img src="../../../.gitbook/assets/Screenshot%202023-03-08%20at%2013.43.32.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot%202023-03-08%20at%2013.43.32.png" alt=""><figcaption></figcaption></figure>
 
 Als je gewoon `cors()` aanroept zonder parameters, zal elke request van eender welke website toegang krijgen tot je API. Dit is niet altijd de bedoeling. Je kan ook een lijst van domeinen meegeven die toegang krijgen tot je API.
 

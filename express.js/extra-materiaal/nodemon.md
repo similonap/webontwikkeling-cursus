@@ -18,4 +18,4 @@ Om `nodemon` te gebruiken voeren we het volgende commando uit:
 nodemon index.ts
 ```
 
-nodemon heeft ingebouwde ondersteuning voor TypeScript. Dit betekent dat we geen aparte `ts-node` commando hoeven uit te voeren. `nodemon` zal automatisch de juiste TypeScript compiler gebruiken. 
+nodemon heeft ingebouwde ondersteuning voor TypeScript. Dit betekent dat we geen aparte `ts-node` commando hoeven uit te voeren. `nodemon` zal automatisch de juiste TypeScript compiler gebruiken.
