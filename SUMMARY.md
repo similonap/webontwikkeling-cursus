@@ -35,6 +35,7 @@
   * [Nodemon](express.js/extra-materiaal/nodemon.md)
   * [File upload](express.js/extra-materiaal/file-upload.md)
   * [Cookies](express.js/cookies.md)
+  * [Sessions](express.js/extra-materiaal/sessions.md)
   * [Authenticatie en Autorisatie](express.js/authenticatie-en-autorisatie/README.md)
     * [JSON Web Token (JWT)](express.js/authenticatie-en-autorisatie/json-web-token-jwt.md)
       * [jsonwebtokens NPM package](express.js/authenticatie-en-autorisatie/json-web-token-jwt/jsonwebtokens-npm-package.md)
