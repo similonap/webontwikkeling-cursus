@@ -1,14 +1,12 @@
 # Cookies
 
-## Cookies
-
-### HTTP is stateless
+## HTTP is stateless
 
 HTTP is een stateless protocol. Dit betekent dat de server in principe geen informatie over de client bijhoudt. Als je een webpagina bezoekt, zal de server niet weten of je daarvoor al eens op die pagina bent geweest. Dit is een groot probleem, want hoe kan de server dan bijhouden dat je ingelogd bent? Of dat je een bepaalde product in je winkelmandje hebt gelegd?
 
 Om dit probleem op te lossen, gebruiken we cookies. Een cookie is een klein stukje informatie dat de server naar de client stuurt. De client slaat deze informatie op en stuurt deze informatie bij elke volgende request naar de server. Op die manier kan de server bijhouden welke client welke informatie heeft.
 
-### Cookies in Express
+## Cookies in Express
 
 Als we willen dat Express cookies kan gebruiken, moeten we eerst de cookie-parser middleware installeren:
 
