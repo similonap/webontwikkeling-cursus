@@ -75,7 +75,7 @@ De `res.cookie()` functie heeft nog een aantal opties. Hier een overzicht van de
 
 Als we een cookie aanmaken, dan wordt deze opgeslagen in de browser. We kunnen de cookies bekijken door naar de developer tools te gaan en naar de `Application` tab te gaan. Daar kunnen we de cookies bekijken die de browser heeft opgeslagen.
 
-![Cookies in de browser](./images/cookies-browser.png)
+<figure><img src="../.gitbook/assets/Screenshot 2023-03-22 at 11.19.38.png" alt=""><figcaption></figcaption></figure>
 
 In deze tab kan je ook je cookies aanpassen en verwijderen. Als je de waarde van een cookie aanpast, dan zal de server de nieuwe waarde zien wanneer je de pagina opnieuw laadt. Dit is een groot probleem, want de server kan niet vertrouwen op de waarde van een cookie. Plaats dus nooit gevoelige data in een cookie.
 
@@ -83,17 +83,18 @@ In deze tab kan je ook je cookies aanpassen en verwijderen. Als je de waarde van
 
 ### Wat is een session?
 
-Een session is een stukje informatie die de server bijhoudt over een client. Een session wordt opgeslagen op de server en wordt geïdentificeerd door een unieke sessie ID. Deze sessie ID wordt opgeslagen in een cookie op de client. Op die manier kan de server bijhouden welke client welke informatie heeft. 
+Een session is een stukje informatie die de server bijhoudt over een client. Een session wordt opgeslagen op de server en wordt geïdentificeerd door een unieke sessie ID. Deze sessie ID wordt opgeslagen in een cookie op de client. Op die manier kan de server bijhouden welke client welke informatie heeft.
 
-Het voordeel van een session is dat de server meer informatie over de client kan bijhouden. Een cookie is veel beperkter in de hoeveelheid data er kan bij gehouden worden dan een session. Nog een voordeel van een session is dat dit veiliger is dan cookies. Cookies kan je namelijk makkelijk aanpassen in de browser. De data die in een session wordt opgeslagen, kan je niet aanpassen in de browser. 
+Het voordeel van een session is dat de server meer informatie over de client kan bijhouden. Een cookie is veel beperkter in de hoeveelheid data er kan bij gehouden worden dan een session. Nog een voordeel van een session is dat dit veiliger is dan cookies. Cookies kan je namelijk makkelijk aanpassen in de browser. De data die in een session wordt opgeslagen, kan je niet aanpassen in de browser.
 
 ### Hoe werkt een session?
 
 Een session werkt als volgt:
 
-- De client stuurt een request naar de server, bijvoorbeeld tijdens het inloggen. 
-- De server genereert een unieke sessie ID en slaat deze op in een database (of in het geheugen).
-- De server stuurt een cookie naar de client met de sessie ID. Bijvoorbeeld: `connect.sid=1234567890`.
-- De client stuurt de cookie (`connect.sid=1234567890`) bij elke volgende request naar de server.
-- De server gebruikt de sessie ID om de juiste informatie op te halen uit de database.
+* De client stuurt een request naar de server, bijvoorbeeld tijdens het inloggen.
+* De server genereert een unieke sessie ID en slaat deze op in een database (of in het geheugen).
+* De server stuurt een cookie naar de client met de sessie ID. Bijvoorbeeld: `connect.sid=1234567890`.
+* De client stuurt de cookie (`connect.sid=1234567890`) bij elke volgende request naar de server.
+* De server gebruikt de sessie ID om de juiste informatie op te halen uit de database.
 
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>

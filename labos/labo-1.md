@@ -66,7 +66,7 @@ Nu installeren we Node.js. Dit is een JavaScript runtime. Deze laat ons toe Java
 
 Om te testen of Node.js werkt, voer je het commande node uit in de terminal (je zal waarschijnlijk eerst eens moeten herstarten)
 
-![](<../.gitbook/assets/image (2).png>)
+![](<../.gitbook/assets/image (2) (1).png>)
 
 Hier kan je nu JavaScript code invoeren. Probeer de volgende lijnen eens uit:
 
