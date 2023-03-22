@@ -36,6 +36,7 @@
   * [File upload](express.js/extra-materiaal/file-upload.md)
   * [Cookies](express.js/cookies.md)
   * [Sessions](express.js/extra-materiaal/sessions.md)
+  * [CORS](express.js/cors.md)
   * [Authenticatie en Autorisatie](express.js/authenticatie-en-autorisatie/README.md)
     * [JSON Web Token (JWT)](express.js/authenticatie-en-autorisatie/json-web-token-jwt.md)
       * [jsonwebtokens NPM package](express.js/authenticatie-en-autorisatie/json-web-token-jwt/jsonwebtokens-npm-package.md)
@@ -45,7 +46,6 @@
     * [queries uitvoeren](express.js/mysql-connector/queries.md)
     * [prepared statements](express.js/mysql-connector/prepared-statements.md)
     * [als onderdeel van een Express applicatie](express.js/mysql-connector/als-onderdeel-van-een-express-applicatie.md)
-  * [CORS](express.js/cors.md)
 
 ## Labos 2022-2023
 
