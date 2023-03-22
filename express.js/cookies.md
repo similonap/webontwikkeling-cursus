@@ -1,8 +1,6 @@
 # Cookies
 
-## Session en cookies
-
-### Cookies
+## Cookies
 
 ### HTTP is stateless
 
