@@ -24,7 +24,7 @@ npm install --save-dev @types/multer
 
 ## Basis configuratie
 
-Om `multer` te kunnen gebruiken, moeten we eerst een `multer` object aanmaken. Dit object bevat de configuratie van `multer`.  
+Om `multer` te kunnen gebruiken, moeten we eerst een `multer` object aanmaken. Dit object bevat de configuratie van `multer`.\
 De basisconfiguratie van `multer` ziet er als volgt uit:
 
 ```js
@@ -83,7 +83,7 @@ app.listen(3000, () => {
 });
 ```
 
-Dit is een voorbeeld van een formulier waarbij we een bestand kunnen uploaden. Als we dit formulier invullen en verzenden, dan wordt het bestand opgeslagen in de map `uploads`. Omdat we aangegeven hebben dat de map `uploads` een statische map is, kunnen we het bestand oproepen via de url `http://localhost:3000/<bestandsnaam>`. In ons voorbeeld is dit bv `http://localhost:3000/5f7b9b0e8b9c4a0b8c9d9e0f`. 
+Dit is een voorbeeld van een formulier waarbij we een bestand kunnen uploaden. Als we dit formulier invullen en verzenden, dan wordt het bestand opgeslagen in de map `uploads`. Omdat we aangegeven hebben dat de map `uploads` een statische map is, kunnen we het bestand oproepen via de url `http://localhost:3000/<bestandsnaam>`. In ons voorbeeld is dit bv `http://localhost:3000/5f7b9b0e8b9c4a0b8c9d9e0f`.
 
 ## Uploaden van meerdere bestanden
 
