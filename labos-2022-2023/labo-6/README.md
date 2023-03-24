@@ -1,6 +1,15 @@
 # Labo 6
 
-### Maaltafels
+## helloExpress
+
+In deze oefening gaan we de `helloExpress` applicatie uit labo 5 uitbreiden met EJS. Neem de broncode van labo 5 over zodat je de vrijheid hebt om de code aan te passen zonder dat je de oorspronkelijke code verliest. De routes die json terugsturen gebruiken uiteraard nog steeds json en geen ejs.
+
+- Pas de / route aan zodat deze een ejs template gebruikt. Je hoeft hier niets door te geven aan de ejs template.
+- Pas de /whoami route aan zodat deze een ejs template gebruikt. Geef het `thisisme` object door aan de ejs template.
+- Pas de /pikachuhtml route aan zodat deze een ejs template gebruikt. Geef enkel de waarden door aan de ejs template die je toont in de html pagina. Je mag dus niet het hele pikachu object doorgeven aan de ejs template (tenzij je Pokemon object al alleen de waarden bevat die je nodig hebt).
+- Pas de /randomcolor route aan zodat deze een ejs template gebruikt. Geef de kleur door aan de ejs template.
+
+## Maaltafels
 
 Maak een nieuwe folder **maaltafels** waarin je jouw bronbestanden voor deze oefening kan plaatsen.
 
@@ -32,7 +41,7 @@ Je mag geen aanpassingen maken in de `index.ts` file. Het opbouwen van de tabel 
 
 ![](<../../.gitbook/assets/Screenshot 2022-03-21 at 15.27.43.png>)
 
-### Mathservice
+## Mathservice
 
 Maak een nieuwe folder **mathservice** waarin je jouw bronbestanden voor deze oefening kan plaatsen.
 
@@ -67,7 +76,7 @@ Als 1 van de twee parameters (a en b) niet zijn opgegeven krijg je het volgende 
 }
 ```
 
-### Catstatic
+## Catstatic
 
 Maak een nieuwe folder **catstatic** waarin je jouw bronbestanden voor deze oefening kan plaatsen.
 
@@ -83,7 +92,7 @@ Zorg voor een **extern css bestand** waar je een eigen style geeft aan de pagina
 
 ![](<../../.gitbook/assets/Screenshot 2022-03-21 at 20.53.05.png>)
 
-### Contact
+## Contact
 
 Maak een nieuwe folder **contact** waarin je jouw bronbestanden voor deze oefening kan plaatsen.
 
