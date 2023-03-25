@@ -23,12 +23,12 @@ Je kan voor deze opgave starten met de volgende html/css broncode:
                 The answer is 10 and your answer is 1. Correct!
             </section>
             <form class="math-form" method="post">
-                <input type="number" name="number1" value="6" class="num1" readonly />
+                <input type="number" name="number1" value="4" class="num1" readonly />
                 <input type="hidden" name="operator" value="/" />
                 <span class="operator">
-                    <img src="/images/division.png" alt="divide" />
+                    <img src="/images/multiply.png" alt="divide" />
                 </span>
-                <input type="number" name="number2" value="1" class="num1" readonly />
+                <input type="number" name="number2" value="7" class="num1" readonly />
                 <span class="equals">
                     <img src="/images/equals.png" alt="equals" />
                 </span>
@@ -154,6 +154,10 @@ Afbeeldingen:
 <figure><img src="../../.gitbook/assets/multiplication.png" alt=""><figcaption></figcaption></figure>
 
 </div>
+
+Deze pagina ziet er als volgt uit:
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-03-25 at 21.42.31.png" alt=""><figcaption></figcaption></figure>
 
 ### Stappenplan
 
