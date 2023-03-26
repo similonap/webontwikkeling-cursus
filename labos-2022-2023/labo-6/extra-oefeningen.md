@@ -163,15 +163,15 @@ Deze pagina ziet er als volgt uit:
 
 #### Express applicatie opzetten
 
-Maak een nieuw express project aan met de naam `rekenwonder` dat gebruik maakt van de `ejs` view engine. Installeer al de nodige dependencies.
+Maak een nieuw express project aan met de naam `rekenwonder` dat gebruik maakt van de `ejs` view engine. Installeer al de nodige dependencies. Zorg dat de server op de poort `3000` draait.
 
 #### EJS en statische bestanden
 
-Maak een ejs view voor deze opgave met de naam `index.ejs` en plaats de inhoud van de html hier in. Zorg ervoor dat de css en de afbeeldingen in een public folder staan en dat deze publiek toegankelijk zijn. Zorg ervoor dat deze pagina zichtbaar is op de root van je express applicatie (via een GET).
+Maak een ejs view voor deze opgave met de naam `index.ejs` en plaats de inhoud van de html hier in. Zorg ervoor dat de css en de afbeeldingen in een public folder staan en dat deze publiek toegankelijk zijn. Zorg ervoor dat deze pagina zichtbaar is op de root van je express applicatie (via een GET). Je moet in deze stap nog geen parameters doorgeven aan de ejs view.
 
 #### De parameters
 
-Zorg ervoor dat de ejs view de volgende parameters kan gebruiken:
+Zorg ervoor dat je de volgende parameters doorgeeft aan de ejs view:
 
 * `timesCorrect`: het aantal keer dat de gebruiker correct heeft geantwoord. De variabele die je hier doorgeeft mag een globale variabele zijn.
 * `timesWrong`: het aantal keer dat de gebruiker foutief heeft geantwoord. De variabele die je hier doorgeeft mag een globale variabele zijn.
@@ -179,8 +179,6 @@ Zorg ervoor dat de ejs view de volgende parameters kan gebruiken:
 * `number1`: een willekeurig getal tussen 0 en 10
 * `number2`: een willekeurig getal tussen 0 en 10
 * `operator`: een willekeurig operator die kan zijn `*` of `/`
-
-Geef deze parameters door aan de ejs view en gebruik deze om de juiste waarden weer te geven.&#x20;
 
 #### Feedback
 
@@ -192,4 +190,14 @@ Zorg ervoor dat de score wordt weergegeven in de ejs view. De score is het aanta
 
 #### Het formulier
 
-Zorg voor een afhandeling van het formulier via een POST request. Kijk na of het gegeven antwoord overeenkomt met het juiste antwoord. Als dit zo is, dan moet de gebruiker feedback krijgen dat het antwoord correct is. Als het antwoord foutief is, dan moet de gebruiker feedback krijgen dat het antwoord foutief is. De score moet ook worden bijgewerkt (correcte antwoorden moeten worden bijgeteld, foutieve antwoorden moeten worden bijgeteld). De feedback moet worden weergegeven in de ejs view.
+Zorg dat de input velden van het formulier worden ingevuld met de juiste parameters. Zorg ervoor dat de gebruiker een antwoord kan geven door het formulier in te vullen en op de knop `Check` te klikken. Als de gebruiker op de knop `Check` klikt, dan moet de gebruiker worden doorgestuurd naar de root van de express applicatie (via een POST). 
+
+#### De POST route
+
+Zorg ervoor dat de POST route de volgende stappen uitvoert:
+
+- Eerst moet je de volgende parameters uit de request body halen: `number1`, `number2`, `operator` en `result`. Deze parameters worden doorgegeven door het formulier.
+- Je berekent vervolgens het juiste antwoord aan de hand van de number parameters en de operator. Zorg ervoor dat je de juiste operator gebruikt. (bv: `*` of `/`)
+- Je vergelijkt het juiste antwoord met het gegeven antwoord. Als het antwoord correct is, dan moet je de globale variabele `timesCorrect` met 1 verhogen. Als het antwoord foutief is, dan moet je de globale variabele `timesWrong` met 1 verhogen.
+- Je bepaald vervolgens de feedback die je moet weergeven in de ejs view. Als het antwoord correct is, dan moet je de feedback `The answer is 5 and your answer is 5. Correct!` weergeven. Als het antwoord foutief is, dan moet je de feedback `The answer is 3 and your answer is 5. Wrong!` weergeven.
+- Vervolgens bereken je opnieuw een nieuwe willekeurige oefening (nieuwe parameters die je doorgeeft aan de ejs view). Je gebruikt hiervoor dezelfde ejs view als bij de GET route maar je geeft wel een extra parameter mee: `feedback`. Deze parameter bevat de feedback die je hebt berekend in de POST route.
