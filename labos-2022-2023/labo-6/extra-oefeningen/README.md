@@ -143,21 +143,21 @@ Afbeeldingen:
 
 <div>
 
-<figure><img src="../../.gitbook/assets/division.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/division.png" alt=""><figcaption></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/equals.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/equals.png" alt=""><figcaption></figcaption></figure>
 
  
 
-<figure><img src="../../.gitbook/assets/multiplication.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/multiplication.png" alt=""><figcaption></figcaption></figure>
 
 </div>
 
 Deze pagina ziet er als volgt uit:
 
-<figure><img src="../../.gitbook/assets/Screenshot 2023-03-25 at 21.42.31.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/Screenshot 2023-03-25 at 21.42.31.png" alt=""><figcaption></figcaption></figure>
 
 #### Stappenplan
 
@@ -410,7 +410,7 @@ Als de gebruiker alle schijven op de laatste stok heeft geplaatst dan heeft de g
 
 Je kan nagaan of de gebruiker gewonnen heeft door te kijken of de laatste array in de `hanoi` array 6 schijven bevat.
 
-<figure><img src="../../.gitbook/assets/hanoi1.gif" alt=""><figcaption><p>We kijken nog niet na of de blokken mogen verplaatst worden.</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/hanoi1.gif" alt=""><figcaption><p>We kijken nog niet na of de blokken mogen verplaatst worden.</p></figcaption></figure>
 
 ### Validatie
 
@@ -438,4 +438,4 @@ let hanoi = [[0,2,1,3,5],[],[4]];
 
 Als de schijf niet verplaatst mag worden dan moet je een foutmelding tonen. Je kan dit doen door een error variabele mee te geven aan de ejs template. De error variabele bevat een string met de foutmelding. De ejs template kan deze string tonen in een HTML element met de class `error`.
 
-<figure><img src="../../.gitbook/assets/errormove.gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/errormove.gif" alt=""><figcaption></figcaption></figure>
