@@ -1,10 +1,12 @@
 # Extra oefeningen
 
-## Rekenwonder
+## Extra oefeningen
+
+### Rekenwonder
 
 In deze opgave gaan we een oefenprogramma schrijven voor leerlingen van het 2de studiejaar. Het programma zal de leerlingen helpen bij het oefenen van de tafels van vermenigvuldiging en deling. De leerling zal willekeurig twee getallen tussen 0 en 10 krijgen en zal de uitkomst moeten ingeven. Het programma zal de leerling laten weten of het antwoord correct is of niet. Het programma zal ook bijhouden hoeveel vragen de leerling correct heeft beantwoord.
 
-### Begin situatie
+#### Begin situatie
 
 Je kan voor deze opgave starten met de volgende html/css broncode:
 
@@ -157,17 +159,17 @@ Deze pagina ziet er als volgt uit:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-03-25 at 21.42.31.png" alt=""><figcaption></figcaption></figure>
 
-### Stappenplan
+#### Stappenplan
 
-#### Express applicatie opzetten
+**Express applicatie opzetten**
 
 Maak een nieuw express project aan met de naam `rekenwonder` dat gebruik maakt van de `ejs` view engine. Installeer al de nodige dependencies. Zorg dat de server op de poort `3000` draait.
 
-#### EJS en statische bestanden
+**EJS en statische bestanden**
 
 Maak een ejs view voor deze opgave met de naam `index.ejs` en plaats de inhoud van de html hier in. Zorg ervoor dat de css en de afbeeldingen in een public folder staan en dat deze publiek toegankelijk zijn. Zorg ervoor dat deze pagina zichtbaar is op de root van je express applicatie (via een GET). Je moet in deze stap nog geen parameters doorgeven aan de ejs view.
 
-#### De parameters
+**De parameters**
 
 Zorg ervoor dat je de volgende parameters doorgeeft aan de ejs view:
 
@@ -178,35 +180,35 @@ Zorg ervoor dat je de volgende parameters doorgeeft aan de ejs view:
 * `number2`: een willekeurig getal tussen 0 en 10
 * `operator`: een willekeurig operator die kan zijn `*` of `/`
 
-#### Feedback
+**Feedback**
 
 Zorg ervoor dat de feedback wordt weergegeven in de ejs view. Als er geen feedback is, dan moet er geen feedback worden weergegeven. (Tip: gebruik een if statement in de ejs view)
 
-#### Score
+**Score**
 
 Zorg ervoor dat de score wordt weergegeven in de ejs view. De score is het aantal keer dat de gebruiker correct heeft geantwoord op het aantal keer dat de gebruiker heeft geantwoord.
 
-#### Het formulier
+**Het formulier**
 
-Zorg dat de input velden van het formulier worden ingevuld met de juiste parameters. Zorg ervoor dat de gebruiker een antwoord kan geven door het formulier in te vullen en op de knop `Check` te klikken. Als de gebruiker op de knop `Check` klikt, dan moet de gebruiker worden doorgestuurd naar de root van de express applicatie (via een POST). 
+Zorg dat de input velden van het formulier worden ingevuld met de juiste parameters. Zorg ervoor dat de gebruiker een antwoord kan geven door het formulier in te vullen en op de knop `Check` te klikken. Als de gebruiker op de knop `Check` klikt, dan moet de gebruiker worden doorgestuurd naar de root van de express applicatie (via een POST).
 
-#### De POST route
+**De POST route**
 
 Zorg ervoor dat de POST route de volgende stappen uitvoert:
 
-- Eerst moet je de volgende parameters uit de request body halen: `number1`, `number2`, `operator` en `result`. Deze parameters worden doorgegeven door het formulier.
-- Je berekent vervolgens het juiste antwoord aan de hand van de number parameters en de operator. Zorg ervoor dat je de juiste operator gebruikt. (bv: `*` of `/`)
-- Je vergelijkt het juiste antwoord met het gegeven antwoord. Als het antwoord correct is, dan moet je de globale variabele `timesCorrect` met 1 verhogen. Als het antwoord foutief is, dan moet je de globale variabele `timesWrong` met 1 verhogen.
-- Je bepaald vervolgens de feedback die je moet weergeven in de ejs view. Als het antwoord correct is, dan moet je de feedback `The answer is 5 and your answer is 5. Correct!` weergeven. Als het antwoord foutief is, dan moet je de feedback `The answer is 3 and your answer is 5. Wrong!` weergeven.
-- Vervolgens bereken je opnieuw een nieuwe willekeurige oefening (nieuwe parameters die je doorgeeft aan de ejs view). Je gebruikt hiervoor dezelfde ejs view als bij de GET route maar je geeft wel een extra parameter mee: `feedback`. Deze parameter bevat de feedback die je hebt berekend in de POST route.
+* Eerst moet je de volgende parameters uit de request body halen: `number1`, `number2`, `operator` en `result`. Deze parameters worden doorgegeven door het formulier.
+* Je berekent vervolgens het juiste antwoord aan de hand van de number parameters en de operator. Zorg ervoor dat je de juiste operator gebruikt. (bv: `*` of `/`)
+* Je vergelijkt het juiste antwoord met het gegeven antwoord. Als het antwoord correct is, dan moet je de globale variabele `timesCorrect` met 1 verhogen. Als het antwoord foutief is, dan moet je de globale variabele `timesWrong` met 1 verhogen.
+* Je bepaald vervolgens de feedback die je moet weergeven in de ejs view. Als het antwoord correct is, dan moet je de feedback `The answer is 5 and your answer is 5. Correct!` weergeven. Als het antwoord foutief is, dan moet je de feedback `The answer is 3 and your answer is 5. Wrong!` weergeven.
+* Vervolgens bereken je opnieuw een nieuwe willekeurige oefening (nieuwe parameters die je doorgeeft aan de ejs view). Je gebruikt hiervoor dezelfde ejs view als bij de GET route maar je geeft wel een extra parameter mee: `feedback`. Deze parameter bevat de feedback die je hebt berekend in de POST route.
 
-# Hanoi
+## Hanoi
 
-In deze opgave gaan we een spelletje programmeren. Het spelletje is gebaseerd op het bekende spelletje [Hanoi](https://nl.wikipedia.org/wiki/Toren_van_Hanoi). Het spelletje bestaat uit 3 stokken en een aantal schijven. De schijven hebben verschillende diameters. Het doel van het spel is om alle schijven van de eerste stok naar de laatste stok te verplaatsen. Je mag echter maar 1 schijf tegelijk verplaatsen en een schijf mag enkel op een andere schijf geplaatst worden als de diameter van de schijf die je wil verplaatsen kleiner is dan de diameter van de schijf waar je hem op wil plaatsen.
+In deze opgave gaan we een spelletje programmeren. Het spelletje is gebaseerd op het bekende spelletje [Hanoi](https://nl.wikipedia.org/wiki/Toren\_van\_Hanoi). Het spelletje bestaat uit 3 stokken en een aantal schijven. De schijven hebben verschillende diameters. Het doel van het spel is om alle schijven van de eerste stok naar de laatste stok te verplaatsen. Je mag echter maar 1 schijf tegelijk verplaatsen en een schijf mag enkel op een andere schijf geplaatst worden als de diameter van de schijf die je wil verplaatsen kleiner is dan de diameter van de schijf waar je hem op wil plaatsen.
 
 In deze opgave maken we gebruik van 3 stokken en 6 schijven.
 
-## Begin situatie
+### Begin situatie
 
 We hebben een HTML pagina gekregen waarin we de begin situatie van het spelletje kunnen zien. De HTML pagina bevat een aantal elementen die we nodig hebben om het spel te kunnen programmeren.
 
@@ -372,11 +374,11 @@ en de volgende CSS:
 
 Probeer de HTML pagina te openen in je browser. Je ziet dat er 3 stokken zijn met 6 schijven. De schijven zijn op de eerste stok geplaatst. De schijven zijn oplopend van grootte. De grootste schijf staat onderaan en de kleinste schijf staat bovenaan. Probeer de schijven te verplaatsen door de HTML pagina aan te passen, zorg ervoor dat je de structuur van de HTML goed begrijpt.
 
-## Express app
+### Express app
 
 Maak een nieuwe express applicatie aan en zorg ervoor dat de HTML pagina die je hierboven ziet in de browser te zien is als je naar de root van je applicatie navigeert. De CSS bestanden moeten ook beschikbaar zijn. Gebruik hiervoor ejs om de HTML pagina te renderen.
 
-## Schijven
+### Schijven
 
 Maak een array die de beginsituatie van de schijven voorstelt. De array bevat 3 arrays. De eerste array bevat de schijven die op de eerste stok staan. De tweede array bevat de schijven die op de tweede stok staan. De derde array bevat de schijven die op de derde stok staan. De schijven zijn oplopend van grootte. De grootste schijf staat onderaan en de kleinste schijf staat bovenaan.
 
@@ -388,45 +390,52 @@ Geef de `hanoi` array mee aan de ejs template. In de ejs template kan je de arra
 
 Experimenteer met de array en de ejs template om te zien hoe je de schijven kan renderen.
 
-## Schijf verplaatsen
+### Schijf verplaatsen
 
-Als je de JavaScript code beter bekijkt dan zie je de lijn 
+Als je de JavaScript code beter bekijkt dan zie je de lijn
 
 ```
     document.location.search = `from=${fromPole}&to=${toPole}`;
 ```
 
-Deze lijn zorgt ervoor dat de browser een nieuwe pagina laadt. De nieuwe pagina wordt geladen met de query parameters `from` en `to`. De query parameters bevatten de stokken waar de schijf vandaan komt en waar de schijf naartoe moet. De query parameters worden gebruikt om de schijf te verplaatsen. 
+Deze lijn zorgt ervoor dat de browser een nieuwe pagina laadt. De nieuwe pagina wordt geladen met de query parameters `from` en `to`. De query parameters bevatten de stokken waar de schijf vandaan komt en waar de schijf naartoe moet. De query parameters worden gebruikt om de schijf te verplaatsen.
 
 Pas nu je express applicatie aan zodat je deze query parameters kan gebruiken om de schijf te verplaatsen. De schijf moet verplaatst worden in de array. Je haalt dus een schijf uit de array van de stok waar de schijf vandaan komt (via pop) en je plaatst de schijf in de array van de stok waar de schijf naartoe moet (via push).
 
 Je moet in dit deel nog niet controleren of de schijf verplaatst mag worden. Je mag ervan uitgaan dat de gebruiker de schijven op de juiste manier verplaatst.
 
-## Winnaar
+### Winnaar
 
 Als de gebruiker alle schijven op de laatste stok heeft geplaatst dan heeft de gebruiker gewonnen. Zorg ervoor dat de gebruiker een bericht krijgt als hij alle schijven op de laatste stok heeft geplaatst. Je kan dit doen door een success bericht door te geven aan de ejs template. In de ejs template kan je dan een bericht tonen als de gebruiker gewonnen heeft.
 
 Je kan nagaan of de gebruiker gewonnen heeft door te kijken of de laatste array in de `hanoi` array 6 schijven bevat.
 
-## Validatie
+<figure><img src="../../.gitbook/assets/hanoi1.gif" alt=""><figcaption><p>We kijken nog niet na of de blokken mogen verplaatst worden.</p></figcaption></figure>
 
-Niet elke schijf mag op elke schijf geplaatst worden. De grootste schijf mag niet op een kleinere schijf geplaatst worden. De schijf die je wil verplaatsen moet bovenaan staan op de stok waar de schijf vandaan komt. De schijf die je wil verplaatsen moet bovenaan staan op de stok waar de schijf naartoe moet. 
+### Validatie
+
+Niet elke schijf mag op elke schijf geplaatst worden. De grootste schijf mag niet op een kleinere schijf geplaatst worden. De schijf die je wil verplaatsen moet bovenaan staan op de stok waar de schijf vandaan komt. De schijf die je wil verplaatsen moet bovenaan staan op de stok waar de schijf naartoe moet.
 
 Je kan dit doen door na te gaan dat elk getal in de array in de juiste volgorde staat. Bijvoorbeeld:
 
 Juiste volgorde:
+
 ```typescript
 let hanoi = [[0,1,2,3,4,5],[],[]];
 ```
 
 Foute volgorde (4 moet voor 5 staan)
+
 ```typescript
 let hanoi = [[0,1,2,3],[5,4],[]];
 ```
 
 Foute volgorde (1 moet voor 2 staan)
+
 ```typescript
 let hanoi = [[0,2,1,3,5],[],[4]];
 ```
 
 Als de schijf niet verplaatst mag worden dan moet je een foutmelding tonen. Je kan dit doen door een error variabele mee te geven aan de ejs template. De error variabele bevat een string met de foutmelding. De ejs template kan deze string tonen in een HTML element met de class `error`.
+
+<figure><img src="../../.gitbook/assets/errormove.gif" alt=""><figcaption></figcaption></figure>
