@@ -349,9 +349,24 @@ en de volgende CSS:
     padding: 10px;
     text-align: center;
     z-index: 1000;
-    font-family: "Roboto", sans-serif; /* use a modern font */
-    font-size: 18px; /* increase the font size */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* add some shadow effect */
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.success {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(43, 228, 43);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000;
+    font-family: "Roboto", sans-serif; 
+    font-size: 18px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
 }
 ```
 
