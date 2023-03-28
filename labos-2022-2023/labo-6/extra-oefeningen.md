@@ -346,7 +346,7 @@ en de volgende CSS:
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #f00;
+    background-color: rgba(255, 54, 54, 0.89);
     color: #fff;
     padding: 10px;
     text-align: center;
