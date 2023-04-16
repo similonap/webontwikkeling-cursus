@@ -28,7 +28,7 @@ Maak een welkom pagina die we kunnen oproepen via http://localhost:3000.&#x20;
 
 Maak een movies pagina die we kunnen oproepen via http://localhost:3000/movies
 
-Maak een globale variabel aan movies zoals hieronder:
+Maak een globale variabele aan movies zoals hieronder:
 
 ```typescript
 let movies : Movie[] = [
