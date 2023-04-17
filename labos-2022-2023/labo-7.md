@@ -13,9 +13,7 @@ Maak een aparte header / footer template die een titel van jouw app, een logo en
 * het logo bevindt zich op jouw server. Gebruik dus geen externe urls om het logo te tonen
 * gebruik css om jouw header en de andere paginas die we gaan maken te stylen. Hiervoor gebruik je een externe css file die je in jouw header linkt.
 
-De invulling van deze header en footer mag je volledig zelf beslissen. Het kan er ongeveer als volgt uitzien:
-
-![](<../.gitbook/assets/Screenshot 2022-03-21 at 13.38.30.png>)
+De invulling van deze header en footer mag je volledig zelf beslissen.&#x20;
 
 ### Landing page
 
@@ -23,6 +21,11 @@ Maak een welkom pagina die we kunnen oproepen via http://localhost:3000.&#x20;
 
 * zorg dat je zeker de header en footer template importeert
 * zorg dat de landingspagina wat info over jouw app bevat (wat tekst)
+
+Het kan er als volgt uitzien:\
+
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 22.49.12.png" alt=""><figcaption></figcaption></figure>
 
 ### Movies
 
@@ -46,9 +49,7 @@ let movies : Movie[] = [
 
 Dit kan er ongeveer als volgt uitzien:
 
-![](<../.gitbook/assets/Screenshot 2022-03-21 at 13.51.08.png>)
-
-
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 22.49.56.png" alt=""><figcaption></figcaption></figure>
 
 ### Movie
 
@@ -60,9 +61,7 @@ Maak een movie pagina die we kunnen oproepen via http://localhost:3000/movies/X 
 * zorg dat je via een link terug naar de movies pagina kunt
 * Hoe rekening met het feit dat de gebruiker een index kan ingeven die hoger is dan het aantal elementen (voorzie een error page)
 
-![](<../.gitbook/assets/Screenshot 2022-03-21 at 14.02.49.png>)
-
-![](<../.gitbook/assets/Screenshot 2022-03-21 at 14.02.56.png>)
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 22.51.34.png" alt=""><figcaption></figcaption></figure>
 
 ### AddMovie
 
@@ -77,9 +76,11 @@ Maak een addmovie pagina aan die we kunnen oproepen via http://localhost:3000/ad
 app.get('/addmovie',.. en app.post('/addmovie',.. zijn 2 verschillende routes. Gebruik de get route om het formulier te tonen. Gebruik de post route om de data te ontvangen. Beiden kunnen dezelfde EJS file als response terugsturen (zo ziet de gebruiker opnieuw het formulier na het de submitten)
 {% endhint %}
 
-![](<../.gitbook/assets/Screenshot 2022-03-21 at 14.33.06.png>)
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 22.52.46.png" alt=""><figcaption></figcaption></figure>
 
-![](<../.gitbook/assets/Screenshot 2022-03-21 at 14.33.19.png>)
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 22.57.41.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 23.00.33.png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -93,5 +94,3 @@ app.get('/addmovie',.. en app.post('/addmovie',.. zijn 2 verschillende routes. G
   * [https://expressjs.com/en/resources/middleware/session.html](https://expressjs.com/en/resources/middleware/session.html)
 * De gebruiker moet zichzelf kunnen uitloggen.
 * Maak een signup page voor een gebruiker toe te voegen in de users array.
-
-![](../.gitbook/assets/loginsystem.gif)

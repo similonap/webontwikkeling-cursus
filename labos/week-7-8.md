@@ -87,7 +87,7 @@ let starterPokemonGen2 : Pokemon[]  = [
 
 **Spread**
 
-1. Maak een variabele **starters.** Zorg ervoor dat **** die de pokemon van beide arrays bevat. \
+1. Maak een variabele **starters.** Zorg ervoor dat die de pokemon van beide arrays bevat. \
    _(Gebruik hiervoor de spread operator voor arrays)_
 2. Gebruik **console.log** om de starters pokemon in je terminal venster te laten zien.
 
@@ -123,7 +123,7 @@ Krijg je een error: "Cannot redeclare block-scoped variable 'names'.ts" dan kan 
 
 **Combineren (Reduce + Filter** )
 
-1. Maak een variabele **sumOfAllXpOfWeakPokemon**. **** Zorg ervoor dat deze de som van de xp waarden van alle **weakPokemon** bevat.\
+1. Maak een variabele **sumOfAllXpOfWeakPokemon**. Zorg ervoor dat deze de som van de xp waarden van alle **weakPokemon** bevat.\
    _(Je kan deze verkrijgen door eerst de filter functie te gebruiken en vervolgens de reduce functie te gebruiken)_
 2. Gebruik **console.log** om deze te laten zien in je terminal venster.
 

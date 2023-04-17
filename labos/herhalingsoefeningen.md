@@ -139,5 +139,5 @@ interface SortPersonen {
 
 **5)** Pas zoekPersoonMetHoogsteLeeftijd aan zodat het gebruik maakt van reduce
 
-****
+
 

@@ -188,7 +188,7 @@ In dit voorbeeld sorteren we op age (een negatief of positief getal bepaalt de r
 
 **Operators**
 
-&#x20;**** We kunnen properties vergelijken aan de hand van exacte waarden, reguliere expressies, maar ook operators. Stel we willen alle pokemon met een leeftijd groter dan 3:
+&#x20;We kunnen properties vergelijken aan de hand van exacte waarden, reguliere expressies, maar ook operators. Stel we willen alle pokemon met een leeftijd groter dan 3:
 
 ```typescript
 cursor =  client.db('Les').collection('pokemon').find({age:{$gt:3}});
