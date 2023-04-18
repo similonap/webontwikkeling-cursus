@@ -6,7 +6,7 @@
 
 ## Comparison Operators
 
-![](<../.gitbook/assets/operators2 (1).png>)
+![](../.gitbook/assets/operators2.png)
 
 {% hint style="info" %}
 Gebruik altijd === en !==
