@@ -39,7 +39,7 @@ npm install --save-dev @types/express-session
 We kunnen de `express-session` middleware dan toevoegen aan onze applicatie:
 
 ```typescript
-import express from 'express';
+import session from "express-session";
 
 app.use(session({
   secret: 'keyboard cat'
