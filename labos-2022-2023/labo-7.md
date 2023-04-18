@@ -94,3 +94,5 @@ app.get('/addmovie',.. en app.post('/addmovie',.. zijn 2 verschillende routes. G
   * [https://expressjs.com/en/resources/middleware/session.html](https://expressjs.com/en/resources/middleware/session.html)
 * De gebruiker moet zichzelf kunnen uitloggen.
 * Maak een signup page voor een gebruiker toe te voegen in de users array.
+
+<figure><img src="../.gitbook/assets/login.gif" alt=""><figcaption></figcaption></figure>
