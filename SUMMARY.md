@@ -34,6 +34,7 @@
 * [Extra materiaal](express.js/extra-materiaal/README.md)
   * [File upload](express.js/extra-materiaal/file-upload.md)
   * [Testing](express.js/extra-materiaal/testing.md)
+  * [Middleware](express.js/extra-materiaal/middleware.md)
   * [Tools](express.js/extra-materiaal/tools/README.md)
     * [Nodemon](express.js/extra-materiaal/nodemon.md)
   * [Security](express.js/extra-materiaal/security/README.md)
