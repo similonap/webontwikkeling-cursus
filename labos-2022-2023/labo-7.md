@@ -35,10 +35,10 @@ Maak een globale variabele aan movies zoals hieronder:
 
 ```typescript
 let movies : Movie[] = [
-    {name: "The Matrix", myScore: 90},
-    {name: "Pulp Fiction", myScore: 100},
-    {name: "Monster Hunter", myScore: 5},
-    {name: "Blade Runner", myScore: 100}
+    {name: "The Matrix", myScore: 90, image: "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/9fcc8387e9d47ab5af4318d7183f6d2b_19f7e1e1-3941-4c27-bad1-1f6dd70f35e0_480x.progressive.jpg?v=1573587594", description: ""},
+    {name: "Pulp Fiction", myScore: 100, image: "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/pulpfiction.2436_500x749.jpg?v=1620048742", description: ""},
+    {name: "Monster Hunter", myScore: 5, image: "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/monsterhunter.styleb.ar_500x749.jpg?v=1608660576", description: ""},
+    {name: "Blade Runner", myScore: 100, image:"https://cdn.shopify.com/s/files/1/0057/3728/3618/products/d9f6067d2406a7cfbf42a5fc4ae4cd9d_8174831c-db77-4608-9ae2-44aca8f2a6f5_500x749.jpg?v=1573585461", description:""}
 ];
 ```
 
