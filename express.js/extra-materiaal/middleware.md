@@ -54,3 +54,41 @@ Je kan nu in de `index.ejs` view de `title` variabele gebruiken zonder deze mee 
 
 Je zou eventueel ook een `user` object kunnen toevoegen aan de `res.locals` object. Zo kan je in alle views de `user` variabele gebruiken. Je kan deze variabele dan bijvoorbeeld gebruiken om te bepalen of de gebruiker is ingelogd of niet.
 
+### Security token voorbeeld
+
+Stel dat je een API hebt waarbij je een security token moet meesturen met elke request. Je kan dan een middleware functie schrijven die de security token controleert. Als de security token niet klopt, dan kan je een error terugsturen. Als de security token wel klopt, dan kan je de request doorsturen naar de volgende middleware functie in de stack. We zullen de authorization header gebruiken om de security token mee te sturen.
+
+```typescript
+app.use((req, res, next) => {
+    const token = req.headers.authorization;
+    if (token !== "my-secret-token") {
+        res.status(401).send("Unauthorized");
+    } else {
+        next();
+    }
+});
+
+app.get("/", (req, res) => {
+    res.send("Hello world");
+})
+```
+
+Hij zal hier dus eerst de security token controleren. Als de security token niet klopt, dan zal hij een 401 status code terugsturen met de tekst "Unauthorized". Als de security token wel klopt, dan zal hij de request doorsturen naar de volgende middleware functie in de stack. In dit geval is dat de route. Hij zal dus "Hello world" terugsturen. Alle andere routes zullen ook de security token controleren.
+
+### Sessions voorbeeld
+
+Stel dat je een website hebt waarbij je een gebruiker moet kunnen inloggen. Je kan dan een middleware functie schrijven die de sessie controleert. Als de sessie niet klopt, dan kan je een error terugsturen. Als de sessie wel klopt, dan kan je de request doorsturen naar de volgende middleware functie in de stack. We zullen de `express-session` module gebruiken om de sessie te beheren.
+
+```typescript
+app.use((req,res) => {
+    if (!req.session.user) {
+        res.redirect("/login");
+    } else {
+        next();
+    }
+});
+
+app.get("/", (req, res) => {
+    res.render("index");
+});
+```
