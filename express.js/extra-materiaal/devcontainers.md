@@ -55,7 +55,7 @@ In Gitlab:
 
 Eens je project is aangemaakt hebben we de HTTPS URL nodig van je git project. Deze URL vind je terug onder de knop 'Clone'.
 
-<img src="../../.gitbook/assets/image (5).png" alt="" data-size="original">
+<img src="../../.gitbook/assets/image (1).png" alt="" data-size="original">
 
 ### Opstart DevContainer
 
@@ -91,12 +91,13 @@ Creëer ook 2 bestanden:
 * `index.ts`
 * `queries.ts`
 
-Gebruik vervolgens de terminal om `Node`, `Typescript` en `Express` te initialiseren.
+Gebruik vervolgens de terminal om `Node`, `Typescript`, `Express` en `mongodb` te installeren via NPM.
 
 ```bash
 npm init -y && tsc --init && npm i -D @types/node
 npm i ejs && npm i -D @types/ejs
 npm i express && npm i -D @types/express
+npm i mongodb && npm i -D @types/mongodb
 ```
 
 Het resultaat is de volgende bestandsstructuur:
@@ -144,15 +145,110 @@ app.get(`${apiUrl}/movies/:name`, db.getMovieByName);
 
 ### Setup Database Queries
 
+<details>
+
+<summary>Voorbeeld: MongoDB (met code)</summary>
+
+### MongoClient class importeren
+
+De mongodb NPM package bevat een klasse MongoClient die gebruikt wordt om een connectie te maken met een Mongo database. Met dit import statement wordt die klasse uit de module geïmporteerd.
+
+```typescript
+import { MongoClient } from 'mongodb';
+```
+
+### MongoClient initialiseren
+
+Een MongoClient object heeft een specifieke URI nodig. Die URI kan je terugvinden in je MongoDB pagina.
+
+`connect > Drivers > connection string`
+
+<img src="../../.gitbook/assets/mongo-db-uri.gif" alt="" data-size="original">
+
+Vervang \<username> en \<password> door jouw username en password. In het voorbeeld hieronder werd een string template gebruikt om de username en password op te slaan in aparte variabelen.
+
+```typescript
+const username = "JOUW_DATABASE_GEBRUIKERSNAAM";
+const password = "JOUW_DATABASE_WACHTWOORD";
+
+const uri = `mongodb+srv://${username}:${password}@teacher-svb.42wgsrf.mongodb.net/?retryWrites=true&w=majority`;
+const client = new MongoClient(uri);
+```
+
+### Movies Query
+
+MongoDB voorziet een asynchrone API om de database te gebruiken.&#x20;
+
+1. Een MongoClient object wordt gebruikt om een database object op te vragen.\
+   `db("DATABASE NAAM")`
+2. Een database object wordt gebruikt om een collection op te vragen.\
+   .collection("COLLECTION NAAM")
+3. Een collection object wordt gebruikt om een query uit te voeren. MongoDB voorziet verschillende queries (_operaties_) die je kan uitvoeren op een collection. De meeste van deze operaties bestaan uit 2 versies (een enkelvoudige en meervoudige versie).
+   * [find](https://www.mongodb.com/docs/drivers/node/current/usage-examples/findOne/): `findOne()`, `find()`
+   * [insert](https://www.mongodb.com/docs/drivers/node/current/usage-examples/insertOne/): `insertOne()`, `insertMany()`
+   * [update\&replace](https://www.mongodb.com/docs/drivers/node/current/usage-examples/updateOne/): `updateOne()`, `updateMany()`, `replaceOne()`
+   * [delete](https://www.mongodb.com/docs/drivers/node/current/usage-examples/deleteOne/): `deleteOne(),` `deleteMany()`
+
+Een operatie verwacht 2 parameters:
+
+* **query**: een object waarin wordt gedefinieerd aan welke voorwaarden de gevonden objecten moeten voldoen
+* **options**: een object waarin wordt gedefinieerd hoe de operatie uitgevoerd moet worden
+
+In het voorbeeld hieronder wordt een `find()` operatie uitgevoerd met een **leeg query object**. Omdat het query object geen voorwaarden definieert, zal daarom elke record in de database hieraan voldoen.\
+**Met andere woorden, deze** `find({})` **operatie geeft alle gegevens in de collection terug.**
+
+```typescript
+const getMovies = async (request: any, response: any) => {
+    client.db("WebOntwikkeling")
+        .collection("Movies")
+        .find({})
+        .toArray()
+        .then(vals => {
+            response.status(200).json(
+                vals
+            );
+        });
+}
+```
+
+### MovieByName Query
+
+In het voorbeeld hieronder wordt een `findOne()` operatie uitgevoerd met een **query object dat definieert dat de** `name` **property overeen moet komen met de** `name`**-request -parameter**. \
+**Met andere woorden, deze** `findOne({name:name})` **operatie geeft maximaal één record uit de collection terug** (als er één gevonden wordt met de juiste naam)**.**
+
+```typescript
+const getMovieByName = (request: any, response: any) => {
+    const name = request.params.name;
+    console.log(name);
+
+    client.db("WebOntwikkeling")
+        .collection("Movies")
+        .findOne({ name: name })
+        .then(val => {
+            response.status(200).json(
+                val
+            );
+        });
+}
+```
+
+### Querie functies exporteren
+
+```typescript
+export { getMovies, getMovieByName }
+```
+
+</details>
+
 {% code title="queries.ts" %}
 ```typescript
-import * as MongoClientModule from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 const username = "JOUW_DATABASE_GEBRUIKERSNAAM";
 const password = "JOUW_DATABASE_WACHTWOORD";
 
 const uri = `mongodb+srv://${username}:${password}@teacher-svb.42wgsrf.mongodb.net/?retryWrites=true&w=majority`;
-const client = new MongoClientModule.MongoClient(uri);
+const client = new MongoClient(uri);
 
 const getMovies = async (request: any, response: any) => {
     client.db("WebOntwikkeling")
