@@ -32,6 +32,7 @@
 * [Static files](express.js/static-files.md)
 * [MongoDB](express.js/mongodb.md)
 * [Extra materiaal](express.js/extra-materiaal/README.md)
+  * [DevContainers](express.js/extra-materiaal/devcontainers.md)
   * [File upload](express.js/extra-materiaal/file-upload.md)
   * [Testing](express.js/extra-materiaal/testing.md)
   * [Middleware](express.js/extra-materiaal/middleware.md)
