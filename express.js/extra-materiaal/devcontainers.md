@@ -23,6 +23,8 @@ Hoewel het mogelijk is om deze systemen te installeren op onze computer, gaan we
 
 Om te kunnen ontwikkelen in deze Docker omgeving gaan we gebruik maken van een **DevContainer**. Een DevContainer laat ons toe om een Docker container als development omgeving te gebruiken. VS Code heeft (via het [remote development extension pack](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)) de mogelijkheid om een devcontainer op te starten die je hebt opgeslagen op een git repository.
 
+Eén van de gemakkelijkste manieren waarmee een DevContainer kan gestart worden is een Git repository aanmaken. Binnen die Git repository wordt vervolgens een folder `.devcontainer` gemaakt, met daarin een `devcontainer.json` bestand. Dit bestand bepaalt welke systemen beschikbaar zullen zijn in de DevContainer. VS Code heeft een handige extension die dit bestand voor jou creëert.
+
 ### Overzicht
 
 #### Software
@@ -79,6 +81,42 @@ Eens je project is aangemaakt hebben we de HTTPS URL nodig van je git project. D
 * Bij de volgende opties mag je de default waardes kiezen
 
 De container wordt nu gedownload en opgestart. Dit kan even duren. Zeker wanneer je dit voor het eerst doet, zal het downloaden wat tijd kosten.
+
+<details>
+
+<summary>devcontainer.json</summary>
+
+Dit is het devcontainer.json bestand dat gemaakt werd.
+
+{% code title="devcontainer.json" %}
+```json
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "Node.js & TypeScript",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:0-18"
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "yarn install",
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
+
+```
+{% endcode %}
+
+</details>
 
 ## Voorbeeld Project
 

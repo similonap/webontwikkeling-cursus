@@ -25,7 +25,7 @@ Maak een welkom pagina die we kunnen oproepen via http://localhost:3000.&#x20;
 Het kan er als volgt uitzien:\
 
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 22.49.12.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-17 at 22.49.12.png" alt=""><figcaption></figcaption></figure>
 
 ### Movies
 
@@ -49,7 +49,7 @@ let movies : Movie[] = [
 
 Dit kan er ongeveer als volgt uitzien:
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 22.49.56.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-17 at 22.49.56.png" alt=""><figcaption></figcaption></figure>
 
 ### Movie
 
@@ -61,7 +61,7 @@ Maak een movie pagina die we kunnen oproepen via http://localhost:3000/movies/X 
 * zorg dat je via een link terug naar de movies pagina kunt
 * Hoe rekening met het feit dat de gebruiker een index kan ingeven die hoger is dan het aantal elementen (voorzie een error page)
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 22.51.34.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-17 at 22.51.34.png" alt=""><figcaption></figcaption></figure>
 
 ### AddMovie
 
@@ -76,11 +76,11 @@ Maak een addmovie pagina aan die we kunnen oproepen via http://localhost:3000/ad
 app.get('/addmovie',.. en app.post('/addmovie',.. zijn 2 verschillende routes. Gebruik de get route om het formulier te tonen. Gebruik de post route om de data te ontvangen. Beiden kunnen dezelfde EJS file als response terugsturen (zo ziet de gebruiker opnieuw het formulier na het de submitten)
 {% endhint %}
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 22.52.46.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-17 at 22.52.46.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 22.57.41.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-17 at 22.57.41.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-04-17 at 23.00.33.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/Screenshot 2023-04-17 at 23.00.33.png" alt=""><figcaption></figcaption></figure>
 
 
 
@@ -95,4 +95,4 @@ app.get('/addmovie',.. en app.post('/addmovie',.. zijn 2 verschillende routes. G
 * De gebruiker moet zichzelf kunnen uitloggen.
 * Maak een signup page voor een gebruiker toe te voegen in de users array.
 
-<figure><img src="../.gitbook/assets/login.gif" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/login.gif" alt=""><figcaption></figcaption></figure>
