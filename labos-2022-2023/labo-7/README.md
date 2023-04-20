@@ -11,7 +11,7 @@ Maak een Express applicatie aan die luistert op poort 3000 (zie syllabus).
 Maak een aparte header / footer template die een titel van jouw app, een logo en link naar een css file bevat
 
 * het logo bevindt zich op jouw server. Gebruik dus geen externe urls om het logo te tonen
-* gebruik css om jouw header en de andere paginas die we gaan maken te stylen. Hiervoor gebruik je een externe css file die je in jouw header linkt.
+* gebruik css om jouw header en de andere paginas die we gaan maken te stylen. Hiervoor gebruik je een externe css file die je in jouw `<head>` linkt.
 
 De invulling van deze header en footer mag je volledig zelf beslissen.&#x20;
 
