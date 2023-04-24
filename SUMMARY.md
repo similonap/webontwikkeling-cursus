@@ -52,6 +52,7 @@
       * [queries uitvoeren](express.js/mysql-connector/queries.md)
       * [prepared statements](express.js/mysql-connector/prepared-statements.md)
       * [als onderdeel van een Express applicatie](express.js/mysql-connector/als-onderdeel-van-een-express-applicatie.md)
+  * [Documentatie Express\&Mongo](express.js/extra-materiaal/documentatie-express-and-mongo.md)
 
 ## Labos 2022-2023
 
