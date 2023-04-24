@@ -11,12 +11,12 @@ const app = express(); // maak een express applicatie aan
 
 app.set("port", 3000); // definieer de poort
 app.set('view engine', 'ejs');
-app.set('views', `${__dirname}/views`);
+app.set('views', `/views`);
 
 app.use(express.static(`/public`));
 
 app.listen(app.get("port"), () => // gebruik de poort en toon een boodschap als dit lukt
-  console.log("[server] http://localhost:" + app.get("port"))
+  console.log(`[server] http://localhost: ${app.get("port")}`)
 );
 
 app.use(`/api`, apiRouter);
@@ -24,6 +24,12 @@ app.use(`/api`, apiRouter);
 {% endcode %}
 
 ## MongoDB Connection
+
+**Vergeet de volgende zaken niet aan te passen!**
+
+* [ ] **username (**`MY_USERNAME`**)**
+* [ ] **password (**`MY_PASSWORD`**)**
+* [ ] **uri (**`MY_MONGODB_URL`**)**
 
 {% code title="routes/api.ts" %}
 ```typescript
