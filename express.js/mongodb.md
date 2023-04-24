@@ -52,9 +52,10 @@ In NoSQL stellen we dit als volgt voor:
 ## MongoDB gebruiken in TypeScript
 
 ```typescript
-const {MongoClient} = require('mongodb');
-//const uri = "mongodb+srv://<username>:<password>@<your-cluster-url>/test?retryWrites=true&w=majority
-const client = new MongoClient(uri, { useUnifiedTopology: true });
+import { MongoClient } from "mongodb";
+
+const uri = "mongodb+srv://<username>:<password>@<your-cluster-url>/test?retryWrites=true&w=majority
+const client = new MongoClient(uri);
 let doSomeDBCalls = async () => {
     try {
         // Connect to the MongoDB cluster
