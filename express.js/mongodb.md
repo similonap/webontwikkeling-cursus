@@ -349,7 +349,7 @@ In dit voorbeeld maken we gebruik van de tweede strategie. We maken een connecti
 app.get('/pokemon', async (req, res) => {
     try {
         await client.connect();
-        const cursor = client.db('Les').collection('pokemon').find({});
+        const cursor = client.db('Les').collection('pokemon').find<Pokemon>({});
         const result = await cursor.toArray();
         res.json(result);
     } catch (error) {
