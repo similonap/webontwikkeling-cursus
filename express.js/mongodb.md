@@ -148,14 +148,14 @@ Net zoals we een select kunnen doen op een relationele database, gebruiken we fi
 findOne geeft ons 1 element terug, nl. het eerste element dat matcht met de query:
 
 ```typescript
-let result: Pokemon = await client.db('Les').collection('pokemon').findOne({});
+let result: Pokemon = await client.db('Les').collection('pokemon').findOne<Pokemon>({});
 console.log(result);
 ```
 
 Merk op dat we als parameter {} meegeven. Dit komt overeen met een lege "where" clause in relationele database termen. Wanneer we bepaalde velden willen matchen, moeten we een object meegeven. Dit object bevat properties. Deze properties komen overeen met de namen van de properties van het object waar je naar zoekt:
 
 ```typescript
-let result: Pokemon = await client.db('Les').collection('pokemon').findOne({name:'eevee'});
+let result: Pokemon = await client.db('Les').collection('pokemon').findOne<Pokemon>({name:'eevee'});
 console.log(result);
 ```
 
@@ -168,7 +168,7 @@ Je kan ook reguliere expressies gebruiken indien je de relationele query where =
 Wanneer we meerdere objecten willen ophalen, gebruiken we find:
 
 ```typescript
-let cursor =  client.db('Les').collection('pokemon').find({});
+let cursor =  client.db('Les').collection('pokemon').find<Pokemon>({});
 let result = await cursor.toArray();
 console.log(result);
 ```
