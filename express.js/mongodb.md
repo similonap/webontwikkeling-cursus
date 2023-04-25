@@ -312,16 +312,7 @@ app.listen(3000, async () => {
 We moeten nu enkel nog de connectie afsluiten wanneer de applicatie afgesloten wordt. Dit doen we met de volgende code:
 
 ```typescript
-const disconnect = async () => {
-    try {
-        await client.close();
-        console.log('Disconnected from database');
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-process.on('SIGINT', async () => {
+const exit = async () => {
     try {
         await client.close();
         console.log('Disconnected from database');
@@ -329,7 +320,19 @@ process.on('SIGINT', async () => {
         console.error(error);
     }
     process.exit(0);
-});
+}
+
+const connect = async () => {
+    try {
+        await client.connect();
+        console.log('Connected to database');
+        process.on('SIGINT', exit);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
 ```
 
 Deze code zorgt ervoor dat wanneer de applicatie afgesloten wordt, de connectie met de database ook afgesloten wordt. Dit is belangrijk omdat je anders een connectie open laat staan die niet meer gebruikt wordt. Dit kan voor problemen zorgen.
