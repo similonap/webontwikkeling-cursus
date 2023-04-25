@@ -96,8 +96,10 @@ Om een bepaalde collectie in een bepaalde database op te roepen, gebruiken we vo
 Voor het toevoegen van 1 element gebruiken we de functie insertOne. Door een object mee te geven als parameter wordt dit object toegevoegd aan de database:
 
 ```typescript
+import { MongoClient, ObjectId } from "mongodb";
+
 interface Pokemon {
-    _id?: number,
+    _id?: ObjectId,
     name: string,
     age: number
 }
@@ -113,8 +115,10 @@ Let op: elk object krijgt automatisch een \_id wanneer die wordt toegevoegd aan 
 Wanneer we verschillende elementen willen toevoegen, gebruiken we insertMany. Deze functie verwacht een array van objecten:
 
 ```typescript
+ import { MongoClient, ObjectId } from "mongodb";
+
  interface Pokemon {
-    _id?: number,
+    _id?: ObjectId,
     name: string,
     age: number
 }
@@ -182,7 +186,7 @@ Let op: find geeft niet direct een resultaat terug, maar een cursor. Je kan dit 
 Net zoals in relationele databases kunnen we ook gebruik maken van de sort en limit functies:
 
 ```typescript
-let cursor =  client.db('Les').collection('pokemon').find({}).sort({age:-1}).limit(3);
+let cursor =  client.db('Les').collection('pokemon').find<Pokemon>({}).sort({age:-1}).limit(3);
 ```
 
 In dit voorbeeld sorteren we op age (een negatief of positief getal bepaalt de richting van de sort op dit veld) en tonen we enkel de eerste 3 resultaten adhv limit(3).
@@ -192,7 +196,7 @@ In dit voorbeeld sorteren we op age (een negatief of positief getal bepaalt de r
 &#x20;We kunnen properties vergelijken aan de hand van exacte waarden, reguliere expressies, maar ook operators. Stel we willen alle pokemon met een leeftijd groter dan 3:
 
 ```typescript
-cursor =  client.db('Les').collection('pokemon').find({age:{$gt:3}});
+cursor =  client.db('Les').collection('pokemon').find<Pokemon>({age:{$gt:3}});
 ```
 
 Het object dat find meekrijgt bevat de property waarop we willen testen: age. Ipv een exact getal geven we dit nu de waarde van een object: {$gt:3}.
@@ -200,7 +204,7 @@ Het object dat find meekrijgt bevat de property waarop we willen testen: age. Ip
 Dit object bepaalt dat age groter ($gt) moet zijn dan 3.&#x20;
 
 ```typescript
-cursor =  client.db('Les').collection('pokemon').find({age:{$gt:3,$lt:7}});
+cursor =  client.db('Les').collection('pokemon').find<Pokemon>({age:{$gt:3,$lt:7}});
 ```
 
 Hierboven zeggen we dat age nu ook nog kleiner moet zijn dan 7:
@@ -215,7 +219,7 @@ Voor meer operators kan je kijken op [https://docs.mongodb.com/manual/reference/
 Wat als je wilt dat maar 1 van de 2 waarden moeten voldoen? Dan gebruik je logische operators:
 
 ```typescript
-cursor =  client.db('Les').collection('pokemon').find({$or:[{age:{$gt:3}},{age:{$lt:7}}]});
+cursor =  client.db('Les').collection('pokemon').find<Pokemon>({$or:[{age:{$gt:3}},{age:{$lt:7}}]});
 ```
 
 De $or operator verwacht een array als waarde. Je schrijft dus {$or:\[ ... ]} als find parameter. De $or operator zegt dat 1 van de condities in deze array moeten voldoen. In het voorbeeld hierboven hebben we 2 condities geplaatst. age > 3 OF age < 7.
