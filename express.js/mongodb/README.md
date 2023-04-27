@@ -83,6 +83,21 @@ Let op: alle functies op client sturen een promise terug. Het duurt namelijk eve
 Wanneer iets misloopt, zullen de client functies een exception gooien. Zorg dat je deze opvangt. Je kan ook finally gebruiken om de client mooi af te sluiten zodat de connectie naar de database na een crash niet onnodig blijft openstaan.
 {% endhint %}
 
+## Admin functies
+
+### Oplijsten van databases
+
+Het is mogelijk aan de hand van de `admin()` functie op de client een lijst van databases op te vragen:
+
+```typescript
+const databasesList = await client.db().admin().listDatabases();
+
+console.log("Databases:");
+for (let database of databasesList.databases) {
+  console.log(` - ${database.name}`);
+}
+```
+
 ## CRUD
 
 CRUD staat voor create, read, update, delete. Met deze operaties kunnen we objecten toevoegen, aanpassen, ophalen en verwijderen.
