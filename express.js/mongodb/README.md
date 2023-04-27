@@ -7,20 +7,20 @@ MongoDB is een NoSQL database.
 Een relationele database:
 
 * data verspreid over tabellen
-* gestructureerde data&#x20;
+* gestructureerde data
 * structuur moeilijk aan te passen
 * goed voor ingewikkelde queries
 
 Een NoSQL database:
 
 * data wordt bijgehouden als "documents" / JSON
-* dynamische data&#x20;
+* dynamische data
 * structuur is makkelijk aanpasbaar
 * goed voor simpele queries
 
 Je kan echter de logica van relationele databases mappen op die van NoSQL:
 
-* een record in RDB komt overeen met een  MongoDB's document (JSON object)
+* een record in RDB komt overeen met een MongoDB's document (JSON object)
 * een tabel in RDB komt overeen met MongoDB's collection
 * `_id` is unieke identifier (indexed) voor elk document net zoals je een ID met primary key zou toevoegen aan een relationele database tabel
 
@@ -80,7 +80,7 @@ Let op: alle functies op client sturen een promise terug. Het duurt namelijk eve
 {% endhint %}
 
 {% hint style="danger" %}
-Wanneer iets misloopt, zullen de client functies een exception gooien. Zorg dat je deze opvangt. Je kan ook finally gebruiken om de client mooi af te sluiten zodat de connectie naar de database na een crash niet onnodig blijft openstaan.&#x20;
+Wanneer iets misloopt, zullen de client functies een exception gooien. Zorg dat je deze opvangt. Je kan ook finally gebruiken om de client mooi af te sluiten zodat de connectie naar de database na een crash niet onnodig blijft openstaan.
 {% endhint %}
 
 ## CRUD
@@ -143,11 +143,11 @@ console.log(`${result.insertedCount} new listing(s) created with the following i
 console.log(result.insertedIds);
 ```
 
-Alhoewel dit mogelijk is, is dit niet altijd een goed idee.&#x20;
+Alhoewel dit mogelijk is, is dit niet altijd een goed idee.
 
 **Read**
 
-Net zoals we een select kunnen doen op een relationele database, gebruiken we find and findOne om onze objecten terug op te roepen.&#x20;
+Net zoals we een select kunnen doen op een relationele database, gebruiken we find and findOne om onze objecten terug op te roepen.
 
 findOne geeft ons 1 element terug, nl. het eerste element dat matcht met de query:
 
@@ -163,7 +163,7 @@ let result: Pokemon = await client.db('Les').collection('pokemon').findOne<Pokem
 console.log(result);
 ```
 
-Pokemon objecten hebben de property name. Hierboven zoeken we dus alle Pokemon met "name" gelijk aan "eevee".&#x20;
+Pokemon objecten hebben de property name. Hierboven zoeken we dus alle Pokemon met "name" gelijk aan "eevee".
 
 {% hint style="info" %}
 Je kan ook reguliere expressies gebruiken indien je de relationele query where = %...% wil nabootsen.
@@ -193,7 +193,7 @@ In dit voorbeeld sorteren we op age (een negatief of positief getal bepaalt de r
 
 **Operators**
 
-&#x20;We kunnen properties vergelijken aan de hand van exacte waarden, reguliere expressies, maar ook operators. Stel we willen alle pokemon met een leeftijd groter dan 3:
+We kunnen properties vergelijken aan de hand van exacte waarden, reguliere expressies, maar ook operators. Stel we willen alle pokemon met een leeftijd groter dan 3:
 
 ```typescript
 cursor =  client.db('Les').collection('pokemon').find<Pokemon>({age:{$gt:3}});
@@ -201,7 +201,7 @@ cursor =  client.db('Les').collection('pokemon').find<Pokemon>({age:{$gt:3}});
 
 Het object dat find meekrijgt bevat de property waarop we willen testen: age. Ipv een exact getal geven we dit nu de waarde van een object: {$gt:3}.
 
-Dit object bepaalt dat age groter ($gt) moet zijn dan 3.&#x20;
+Dit object bepaalt dat age groter ($gt) moet zijn dan 3.
 
 ```typescript
 cursor =  client.db('Les').collection('pokemon').find<Pokemon>({age:{$gt:3,$lt:7}});
@@ -285,77 +285,3 @@ await client.db('Les').collection('pokemon').deleteMany({});
 
 Let op: De code hierboven verwijdert de volledige inhoud van de collectie omdat je {} meegeeft!
 
-## Opzetten en afsluiten van de connectie
-
-Er zijn twee strategieën om de connectie met de database op te zetten en af te sluiten:
-- Je kan de connectie opzetten bij het opstarten van de applicatie en deze open laten staan tot de applicatie afgesloten wordt.
-- Je kan de connectie opzetten bij het uitvoeren van een request en deze afsluiten wanneer de request afgehandeld is.
-
-Beide hebben hun voor- en nadelen. Bij de eerste strategie is de connectie altijd open en kan je deze dus altijd gebruiken. Bij de tweede strategie is de connectie enkel open wanneer je deze nodig hebt. Dit is beter voor de performantie van je applicatie, maar je moet wel telkens de connectie opzetten en afsluiten. 
-
-### Connectie openen bij het opstarten van de applicatie
-
-In dit voorbeeld maken we gebruik van de eerste strategie. We maken een connectie met de database bij het opstarten van de applicatie en sluiten deze pas af wanneer de applicatie afgesloten wordt.
-
-```typescript
-const connect = async () => {
-    try {
-        await client.connect();
-        console.log('Connected to database');
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-app.listen(3000, async () => {
-    await connect();
-    console.log('Server started');
-});
-```
-
-We moeten nu enkel nog de connectie afsluiten wanneer de applicatie afgesloten wordt. Dit doen we met de volgende code:
-
-```typescript
-const exit = async () => {
-    try {
-        await client.close();
-        console.log('Disconnected from database');
-    } catch (error) {
-        console.error(error);
-    }
-    process.exit(0);
-}
-
-const connect = async () => {
-    try {
-        await client.connect();
-        console.log('Connected to database');
-        process.on('SIGINT', exit);
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-
-```
-
-Deze code zorgt ervoor dat wanneer de applicatie afgesloten wordt, de connectie met de database ook afgesloten wordt. Dit is belangrijk omdat je anders een connectie open laat staan die niet meer gebruikt wordt. Dit kan voor problemen zorgen.
-
-### Connectie openen bij het uitvoeren van een request
-
-In dit voorbeeld maken we gebruik van de tweede strategie. We maken een connectie met de database wanneer we een request uitvoeren en sluiten deze af wanneer de request afgehandeld is.
-
-```typescript
-app.get('/pokemon', async (req, res) => {
-    try {
-        await client.connect();
-        const cursor = client.db('Les').collection('pokemon').find<Pokemon>({});
-        const result = await cursor.toArray();
-        res.json(result);
-    } catch (error) {
-        console.error(error);
-    } finally {
-        await client.close();
-    }
-});
-```
