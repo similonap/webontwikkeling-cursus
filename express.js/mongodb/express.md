@@ -1,13 +1,11 @@
 # Express
 
-## Connectie opzetten
-
 Er zijn twee strategieën om de connectie met de database op te zetten en af te sluiten:
 
 * Je kan de connectie opzetten bij het opstarten van de applicatie en deze open laten staan tot de applicatie afgesloten wordt.
 * Je kan de connectie opzetten bij het uitvoeren van een request en deze afsluiten wanneer de request afgehandeld is.
 
-Beide hebben hun voor- en nadelen. Bij de eerste strategie is de connectie altijd open en kan je deze dus altijd gebruiken. Bij de tweede strategie is de connectie enkel open wanneer je deze nodig hebt. Dit is beter voor de performantie van je applicatie, maar je moet wel telkens de connectie opzetten en afsluiten.
+We verkiezen de eerste strategie omdat deze performanter is. Een verbinding opzetten met de database neemt veel tijd in beslag. Het is dus beter om deze verbinding open te laten staan zodat je deze kan hergebruiken. Soms is het echter niet mogelijk om de connectie open te laten staan, daarom bespreken we ook de tweede strategie.
 
 ### Connectie openen bij het opstarten van de applicatie
 
@@ -63,6 +61,7 @@ In dit voorbeeld maken we gebruik van de tweede strategie. We maken een connecti
 
 ```typescript
 app.get('/pokemon', async (req, res) => {
+    const client = new MongoClient(uri);
     try {
         await client.connect();
         const cursor = client.db('Les').collection('pokemon').find<Pokemon>({});
@@ -75,3 +74,5 @@ app.get('/pokemon', async (req, res) => {
     }
 });
 ```
+
+Eenmaal je de connectie gesloten hebt, kan je de MongoClient niet meer gebruiken. Je moet dus telkens een nieuwe MongoClient aanmaken wanneer je een request uitvoert. 
