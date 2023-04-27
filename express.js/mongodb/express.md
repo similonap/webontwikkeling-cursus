@@ -61,7 +61,6 @@ In dit voorbeeld maken we gebruik van de tweede strategie. We maken een connecti
 
 ```typescript
 app.get('/pokemon', async (req, res) => {
-    const client = new MongoClient(uri);
     try {
         await client.connect();
         const cursor = client.db('Les').collection('pokemon').find<Pokemon>({});
@@ -75,4 +74,4 @@ app.get('/pokemon', async (req, res) => {
 });
 ```
 
-Eenmaal je de connectie gesloten hebt, kan je de MongoClient niet meer gebruiken. Je moet dus telkens een nieuwe MongoClient aanmaken wanneer je een request uitvoert. 
+Zoals we al eerder vermeld hebben, is deze strategie minder performant. Het is dus beter om de eerste strategie te gebruiken en de connectie open te laten staan.
