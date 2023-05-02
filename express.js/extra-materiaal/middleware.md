@@ -92,3 +92,44 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 ```
+
+### Middleware functies per route
+
+Je kan ook middleware functies toevoegen aan een specifieke route. Je kan dan ook een extra middleware functie toevoegen aan de route. Deze middleware functie zal dan eerst worden uitgevoerd voordat de route wordt uitgevoerd. 
+
+```typescript
+let loggingMiddleware = (req: Request, res: Response, next: NextFunction) => {
+    console.log(`${req.method} ${req.path}`);
+    next();
+}
+
+app.get("/", loggingMiddleware, (req, res) => {
+    res.render("index");
+});
+
+app.get("/about", (req, res) => {
+    res.render("about");
+});
+```
+
+In het bovenstaande voorbeeld zal de `loggingMiddleware` functie alleen worden uitgevoerd voor de "/" route. De "/about" route zal de `loggingMiddleware` functie niet uitvoeren. 
+
+Op deze manier zouden we ook kunnen controleren of de gebruiker is ingelogd voor een specifieke route. Als je bijvoorbeeld enkel de `/admin` route wil beschermen, dan kan je bijvoorbeeld een middleware functie schrijven die controleert of de gebruiker is ingelogd. Deze middleware functie kan je dan toevoegen aan de `/admin` route. De andere routes zullen deze middleware functie niet uitvoeren.
+
+```typescript
+let checkLoggedIn = (req: Request, res: Response, next: NextFunction) => {
+    if (!req.session.user) {
+        res.redirect("/login");
+    } else {
+        next();
+    }
+}
+
+app.get("/", (req, res) => {
+    res.render("index");
+});
+
+app.get("/admin", checkLoggedIn, (req, res) => {
+    res.render("admin");
+});
+```
