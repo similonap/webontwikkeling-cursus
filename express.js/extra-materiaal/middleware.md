@@ -107,8 +107,8 @@ app.get("/", loggingMiddleware, (req, res) => {
     res.render("index");
 });
 
-app.get("/about", (req, res) => {
-    res.render("about");
+app.get("/admin", (req, res) => {
+    res.render("admin");
 });
 ```
 
