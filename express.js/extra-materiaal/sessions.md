@@ -16,7 +16,7 @@ Een session werkt als volgt:
 * De client stuurt de cookie (`connect.sid=1234567890`) bij elke volgende request naar de server.
 * De server gebruikt de sessie ID om de juiste informatie op te halen uit de database.
 
-<figure><img src="../../.gitbook/assets/image (2) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 ## Express sessions
 
