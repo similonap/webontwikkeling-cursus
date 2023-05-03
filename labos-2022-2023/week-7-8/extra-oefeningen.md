@@ -44,8 +44,13 @@ export interface Song {
   duration: number;
   artist: string;
   genre: string;
+  image: string;
 }
 ```
+
+Je kan het volgende json bestand gebruiken voor voorbeeld data:
+
+{% file src="../../.gitbook/assets/songs.json" %}
 
 Voor sommige opdrachten heb je extra interfaces nodig. Hier zijn de interfaces die je nodig hebt:
 
