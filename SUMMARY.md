@@ -77,7 +77,8 @@
   * [Extra oefeningen](labos-2022-2023/week-11/extra-oefeningen.md)
   * [DevContainer](labos-2022-2023/week-11/devcontainer.md)
 * [Labo 9](labos-2022-2023/week-12-13.md)
-* [Labo 10](labos-2022-2023/week-7-8.md)
+* [Labo 10](labos-2022-2023/week-7-8/README.md)
+  * [Extra oefeningen](labos-2022-2023/week-7-8/extra-oefeningen.md)
 * [Labo 11-12](labos-2022-2023/labo-11-12.md)
 * [Extra oefeningen](labos-2022-2023/extra-oefeningen.md)
 

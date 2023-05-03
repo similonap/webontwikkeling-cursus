@@ -106,37 +106,3 @@ Krijg je een error: "Cannot redeclare block-scoped variable 'names'.ts" dan kan 
 2. Gebruik **console.log** om deze te laten zien in je terminal venster.
 3. Zorg ervoor dat als twee pokemon gelijke xp hebben dat deze dan alfabetisch gesorteerd worden op naam.
 
-### Extra oefeningen
-
-#### Unieke waarden
-
-Je begint met de volgende code:
-
-```
-let food : string[] = ["icecream", "cheese","icecream","apple","pear","chocolate","milk"];
-```
-
-* Gebruik `filter` om uit deze array de dubbele waarden uit te halen.
-* Gebruik `reduce` om uit deze array de dubbele waarden uit te halen.
-* Gebruik in plaats van `filter` de `reduce` functie om alle food elementen met lengte 4 te filteren.
-* Gebruik `reduce` om het aantal keer een bepaalde waarde voorkomt in de array te tellen. De output moet er zo uit zien:
-
-```
-{ icecream: 2, cheese: 1, apple: 1, pear: 1, chocolate: 1, milk: 1 }
-```
-
-* Maak gebruik van de reduce functie (of meerdere) om de alle gebruikte letters uit de food array te tonen op het scherm.\
-  \
-  Wat voorbeelden:
-
-```
-// let food : string[] = ["icecream", "cheese","icecream","apple","pear","chocolate","milk"];
-acehiklmoprst
-
-//let food : string[] = ["pas","sap"];
-aps
-
-//let food : string[] = ["pas","sap","bar","rap","paas"];
-abprs
-```
-
