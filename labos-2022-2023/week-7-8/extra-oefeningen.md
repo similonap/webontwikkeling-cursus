@@ -76,3 +76,25 @@ interface SongsPerArtist {
 9. **Gemiddelde liedjeslengte**: Bereken de gemiddelde lengte van alle liedjes in de dataset en log het afgeronde resultaat in de console. Gebruik de `reduce` functie om de totale lengte te berekenen en deel het resultaat door het aantal liedjes.
 10. **Liedjes gesorteerd op lengte**: Sorteer de liedjes op lengte, van kortste naar langste, en log het resultaat in de console. Dit kan worden bereikt met de `sort` functie.
 11. **Artiesten gesorteerd op aantal liedjes**: Sorteer de artiesten op het aantal liedjes, in aflopende volgorde, en log het resultaat in de console. Gebruik de `sort` functie en maak gebruik van de eerder berekende data.
+
+## Oefening: Music Search
+
+Deze applicatie gebruikt dezelfde dataset als de `Muziekanalyse` oefening.
+
+Bij deze applicatie begin je met een bestaande express applicatie. Zorg eerst goed dat je de applicatie begrijpt. De applicatie bestaat uit een zoekveld en een lijst van songs. De songs worden opgehaald uit een json bestand. De applicatie is nog niet volledig functioneel. De bedoeling is dat je de applicatie verder afwerkt.
+
+De GET route `/` aanvaard drie query parameters:
+
+* `q`: de zoekstring. Als deze parameter niet aanwezig is, dan worden alle songs getoond. Als de parameter wel aanwezig is, dan worden enkel de songs getoond waarvan de naam, artiest, album of genre de zoekstring bevat.
+* `sortDirection`: de sorteerrichting. Als deze parameter niet aanwezig is, dan worden de songs gesorteerd op naam in oplopende richting. Als de parameter wel aanwezig is, dan worden de songs gesorteerd op het veld dat gespecifieerd is in de `sortField` parameter. De sorteerrichting wordt bepaald door deze parameter. De mogelijke waarden zijn `asc` en `desc`.
+* `sortField`: het veld waarop gesorteerd wordt. Als deze parameter niet aanwezig is, dan worden de songs gesorteerd op naam. Als de parameter wel aanwezig is, dan worden de songs gesorteerd op het veld dat gespecifieerd is in deze parameter. De mogelijke waarden zijn `name` en `duration`.
+
+Je mag in deze opgave geen gebruik maken van for loops. Je moet dus gebruik maken van de array methodes `filter`, `indexOf`, `map`, `reduce` en `sort`.
+
+Bij het opstarten van de express applicatie zal je het volgende zien:
+
+![](<../../.gitbook/assets/Screenshot 2023-05-06 at 17.22.19.png>)
+
+Uiteindelijk zal de applicatie er als volgt uitzien:
+
+<figure><img src="../../.gitbook/assets/Screenshot 2023-05-06 at 17.25.47.png" alt=""><figcaption></figcaption></figure>
