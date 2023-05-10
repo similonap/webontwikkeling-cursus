@@ -81,7 +81,13 @@ interface SongsPerArtist {
 
 Deze applicatie gebruikt dezelfde dataset als de `Muziekanalyse` oefening.
 
-Bij deze applicatie begin je met een bestaande express applicatie. Zorg eerst goed dat je de applicatie begrijpt. De applicatie bestaat uit een zoekveld en een lijst van songs. De songs worden opgehaald uit een json bestand. De applicatie is nog niet volledig functioneel. De bedoeling is dat je de applicatie verder afwerkt.
+Bij deze applicatie begin je met een bestaande express applicatie. Zorg eerst goed dat je de applicatie begrijpt.&#x20;
+
+{% file src="../../.gitbook/assets/search.zip" %}
+
+
+
+De applicatie bestaat uit een zoekveld en een lijst van songs. De songs worden opgehaald uit een json bestand. De applicatie is nog niet volledig functioneel. De bedoeling is dat je de applicatie verder afwerkt.
 
 De GET route `/` aanvaard drie query parameters:
 
@@ -98,3 +104,4 @@ Bij het opstarten van de express applicatie zal je het volgende zien:
 Uiteindelijk zal de applicatie er als volgt uitzien:
 
 <figure><img src="../../.gitbook/assets/Screenshot 2023-05-06 at 17.25.47.png" alt=""><figcaption></figcaption></figure>
+
