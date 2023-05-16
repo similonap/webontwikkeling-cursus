@@ -63,7 +63,7 @@ Deze code zorgt ervoor dat wanneer de applicatie afgesloten wordt, de connectie 
 
 In dit voorbeeld maken we gebruik van de tweede strategie. We maken een connectie met de database wanneer we een request uitvoeren en sluiten deze af wanneer de request afgehandeld is.
 
-Zoals we al eerder vermeld hebben, is deze strategie minder performant. Het is dus beter om de eerste strategie te gebruiken en de connectie open te laten staan.
+Zoals we al eerder vermeld hebben, is deze strategie **minder performant**. Het is dus beter om de eerste strategie te gebruiken en de connectie open te laten staan gedurende het draaien van de server.
 
 ```typescript
 app.get('/pokemon', async (req, res) => {
