@@ -27,7 +27,7 @@ app.listen(3000, async () => {
 });
 ```
 
-We moeten nu enkel nog de connectie afsluiten wanneer de applicatie afgesloten wordt. Dit doen we met de volgende code:
+We moeten nu enkel nog de connectie afsluiten wanneer de applicatie afgesloten wordt. Dit doen we met de volgende code. Hier zie je in de connect-functie een nieuwe regel staan welke verwijst naar de nieuwe exit-functie.
 
 ```typescript
 const exit = async () => {
@@ -51,6 +51,10 @@ const connect = async () => {
 }
 
 
+app.listen(3000, async () => {
+    await connect();
+    console.log('Server started');
+});
 ```
 
 Deze code zorgt ervoor dat wanneer de applicatie afgesloten wordt, de connectie met de database ook afgesloten wordt. Dit is belangrijk omdat je anders een connectie open laat staan die niet meer gebruikt wordt. Dit kan voor problemen zorgen.
@@ -58,6 +62,8 @@ Deze code zorgt ervoor dat wanneer de applicatie afgesloten wordt, de connectie 
 ### Connectie openen bij het uitvoeren van een request
 
 In dit voorbeeld maken we gebruik van de tweede strategie. We maken een connectie met de database wanneer we een request uitvoeren en sluiten deze af wanneer de request afgehandeld is.
+
+Zoals we al eerder vermeld hebben, is deze strategie minder performant. Het is dus beter om de eerste strategie te gebruiken en de connectie open te laten staan.
 
 ```typescript
 app.get('/pokemon', async (req, res) => {
@@ -73,5 +79,3 @@ app.get('/pokemon', async (req, res) => {
     }
 });
 ```
-
-Zoals we al eerder vermeld hebben, is deze strategie minder performant. Het is dus beter om de eerste strategie te gebruiken en de connectie open te laten staan.
