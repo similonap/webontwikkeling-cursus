@@ -10,7 +10,7 @@ Voordat je dit labo start moet je de volgende topics bekeken hebben!
 
 ### Opzetten Git Repository
 
-* Log in op [https://gitlab.apstudent.be/webontwikkeling-2023](https://gitlab.apstudent.be/webontwikkeling-2023) met je studenten credentials.
+* Log in op [https://gitlab.apstudent.be/webontwikkeling20232024](https://gitlab.apstudent.be/webontwikkeling20232024) met je studenten credentials.
 * Navigeer naar je klasgroep en vervolgens je persoonlijke groep (jouw naam)
   * Als je nog geen toegang hebt tot deze repository vraag dan toegang aan je lector.
 * Maak een nieuwe git repository aan met de naam **Webontwikkeling**
