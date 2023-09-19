@@ -39,10 +39,6 @@ We gaan gebruik maken van de module[ cat-me](https://www.npmjs.com/package/cat-m
 Zorg dat je zeker `require` gebruikt!
 
 {% hint style="info" %}
-Vergeet het `npm init` commando niet.&#x20;
-{% endhint %}
-
-{% hint style="info" %}
 Vergeet de commando's&#x20;
 
 ```
