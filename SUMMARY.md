@@ -49,11 +49,15 @@
       * [jsonwebtokens veilig opslaan](express.js/authenticatie-en-autorisatie/json-web-token-jwt/jsonwebtokens-opslaan.md)
     * [Environment Variables](express.js/authenticatie-en-autorisatie/environment-variables.md)
   * [Data](express.js/extra-materiaal/data/README.md)
-    * [MySQL Connector](express.js/mysql-connector/README.md)
+    * [MySQL Connector](<express.js/mysql-connector/README (1).md>)
       * [queries uitvoeren](express.js/mysql-connector/queries.md)
-      * [prepared statements](express.js/mysql-connector/prepared-statements.md)
+      * [prepared statements](<express.js/mysql-connector/prepared-statements (1).md>)
       * [als onderdeel van een Express applicatie](express.js/mysql-connector/als-onderdeel-van-een-express-applicatie.md)
   * [Documentatie Express\&Mongo](express.js/extra-materiaal/documentatie-express-and-mongo.md)
+* [MySQL Connector](express.js/mysql-connector/README.md)
+  * [Queries uitvoeren](express.js/mysql-connector/queries-uitvoeren.md)
+  * [Prepared statements](express.js/mysql-connector/prepared-statements.md)
+  * [In een Express applicatie](express.js/mysql-connector/in-een-express-applicatie.md)
 
 ## Labos 2022-2023
 

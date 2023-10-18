@@ -1,10 +1,10 @@
 # MySQL Connector
 
-### MySql2
+## MySql2
 
 De MySQL2 library is een npm module die het mogelijk maakt om verbinding te maken met een MySQL database. Deze maakt het mogelijk om queries te gaan uitvoeren vanuit node.js code. We werken dus niet meer rechstreeks met een client zoals MySQL Workbench of phpMyAdmin. We gaan de queries uitvoeren vanuit node.js code.
 
-#### Installatie
+### Installatie
 
 Om de MySQL2 module te installeren voeren we de volgende commando uit in de terminal:
 
@@ -12,7 +12,7 @@ Om de MySQL2 module te installeren voeren we de volgende commando uit in de term
 npm install mysql2
 ```
 
-#### Database connectie
+### Database connectie
 
 Om een verbinding te maken met een database maken we gebruik van de `createConnection` functie. Deze functie heeft als argumenten een object met de volgende properties:
 
@@ -48,4 +48,4 @@ main();
 
 Merk hier op dat we de code in een `try/catch` blok zetten. Dit doen we omdat we hiermee de fouten kunnen opvangen die op kunnen treden. In het `catch` blok loggen we de error naar de console. Als je bijvoorbeeld geen verbinding kunt maken omdat je een foutieve gebruikersnaam of wachtwoord hebt ingevuld dan zal de error hier worden opgevangen.
 
-Momenteel sluiten we direct de connectie na het maken van de connectie. Dit doen we omdat we nu nog geen queries uitvoeren. Als we queries uitvoeren dan willen we de connectie open houden totdat we klaar zijn met de queri
+Momenteel sluiten we direct de connectie na het maken van de connectie. Dit doen we omdat we nu nog geen queries uitvoeren. Als we queries uitvoeren dan willen we de connectie open houden totdat we klaar zijn met de queries.

@@ -29,7 +29,11 @@ Ga dan verder door op **Choose a connection method** te klikken en klik op Conne
 Kopieer de **connection string** en hou deze zeker bij. \
 (**tip**: plaats deze in een constante variabele in je index.js bestand, je gaat deze nog nodig hebben)
 
+<div align="center">
+
 <figure><img src="../../.gitbook/assets/mongo-db-uri.gif" alt=""><figcaption><p>De connection string vinden in MongoDB Atlas</p></figcaption></figure>
+
+</div>
 
 ### **5**. Maak een nieuwe collection aan
 
