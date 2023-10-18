@@ -82,6 +82,33 @@
 * [Labo 11-12](labos-2022-2023/labo-11-12.md)
 * [Extra oefeningen](labos-2022-2023/extra-oefeningen.md)
 
+## Labos 2023-2024
+
+* [Labo 1](labos-2023-2024/labo-1/README.md)
+  * [Extra oefeningen](labos-2023-2024/labo-1/extra-oefeningen.md)
+* [Labo 2](labos-2023-2024/labo-2/README.md)
+  * [Extra oefeningen](labos-2023-2024/labo-2/extra-oefeningen.md)
+* [Labo 3](labos-2023-2024/labo-3/README.md)
+  * [Extra oefeningen](labos-2023-2024/labo-3/extra-oefeningen.md)
+* [Labo 4](labos-2023-2024/labo-4/README.md)
+  * [Extra oefeningen](labos-2023-2024/labo-4/extra-oefeningen.md)
+* [Labo 5](labos-2023-2024/labo-5/README.md)
+  * [Extra oefeningen](labos-2023-2024/labo-5/extra-oefeningen.md)
+* [Labo 6](labos-2023-2024/labo-6/README.md)
+  * [Extra oefeningen](labos-2023-2024/labo-6/extra-oefeningen/README.md)
+    * [Rekenwonder](labos-2023-2024/labo-6/extra-oefeningen/rekenwonder.md)
+    * [Hanoi](labos-2023-2024/labo-6/extra-oefeningen/hanoi.md)
+* [Labo 7](labos-2023-2024/labo-7/README.md)
+  * [Devcontainer](labos-2023-2024/labo-7/devcontainer.md)
+* [Labo 8](labos-2023-2024/week-11/README.md)
+  * [Extra oefeningen](labos-2023-2024/week-11/extra-oefeningen.md)
+  * [DevContainer](labos-2023-2024/week-11/devcontainer.md)
+* [Labo 9](labos-2023-2024/week-12-13.md)
+* [Labo 10](labos-2023-2024/week-7-8/README.md)
+  * [Extra oefeningen](labos-2023-2024/week-7-8/extra-oefeningen.md)
+* [Labo 11-12](labos-2023-2024/labo-11-12.md)
+* [Extra oefeningen](labos-2023-2024/extra-oefeningen.md)
+
 ## Labos 2020-2021 <a href="#labos" id="labos"></a>
 
 * [Week 1](labos/labo-1.md)
