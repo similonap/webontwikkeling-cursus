@@ -7,6 +7,7 @@ Om queries uit te voeren maken we gebruik van het `connection` object. We maken 
 Als je bijvoorbeeld een query uitvoeren om alle gebruikers van een `Users` tabel op te halen dan zou je de volgende code kunnen gebruiken:
 
 ```typescript
+// in de synchrone versie is dit uiteraard zonder await!
 const [rows_users] = await connection.execute('SELECT * FROM `users`');
 
 console.log(rows_users);
@@ -26,6 +27,10 @@ interface User extends RowDataPacket {
     email: string;
 }
 ```
+
+{% hint style="info" %}
+Als je om één of andere reden een `User` interface wil die geen extensie is van `RowDataPacket` (bijvoorbeeld om ook in frontend code te gebruiken), kan je een "klassieke" interface `User` maken en een interface `UserDataPacket` die overerft van zowel `User` als `RowDataPacket` (door ze allebei achter `extends` te vernoemen, met een komma tussen)
+{% endhint %}
 
 Je gebruikt dan de Diamond Operator om aan te geven dat je een array wilt met objecten van het type `User`. Het resultaat zal dan het type `User[]` hebben.
 
