@@ -181,7 +181,7 @@ console.log(result);
 Pokemon objecten hebben de property name. Hierboven zoeken we dus alle Pokemon met "name" gelijk aan "eevee".
 
 {% hint style="info" %}
-Je kan ook reguliere expressies gebruiken indien je de relationele query where = %...% wil nabootsen.
+Je kan ook reguliere expressies gebruiken indien je de relationele query `WHERE ... LIKE %...%` wil nabootsen.
 {% endhint %}
 
 Wanneer we meerdere objecten willen ophalen, gebruiken we find:
@@ -299,4 +299,3 @@ await client.db('Les').collection('pokemon').deleteMany({});
 ```
 
 Let op: De code hierboven verwijdert de volledige inhoud van de collectie omdat je {} meegeeft!
-
