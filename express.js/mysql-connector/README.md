@@ -24,7 +24,7 @@ Om een verbinding te maken met een database maken we gebruik van de `createConne
 Je kan `mysql2` synchroon of asynchroon gebruiken. In het eerste geval gebruik je deze regel:
 
 ```typescript
-import mysql2 from 'mysql';
+import mysql2 from 'mysql2';
 ```
 
 Als we de asynchrone versie nemen, kunnen we gebruik maken van de `async/await` syntax.
