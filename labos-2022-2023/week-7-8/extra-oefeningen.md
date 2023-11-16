@@ -8,7 +8,7 @@ Je begint met de volgende code:
 let food : string[] = ["icecream", "cheese","icecream","apple","pear","chocolate","milk"];
 ```
 
-* Gebruik `filter` om uit deze array de dubbele waarden uit te halen.
+* Gebruik `filter` om uit deze array de dubbele waarden uit te halen. Tip: `filter` kan ook een functie met twee parameters als argument nemen. De tweede parameter is dan de index van het lijstelement.
 * Gebruik `reduce` om uit deze array de dubbele waarden uit te halen.
 * Gebruik in plaats van `filter` de `reduce` functie om alle food elementen met lengte 4 te filteren.
 * Gebruik `reduce` om het aantal keer een bepaalde waarde voorkomt in de array te tellen. De output moet er zo uit zien:
@@ -16,6 +16,10 @@ let food : string[] = ["icecream", "cheese","icecream","apple","pear","chocolate
 ```
 { icecream: 2, cheese: 1, apple: 1, pear: 1, chocolate: 1, milk: 1 }
 ```
+
+{% hint style="info" %}
+Je zal een waarde moeten annoteren als `any` om dit te verwezenlijken, omdat de properties niet op voorhand vastliggen
+{% endhint %}
 
 * Maak gebruik van de reduce functie (of meerdere) om de alle gebruikte letters uit de food array te tonen op het scherm.\
   \
@@ -31,6 +35,8 @@ aps
 //let food : string[] = ["pas","sap","bar","rap","paas"];
 abprs
 ```
+
+
 
 ## Oefening: Muziekanalyse
 
@@ -52,6 +58,10 @@ Je kan het volgende json bestand gebruiken voor voorbeeld data:
 
 {% file src="../../.gitbook/assets/songs.json" %}
 
+{% hint style="info" %}
+JSON-geëncodeerde data kan je inlezen met `require(filename.json)`. Als je zeker bent van het type, kan je dit specifiëren. Let wel op dat TypeScript het gegeven type niet zal dubbelchecken.
+{% endhint %}
+
 Voor sommige opdrachten heb je extra interfaces nodig. Hier zijn de interfaces die je nodig hebt:
 
 ```javascript
@@ -60,6 +70,8 @@ interface SongByGenre {
   songs: string[];
 }
 
+// dit betekent dat de naam van de property niet vast ligt
+// we kunnen namelijk niet voor elke artiestennaam een property voorzien
 interface SongsPerArtist {
   [key: string]: number;
 }
@@ -81,21 +93,23 @@ interface SongsPerArtist {
 
 Deze applicatie gebruikt dezelfde dataset als de `Muziekanalyse` oefening.
 
-Bij deze applicatie begin je met een bestaande express applicatie. Zorg eerst goed dat je de applicatie begrijpt.&#x20;
+Bij deze applicatie begin je met een bestaande express applicatie. Zorg eerst dat je de applicatie goed begrijpt.&#x20;
 
 {% file src="../../.gitbook/assets/search.zip" %}
 
-
+{% hint style="info" %}
+Run van uit de applicatiedirectory het commando `npm i` om alle vereiste packages te installeren.
+{% endhint %}
 
 De applicatie bestaat uit een zoekveld en een lijst van songs. De songs worden opgehaald uit een json bestand. De applicatie is nog niet volledig functioneel. De bedoeling is dat je de applicatie verder afwerkt.
 
-De GET route `/` aanvaard drie query parameters:
+De GET route `/` aanvaardt drie query parameters (deze vraag je op via `req.query....`):
 
 * `q`: de zoekstring. Als deze parameter niet aanwezig is, dan worden alle songs getoond. Als de parameter wel aanwezig is, dan worden enkel de songs getoond waarvan de naam, artiest, album of genre de zoekstring bevat.
 * `sortDirection`: de sorteerrichting. Als deze parameter niet aanwezig is, dan worden de songs gesorteerd op naam in oplopende richting. Als de parameter wel aanwezig is, dan worden de songs gesorteerd op het veld dat gespecifieerd is in de `sortField` parameter. De sorteerrichting wordt bepaald door deze parameter. De mogelijke waarden zijn `asc` en `desc`.
 * `sortField`: het veld waarop gesorteerd wordt. Als deze parameter niet aanwezig is, dan worden de songs gesorteerd op naam. Als de parameter wel aanwezig is, dan worden de songs gesorteerd op het veld dat gespecifieerd is in deze parameter. De mogelijke waarden zijn `name` en `duration`.
 
-Je mag in deze opgave geen gebruik maken van for loops. Je moet dus gebruik maken van de array methodes `filter`, `indexOf`, `map`, `reduce` en `sort`.
+Je mag in deze opgave geen gebruik maken van for loops in `index.ts` of andere TypeScript code. Je moet dus gebruik maken van de array methodes `filter`, `indexOf`, `map`, `reduce` en `sort`.
 
 Bij het opstarten van de express applicatie zal je het volgende zien:
 
