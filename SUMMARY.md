@@ -126,6 +126,7 @@
 * [Labo 10](labos-2023-2024/week-7-8/README.md)
   * [Extra oefeningen](labos-2023-2024/week-7-8/extra-oefeningen.md)
 * [Labo 11-12](labos-2023-2024/labo-11-12.md)
+* [Cookies en authenticatie](labos-2023-2024/cookies-en-authenticatie.md)
 * [Extra oefeningen](labos-2023-2024/extra-oefeningen.md)
 
 ## Labos 2020-2021 <a href="#labos" id="labos"></a>
