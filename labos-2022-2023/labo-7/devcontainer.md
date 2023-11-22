@@ -5,7 +5,7 @@
 
 _Bekijk eerst de theorie voor je aan de oefeningen begint!_
 
-* [DevContainers](../../express.js/extra-materiaal/devcontainers.md)
+* [DevContainers](../../extra-materiaal/devcontainers.md)
 {% endhint %}
 
 ## Oefeningen

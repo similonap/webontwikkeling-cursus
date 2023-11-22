@@ -1,6 +1,6 @@
 # jsonwebtokens NPM package
 
-**jsonwebtoken** is een npm package die wordt gebruikt om JSON Web Tokens ([JWT](../json-web-token-jwt.md)) te maken, verifiëren en decoderen in een nodeJS applicatie.
+**jsonwebtoken** is een npm package die wordt gebruikt om JSON Web Tokens ([JWT](./)) te maken, verifiëren en decoderen in een nodeJS applicatie.
 
 ```
 npm i jsonwebtoken
