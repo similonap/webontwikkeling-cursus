@@ -70,24 +70,3 @@ jwt.verify(token, secret, (err, decoded) => {
 
 In dit voorbeeld wordt de `jwt.verify()` functie gebruikt om een JWT te verifiëren en te decoderen met behulp van de gegeven geheime sleutel. Als de verificatie en decodering succesvol is, worden de gegevens van de JWT weergegeven als een object. Als er een fout optreedt bij het verifiëren of decoderen van de token, wordt een foutmelding weergegeven.
 
-#### jwt.decode()
-
-De `jwt.decode()` functie van het jsonwebtokens package is een hulpmethode om een JWT token te decoderen en de daarbij behorende gebruikersgegevens te krijgen. De token wordt als eerste argument meegegeven en de functie geeft een object terug met de gebruikersgegevens die zijn opgeslagen in de token.
-
-```typescript
-// Importeer de nodige packages
-import * as jwt from 'jsonwebtoken';
-
-// Genereer een JWT token met behulp van gebruikersgegevens en een geheime sleutel
-const token = jwt.sign({ username: 'john', email: 'john@gmail.com' }, 'my_secret_key');
-
-// Decodeer de JWT token om de gebruikersgegevens te krijgen
-const decodedToken = jwt.decode(token);
-
-// Log de gebruikersgegevens
-console.log(decodedToken); // { username: 'john', email: 'john@gmail.com' }
-```
-
-{% hint style="danger" %}
-**Let op:** de `jwt.decode()` functie zal alleen de gebruikersgegevens uit het token halen, de token zelf wordt niet automatisch gevalideerd. Als de token vervalst is of ongeldig is, zal de functie nog steeds een object teruggeven met de gebruikersgegevens. Om de token te valideren en te verifiëren, moet je de `jwt.verify()` functie gebruiken. Je zal dus voornamelijk `jwt.verify` gebruiken.
-{% endhint %}

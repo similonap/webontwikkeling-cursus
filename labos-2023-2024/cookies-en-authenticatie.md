@@ -20,8 +20,6 @@ Breid de applicatie uit met een loginsysteem. Dit vereist dat je de lijst met tr
 
 Dit vereist een paar aanpassingen. Je zal moeten zorgen dat een nieuwe trainer ook een wachtwoord moet meegeven (gebruik `<input type="password">`). Je zal ook moeten zorgen dat de lijst met links vervangen wordt door een loginformulier met een veld voor de trainernaam en voor het wachtwoord.
 
-**Neem op dit punt een backup van je code, want in de volgende oefening moet je terug naar hier.**
-
 Zorg dat de `Player` bijgehouden wordt in een sessie. Pas alle URL's aan zodat het ID van de speler geen deel uitmaakt van de URL (want die data zit toch in de sessie). Zorg er ook voor dat alle routes die enkel voor een specifieke trainer bedoeld zijn een 403-fout opleveren wanneer iemand niet is ingelogd.
 
 {% hint style="danger" %}
@@ -50,7 +48,7 @@ We gebruiken hier MongoDB omdat dat eenvoudig is en het principe aantoont. Het i
 Dit is een eerder grote vraag. Hou je applicatie goed in de gaten met `console.debug` en test na elke tussenstap.
 {% endhint %}
 
-Start terug van je backup en voorzie dezelfde functionaliteit, maar gebruik een JWT-token in plaats van een sessie.
+Gebruik een JWT-token in plaats van een sessie om dezelfde taak te vervullen. Om dit vlot te laten gaan, neem je best een backup van de versie met sessies en verwijder je dan de uitbreiding van de interface voor je sessie. Op die manier kan TypeScript je wijzen op alle plaatsen waar de sessie gebruikt werd en kan je die code vervangen door code op basis van JWT's.
 
 {% hint style="info" %}
 Test achteraf uit wat gebeurt als je je applicatie herstart!
