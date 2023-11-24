@@ -24,7 +24,7 @@ export default app;
 
 ```
 
-Dan kan je een Jest-test schrijven als volgt:
+Dan kan je een Jest-test schrijven als volgt. Deze veronderstelt dat de applicatie actief is wanneer de test loopt:
 
 ```typescript
 // app.test.ts
@@ -38,5 +38,4 @@ describe('GET /hello', () => {
     expect(response.text).toBe('Hallo Wereld');
   });
 });
-
 ```

@@ -6,6 +6,42 @@ Om deze reden wordt vaak gebruik gemaakt van "mocks": waarden die de plaats inne
 
 Hieronder bekijken we enkele voorbeelden:
 
+### Mocken van het Request en de Response
+
+Het is ook mogelijk de route handlers af te zonderen. Dat levert een meer geïsoleerde unit test op. In plaats van een echte Request en Response, kan je objecten gebruiken die de plaats ervan innemen. Dit vereist wel dat je je code wat anders organiseert. Meerbepaald: je moet de geteste functies benoemen.
+
+```typescript
+// app.ts
+
+// meeste code zoals tevoren
+const greeter = (req: Request, res: Response) => {
+  res.status(200).send('Hallo Wereld');
+}
+app.get('/hello', greeter);
+
+export { greeter };
+```
+
+Nu is het dus mogelijk dezelfde code uit te voeren zonder echte HTTP requests te doen. Je geeft gewoonweg objecten mee bij de oproep:
+
+```typescript
+// app.test.ts
+import { greeter } from './app';
+
+describe('GET /hello', () => {
+  it('should return Hallo Wereld', () => {
+    // Partial is voor wanneer je dezelfde eigenschappen wil, maar allemaal optioneel
+    let res: Partial<Response> = {
+      send: jest.fn(),
+      status: jest.fn().mockReturnThis(),
+    };
+    greeter({} as Request, res);    
+    expect(response.status).toBe(200);
+    expect(response.text).toBe('Hallo Wereld');
+  });
+});
+```
+
 ### Mocken van het bestandensysteem
 
 Stel, je hebt een Express-route die informatie leest van een bestand. Normaal gesproken zou je de `fs` module van Node.js gebruiken om het bestand te lezen. Voor testdoeleinden kun je echter de `fs` module mocken om consistente en gecontroleerde testresultaten te garanderen.
@@ -44,7 +80,6 @@ describe('readFile', () => {
       callback(null, 'Mock bestandsinhoud');
     });
 
-    // Partial is voor wanneer je dezelfde eigenschappen wil, maar allemaal optioneel
     let res: Partial<Response> = {
       send: jest.fn(),
       status: jest.fn().mockReturnThis(),
@@ -104,7 +139,7 @@ describe('getDatabaseData', () => {
 });
 ```
 
-### Mocken van een request
+### Mocken van een extern request
 
 We gebruiken `fetch` om requests op externe services te doen. De eenvoudigste manier om dit te mocken is door gebruik te maken van `node-fetch:`
 
