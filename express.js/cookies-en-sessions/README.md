@@ -31,6 +31,11 @@ app.get('/set-cookie', (req, res) => {
   res.send('Cookie is ingesteld');
 });
 
+app.get('/remove-cookie', (req, res) => {
+  res.clearCookie('voorbeeld');
+  res.send('Cookie is verwijderd.');
+});
+
 app.get('/get-cookie', (req, res) => {
   const cookie = req.cookies.voorbeeld;
   res.send(`Cookie ontvangen: ${cookie}`);
