@@ -44,6 +44,7 @@ describe('readFile', () => {
       callback(null, 'Mock bestandsinhoud');
     });
 
+    // Partial is voor wanneer je dezelfde eigenschappen wil, maar allemaal optioneel
     let res: Partial<Response> = {
       send: jest.fn(),
       status: jest.fn().mockReturnThis(),

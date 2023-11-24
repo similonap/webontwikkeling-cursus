@@ -45,6 +45,7 @@
 * [Testen in Express](express.js/testen-in-express/README.md)
   * [Unit testen met Jest](express.js/testen-in-express/unit-testen-met-jest.md)
   * [Mocken van dependencies](express.js/testen-in-express/mocken-van-dependencies.md)
+  * [Selenium](https://www.npmjs.com/package/selenium-webdriver)
 
 ***
 
@@ -127,6 +128,7 @@
   * [Extra oefeningen](labos-2023-2024/week-7-8/extra-oefeningen.md)
 * [Labo 11-12](labos-2023-2024/labo-11-12.md)
 * [Cookies en authenticatie](labos-2023-2024/cookies-en-authenticatie.md)
+* [Testing](labos-2023-2024/testing.md)
 * [Extra oefeningen](labos-2023-2024/extra-oefeningen.md)
 
 ## Labos 2020-2021 <a href="#labos" id="labos"></a>
