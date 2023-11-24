@@ -50,6 +50,8 @@ Dit is een eerder grote vraag. Hou je applicatie goed in de gaten met `console.d
 
 Gebruik een JWT-token in plaats van een sessie om dezelfde taak te vervullen. Om dit vlot te laten gaan, neem je best een backup van de versie met sessies en verwijder je dan de uitbreiding van de interface voor je sessie. Op die manier kan TypeScript je wijzen op alle plaatsen waar de sessie gebruikt werd en kan je die code vervangen door code op basis van JWT's.
 
+Controleer daarna verder gebruik van de session (via Ctrl-f). Om na te gaan dat je JWT de juiste data bevat, kan je een base64 decoder gebruiken op de payload. Je vindt er makkelijk een met een zoekmachine.
+
 {% hint style="info" %}
 Test achteraf uit wat gebeurt als je je applicatie herstart!
 {% endhint %}
