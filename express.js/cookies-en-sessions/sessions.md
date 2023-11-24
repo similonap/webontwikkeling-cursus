@@ -32,9 +32,9 @@ const app = express();
 
 app.use(session({
   secret: 'uw geheime sleutel',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
+  resave: false, // hangt af van de situatie, hover over de parameter voor details
+  saveUninitialized: false, // zelfde opmerking
+  cookie: { secure: false } // zelfde opmerking
 }));
 
 app.listen(3000, () => {
@@ -45,9 +45,17 @@ app.listen(3000, () => {
 
 #### Sessie gebruiken
 
-Eens de sessie geconfigureerd is, kunnen we properties instellen en uitlezen via `req.session`:
+Eens de sessie geconfigureerd is, kunnen we properties instellen en uitlezen via `req.session`. In TypeScript vereist dit wel dat we extra properties toevoegen aan de interface van een sessie.
 
 ```typescript
+declare module 'express-session' {
+  export interface SessionData {
+    // ENKEL VOOR DIT VOORBEELD - gebruik naam en datatype naar keuze
+    // session properties mogen bv. ook objecten zijn
+    userId: string
+  }
+}
+
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
   // zelf doen: gebruiker verifiëren via database request
@@ -66,7 +74,27 @@ app.get('/dashboard', (req, res) => {
     res.redirect('/login');
   }
 });
+```
 
+### Sessies manueel opslaan
+
+Normaal gezien wordt een sessie vanzelf bijgewerkt wanneer je een `Response` terugstuurt, maar hier zijn uitzonderingen op, onder meer in het geval van redirects. Wanneer je een sessie manueel wil opslaan, roep je `req.session.save` op, met als argument een callback die uitgevoerd wordt na het saven.
+
+Bijvoorbeeld:
+
+
+
+```typescript
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  // zelf doen: gebruiker verifiëren via database request
+  if (gebruikerIsValid) {
+    req.session.userId = gebruikersId;
+    req.session.save(() => res.redirect("/"));
+  } else {
+    res.send('Login mislukt');
+  }
+});
 ```
 
 ### Session stores

@@ -22,7 +22,7 @@ Dit vereist een paar aanpassingen. Je zal moeten zorgen dat een nieuwe trainer o
 
 **Neem op dit punt een backup van je code, want in de volgende oefening moet je terug naar hier.**
 
-Zorg dat de login bijgehouden wordt in een sessie. Zorg er ook voor dat alle routes die enkel voor een specifieke trainer bedoeld zijn een 403-fout opleveren wanneer iemand niet (met het juiste ID) is ingelogd.
+Zorg dat de `Player` bijgehouden wordt in een sessie. Pas alle URL's aan zodat het ID van de speler geen deel uitmaakt van de URL (want die data zit toch in de sessie). Zorg er ook voor dat alle routes die enkel voor een specifieke trainer bedoeld zijn een 403-fout opleveren wanneer iemand niet is ingelogd.
 
 {% hint style="danger" %}
 Omdat de technieken rond veilige opslag van wachtwoorden in een ander vak aan bod komen, investeren we daar geen tijd in. Denk er echter aan dat je in een productieomgeving **nooit** wachtwoorden als plain text opslaat.
@@ -30,6 +30,18 @@ Omdat de technieken rond veilige opslag van wachtwoorden in een ander vak aan bo
 
 {% hint style="info" %}
 Test achteraf uit wat gebeurt als je je applicatie herstart!
+{% endhint %}
+
+## Persistente session store
+
+Gebruik het NPM package [connect-mongo](https://www.npmjs.com/package/connect-mongo) om je sessies te bewaren.
+
+{% hint style="info" %}
+Test achteraf uit wat gebeurt als je je applicatie herstart!
+{% endhint %}
+
+{% hint style="warning" %}
+We gebruiken hier MongoDB omdat dat eenvoudig is en het principe aantoont. Het is niet vanzelf zo dat het opslagmechanisme voor je applicatiedata ook het ideale opslagmechanisme voor je sessies is. Daarvoor is een uitgebreidere analyse nodig.
 {% endhint %}
 
 ## Login met JWT
