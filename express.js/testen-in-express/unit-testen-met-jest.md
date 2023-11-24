@@ -2,13 +2,23 @@
 
 Unit testen in Express-applicaties met Jest biedt een krachtige manier om de betrouwbaarheid en stabiliteit van je applicatie te garanderen. Jest is een populair JavaScript testing framework dat zich onderscheidt door zijn eenvoudige configuratie en rijke functionaliteiten. Bij het schrijven van unit tests voor Express-applicaties in TypeScript, is het belangrijk om je te focussen op het isoleren van individuele functies of componenten van de applicatie, waarbij het gebruik van mocks tot een minimum wordt beperkt. Hieronder vind je een basisvoorbeeld van hoe je kunt beginnen met het testen van een Express-route in TypeScript met Jest.
 
-Installeer eerst Jest en Supertest (om HTTP requests te doen): `npm i --save-dev jest supertest @types/supertest`
+Installeer eerst Jest en Supertest (om HTTP requests te doen): `npm i --save-dev jest typescript ts-jest supertest @types/jest @types/supertest`
 
 {% hint style="info" %}
 Dit zijn development dependencies, want de applicatie die aan de gebruiker wordt aangeboden heeft ze niet nodig. Ze zijn alleen nodig voor de ontwikkelaar.
 {% endhint %}
 
-Veronderstel dat je deze app met één route hebt:
+Om Jest te kunnen gebruiken (met TypeScript), voer je dit commando uit: `npx ts-jest config:init`
+
+Om te zorgen dat je al je Jest-tests kan laten lopen met `npm test`, voeg je dit toe aan package.json:
+
+```json
+"scripts": {
+  "test": "jest"
+}
+```
+
+Veronderstel nu dat je deze app met één route hebt:
 
 ```typescript
 // app.ts
@@ -24,7 +34,7 @@ export default app;
 
 ```
 
-Dan kan je een Jest-test schrijven als volgt. Deze veronderstelt dat de applicatie actief is wanneer de test loopt:
+Dan kan je een Jest-test schrijven als volgt. Je hoeft hier de applicatie niet voor op te starten en je hoeft de Jest-functies niet te importeren, die zaken zijn reeds in orde gebracht:
 
 ```typescript
 // app.test.ts
