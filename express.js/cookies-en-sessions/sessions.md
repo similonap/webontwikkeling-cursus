@@ -18,7 +18,7 @@ Laten we kijken naar een eenvoudig voorbeeld van het implementeren van sessies i
 
 #### 1. Installatie van benodigdheden:
 
-Eerst moeten we de nodige pakketten installeren: `npm i --save express-session --save-dev @types/express-sessions`
+Eerst moeten we de nodige pakketten installeren: `npm i --save express-session --save-dev @types/express-session`
 
 #### 2. Sessie configureren
 
