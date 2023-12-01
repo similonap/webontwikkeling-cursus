@@ -2,13 +2,13 @@
 
 Unit testen wordt vaak lastiger wanneer je code interageert met "de buitenwereld": filesystemen, databanken, invoer van de gebruiker, uitvoer naar de terminal, externe servers,...
 
-Om deze reden wordt vaak gebruik gemaakt van "mocks": waarden die de plaats innemen van onderdelen die het moeilijk maken om unit testen te schrijven. Deze leveren vooraf vastgelegde data af eerder dan de echte handelingen uit te voeren. Achteraf kunnen we ook controleren dat deze gebruikt zijn zoals verwacht. Dit past binnen het black box principe dat gehanteerd wordt voor unit testen.
+Om deze reden wordt vaak gebruik gemaakt van "mocks": waarden die de plaats innemen van onderdelen die het moeilijk maken om unit testen te schrijven. Deze leveren vooraf vastgelegde data af eerder dan de echte handelingen uit te voeren. Achteraf kunnen we ook controleren dat deze gebruikt zijn zoals verwacht. Dit past binnen het black box principe dat gehanteerd wordt voor unit testen. Jest bevat ingebouwde functionaliteit voor het maken van mocks.
 
 Hieronder bekijken we enkele voorbeelden:
 
 ### Mocken van het Request en de Response
 
-Het is ook mogelijk de route handlers af te zonderen. Dat levert een meer geïsoleerde unit test op. In plaats van een echte Request en Response, kan je objecten gebruiken die de plaats ervan innemen. Dit vereist wel dat je je code wat anders organiseert. Meerbepaald: je moet de geteste functies benoemen.
+Het is mogelijk de route handlers af te zonderen. Dat levert een meer geïsoleerde unit test op. In plaats van een Request te doen via `supertest`, kan je een object gebruiken. Dit vereist wel dat je je code wat anders organiseert. Meerbepaald: je moet de geteste functies benoemen en achteraf via `app.get` en dergelijke registreren.
 
 ```typescript
 // app.ts
@@ -22,7 +22,7 @@ app.get('/hello', greeter);
 export { greeter };
 ```
 
-Nu is het dus mogelijk dezelfde code uit te voeren zonder echte HTTP requests te doen. Je geeft gewoonweg objecten mee bij de oproep:
+Nu is het dus mogelijk dezelfde code uit te voeren zoals je een gewone functie oproept, door zelf een `Request` en een `Response` als argument te geven:
 
 ```typescript
 // app.test.ts
@@ -30,30 +30,32 @@ import { greeter } from './app';
 
 describe('GET /hello', () => {
   it('should return Hallo Wereld', () => {
-    // Partial is voor wanneer je dezelfde eigenschappen wil, maar allemaal optioneel
-    let res: Partial<Response> = {
+    let res: any = {
       send: jest.fn(),
-      status: jest.fn().mockReturnThis(),
+      status: jest.fn().mockReturnThis(), // wegens chaining in de implementatie
     };
-    greeter({} as Request, res);    
-    expect(response.status).toBe(200);
-    expect(response.text).toBe('Hallo Wereld');
+    greeter({} as any, res);
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.send).toHaveBeenCalledWith('Hallo Wereld');
   });
 });
 ```
+
+Dit voorbeeld bevat eigenlijk twee types van mocks. De request en de response zelf zijn mocks, in de zin dat het geen echte request en response zijn. Ze hebben ook niet het juiste type en, om niet verdwaald te raken in de details van het typesysteem, hebben we ze gewoon als `any` beschouwd.
+
+Voor res hebben we twee onderdelen voorzien, namelijk `send` en `status`. Dit zijn de mocks die typisch bedoeld worden als het over Jest gaat. Het zijn niet gewoon plaatsvervangende objecten, ze zijn echt van het type `Mock`, een speciaal soort functie. In het geval van send maakt het niet echt uit wat deze functie doet. In het geval van `status` moet de functie in kwestie het object (dus `res`) teruggeven waar ze deel van uitmaakt,  zodat de volgende call de gemockte versie van `send` gebruikt.
+
+De `expect`s op het einde staan dan toe om na te gaan dat de verwachte stappen zijn uitgevoerd. Het resultaat van deze functies was niet belangrijk, maar we willen wel weten dat ze op een bepaalde manier zijn uitgevoerd, d.w.z. dat de code gedaan heeft wat we dachten dat ze zou doen.
 
 ### Mocken van het bestandensysteem
 
 Stel, je hebt een Express-route die informatie leest van een bestand. Normaal gesproken zou je de `fs` module van Node.js gebruiken om het bestand te lezen. Voor testdoeleinden kun je echter de `fs` module mocken om consistente en gecontroleerde testresultaten te garanderen.
 
 ```typescript
-// filenaam: fileController.ts
-import { Request, Response } from 'express';
-import fs from 'fs'; // onthoud deze import!
+import fs from 'fs';
 
-// we plaatsen dit niet meteen in app.get(...) en we benoemen de functie
-export const readFile = (req: Request, res: Response) => {
-  fs.readFile('/pad/naar/bestand.txt', 'utf8', (err, data) => {
+const readFile = (req: Request, res: Response) => {
+  fs.readFile('/pad/naar/bestand.txt', 'utf8', (err: any, data: any) => {
     if (err) {
       res.status(500).send('Fout bij het lezen van het bestand');
     } else {
@@ -61,127 +63,161 @@ export const readFile = (req: Request, res: Response) => {
     }
   });
 };
-
+app.get("readFile", readFile);
 ```
 
-In een Jest-test kunnen we zorgen dat de oproep van fs.readFile vervangen wordt:
+In een Jest-test kunnen we zorgen dat de oproep van `fs.readFile` vervangen wordt:
 
 ```typescript
-// fileController.test.ts
-import { readFile } from './fileController';
-import fs from 'fs';
-import { Request, Response } from 'express';
-
-jest.mock('fs');
-
-describe('readFile', () => {
+describe('readFile met mock request en response', () => {
   it('should read file content', () => {
-    const mockReadFile = jest.spyOn(fs, 'readFile').mockImplementation((path, options, callback) => {
-      callback(null, 'Mock bestandsinhoud');
-    });
-
-    let res: Partial<Response> = {
+    const mockReadFile = jest
+      .spyOn(fs, 'readFile')
+      .mockImplementation(((path: any, options: any, callback: any) => {
+        callback(null, 'Mock bestandsinhoud' as any);
+      }) as any);
+    let res: any = {
       send: jest.fn(),
       status: jest.fn().mockReturnThis(),
     };
-
-    readFile({} as Request, res as Response);
-
+    readFile({} as any, res);
+    expect(res.status).toHaveBeenCalledWith(200);
     expect(res.send).toHaveBeenCalledWith('Mock bestandsinhoud');
     mockReadFile.mockRestore();
   });
 });
+```
+
+In dit voorbeeld gebruiken we `spyOn` om een functie uit een bestaande module te vervangen door een mock. Deze mock krijgt een implementatie die compatibel is (wat betreft de signatuur) met de oorspronkelijke `fs.readFile`. Hier is vrij veel gebruik gemaakt van `any`, omdat één waarde vervangen door een totaal ander type waarde niet makkelijk uit te drukken is.
+
+{% hint style="warning" %}
+Deze code maakt uitvoerig gebruik van mocks om de principes te laten zien. In de praktijk zou je eerder `supertest` gebruiken, enkel `fs.readFile` mocken en dan de uitvoer testen.
+{% endhint %}
+
+{% hint style="info" %}
+Deze techniek, waarbij je tijdens de uitvoering stukken van een module overschrijft, heet _monkey patching_. Dit is vaak een snelle manier om mocks te installeren. Een alternatieve, explicietere manier is _dependency injection_, maar die laten we voor een ander vak.
+{% endhint %}
+
+#### Neveneffecten vermijden
+
+Om te vermijden dat andere operaties die `fs.readFile` nodig hebben niet fout lopen, moeten we zorgen dat de mock enkel in deze testfunctie gebruikt wordt. Daarom voegen we in de testfile deze regel toe:
 
 ```
+afterEach(() => jest.clearAllMocks());
+```
+
+Als we dit buiten de `describe`-blokken doen, gebeurt dit na elke test.
 
 ### Mocken van databasetoegang
 
-In dit voorbeeld maken we abstractie van de concrete database. Dat kan MongoDB zijn, MySQL,...
+Met `spyOn` mocken we functies uit een module. Daarom zullen we het gebruik van de MongoDB client iets aanpassen, zodat we hem steeds via een functie krijgen:
+
+{% hint style="info" %}
+Dezelfde techniek kan toegepast worden voor andere databases dan MongoDB.
+{% endhint %}
 
 ```typescript
-// dbController.ts
-import { Request, Response } from 'express';
-import database from './database'; // Stel dat dit je database connectie module is
+// database.ts
+import { MongoClient } from 'mongodb';
 
-export const getDatabaseData = async (req: Request, res: Response) => {
-  try {
-    const data = await database.getData();
-    res.status(200).json(data);
-  } catch (err) {
-    res.status(500).send('Databasefout');
-  }
-};
+let client: MongoClient;
 
+export function getClient() {
+    if (client) {
+        return client;
+    }
+    else {
+        console.log("should set new client");
+        return client;
+    }
+}
+
+export function setClient(newClient: MongoClient) {
+    client = newClient;
+}
 ```
 
+In de applicatie hebben we een handler die hier gebruik van maakt:
+
 ```typescript
-// dbController.test.ts
-import { getDatabaseData } from './dbController';
-import database from './database';
-import { Request, Response } from 'express';
+interface Person {
+  name: string,
+  age: number
+}
 
-jest.mock('./database'); // Mock de database module
-
-describe('getDatabaseData', () => {
-  it('should fetch data from the database', async () => {
-    const mockData = [{ id: 1, naam: 'Testitem' }];
-    database.getData = jest.fn().mockResolvedValue(mockData);
-
-    let res: Partial<Response> = {
-      json: jest.fn(),
-      status: jest.fn().mockReturnThis(),
-    };
-
-    await getDatabaseData({} as Request, res as Response);
-
-    expect(res.json).toHaveBeenCalledWith(mockData);
-  });
+app.get("/readFromMongoDB", async (req: Request, res: Response) => {
+  const data = await getClient().db("test").collection("people").find<Person>({}).toArray();
+  res.render("people", { people: data });
 });
 ```
+
+```typescript
+import * as db from './database'; // dit doen we omdat spyOn een module verwacht
+
+describe("readFromMongoDB", () => {
+  it("Should use people from the mock", async () => {
+    const mockData = [{ name: "john", age: 42 }, { name: "mary", age: 11 }];
+    const mockClient = {
+      db: (_dbname: string) => {
+        return {
+          collection: (_collectionName: string) => {
+            return { find: (_filter: object) => {
+              return { toArray: jest.fn().mockResolvedValue(mockData)} } }
+          }
+        }
+      }
+    }
+    jest.spyOn(db, 'getClient').mockImplementation(() => mockClient as any);
+    const response = await request(app).get('/readFromMongoDB').timeout(500);
+    expect(response.status).toBe(200);
+    expect(response.text).toContain('<li>');
+    expect(response.text).toContain('john');
+    expect(response.text).toContain('mary');
+  })
+});
+```
+
+Omdat we hier de op basis van de output zien dat de de mock data gebruikt is, gebruiken we geen Jest mocks voor `db`, `collection` en `find`. Dat kan uiteraard wel, het levert hier gewoon niet veel op. We gebruiken `mockResolvedValue` om de teruggegeven waarde in een `Promise` te plaatsen, want de applicatie verwacht dat (er staat immers `const data = await ...`).
 
 ### Mocken van een extern request
 
-We gebruiken `fetch` om requests op externe services te doen. De eenvoudigste manier om dit te mocken is door gebruik te maken van `node-fetch:`
+We gebruiken `fetch` om requests op externe services te doen. Omdat dit iets is dat je vaak wil mocken (om te vermijden dat netwerkstoringen testen doen falen, om te vermijden dat je API-limieten bereikt,...) is hier speciale ondersteuning voor.
+
+We installeren eerst [fetch-mock-jest](https://www.npmjs.com/package/fetch-mock-jest) (als development dependency).
+
+De clientcode:
 
 ```typescript
-// apiClient.ts
-import fetch from 'node-fetch';
+interface Pokemon {
+    name: string,
+    url: string,
+}
 
-export const fetchDataFromAPI = async (url: string): Promise<any> => {
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    throw new Error('Fout bij het ophalen van gegevens');
-  }
-};
+app.get("/pokemon", async (req: Request, res: Response) => {
+    const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=2");
+    const pokemon = (await response.json()).results as Pokemon[];
+    res.render("pokemon", { names: pokemon.map(({name}) => name) });
+});
 
 ```
 
+De testcode:
+
 ```typescript
-// apiClient.test.ts
-import { fetchDataFromAPI } from './apiClient';
-import fetch from 'node-fetch';
+import fetchMock from 'fetch-mock-jest';
 
-// Jest biedt een manier om modules te mocken
-jest.mock('node-fetch', () => jest.fn());
-
-describe('fetchDataFromAPI', () => {
-  it('should fetch data from API', async () => {
-    const mockResponse = { id: 1, naam: 'Testitem' };
-    (fetch as jest.Mock).mockResolvedValueOnce({
-      json: () => Promise.resolve(mockResponse),
-    });
-
-    const url = 'https://api.example.com/data';
-    const data = await fetchDataFromAPI(url);
-
-    expect(fetch).toHaveBeenCalledWith(url);
-    expect(data).toEqual(mockResponse);
-  });
+describe("pokemon", () => {
+  it("Should display Pokemon names based on request result", async () => {
+    const mockResponse = { results: [{ name: "squirtle" }, { name: "wartortle" }] };
+    // deze is automatisch gepatcht na de import
+    fetchMock.get("https://pokeapi.co/api/v2/pokemon?limit=2", mockResponse);
+    const response = await request(Server.getServer()).get('/pokemon');
+    expect(response.status).toBe(200);
+    expect(response.text).toContain('<li>');
+    expect(response.text).toContain('squirtle');
+    expect(response.text).toContain('wartortle');
+  })
 });
-
 ```
 
 {% hint style="warning" %}

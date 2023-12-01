@@ -1,6 +1,6 @@
 # Unit testen met Jest
 
-Unit testen in Express-applicaties met Jest biedt een krachtige manier om de betrouwbaarheid en stabiliteit van je applicatie te garanderen. Jest is een populair JavaScript testing framework dat zich onderscheidt door zijn eenvoudige configuratie en rijke functionaliteiten. Bij het schrijven van unit tests voor Express-applicaties in TypeScript, is het belangrijk om je te focussen op het isoleren van individuele functies of componenten van de applicatie, waarbij het gebruik van mocks tot een minimum wordt beperkt. Hieronder vind je een basisvoorbeeld van hoe je kunt beginnen met het testen van een Express-route in TypeScript met Jest.
+Unit testen van Express-applicaties met Jest biedt een manier om de betrouwbaarheid van je applicatie te garanderen. Bij het schrijven van unit tests voor Express-applicaties in TypeScript, is het belangrijk om je te focussen op het isoleren van individuele functies of componenten van de applicatie, waarbij het gebruik van mocks tot een minimum wordt beperkt. Hieronder vind je een basisvoorbeeld van hoe je kunt beginnen met het testen van een Express-route in TypeScript met Jest.
 
 Installeer eerst Jest en Supertest (om HTTP requests te doen): `npm i --save-dev jest typescript ts-jest supertest @types/jest @types/supertest`
 
@@ -34,7 +34,7 @@ export default app;
 
 ```
 
-Dan kan je een Jest-test schrijven als volgt. Je hoeft hier de applicatie niet voor op te starten en je hoeft de Jest-functies niet te importeren, die zaken zijn reeds in orde gebracht:
+Dan kan je een Jest-test schrijven als volgt. Je hoeft hier de applicatie niet voor op te starten: supertest interageert rechtstreeks met de app en gaat niet via de poort waarop we normaal `listen` uitvoeren.
 
 ```typescript
 // app.test.ts
@@ -49,3 +49,14 @@ describe('GET /hello', () => {
   });
 });
 ```
+
+Belangrijke onderdelen zijn hier:
+
+* de filenaam: Jest herkent, met de configuratie die we hebben, files die eindigen op `.test.ts`
+* `describe`: dit is een manier om testfuncties te groeperen
+  * groepen kunnen genest zijn, dus je kan een `describe` in een describe plaatsen
+  * de code in alle niveaus van `describe` voert uit voor de testen zelf lopen
+* `it`: deze functie (ook `test` genaamd) verwacht een omschrijving van wat er moet gebeuren en callback die de testcode zelf bevat. Zoals je ziet in het voorbeeld, mag deze callback asynchroon zijn.
+* request(app): dit is hoe `supertest` een HTTP-request creëert voor je app
+* `expect`: dit levert een "expectation", een object waarmee je bepaalde verwachtingen expliciet kan maken
+* `toBe`: dit is een voorbeeld van een _matcher_, een manier om zo'n verwachting uit te drukken. Er zijn ook matchers om na te gaan of een resultaat bepaalde tekst bevat, een bepaalde lengte heeft,... Je kan best de autocomplete van je editor gebruiken of [de documentatie van Jest raadplegen](https://jestjs.io/docs/using-matchers). Daar vind je nog meer matchers.
