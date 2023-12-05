@@ -26,7 +26,7 @@ Simpel gezegd, een token is een string die bepaalde informatie bevat die veilig 
 In zijn compacte vorm bestaan JSON Web Tokens uit drie delen gescheiden door punten (.), namelijk:
 
 1. **Header**, Bestaat uit twee delen:
-   1. Het ondertekeningsalgoritme dat wordt gebruikt;
+   1. Het ondertekeningsalgoritme dat wordt gebruikt. Dit bepaalt onder andere of je met één secret werkt of met een public-private key pair;
    2. Het type token, dat in dit geval "`JWT`" is;
 2. **Payload**:
    1. De payload bevat de claims of het JSON-object;
@@ -98,7 +98,7 @@ HMACSHA256(
   secret)
 ```
 
-De handtekening wordt gebruikt om te verifiëren dat het bericht onderweg niet is gewijzigd, en in het geval van tokens die zijn ondertekend met een geheim (`secret`), kan het ook verifiëren dat de afzender van de JWT is wie het zegt te zijn.
+De handtekening wordt gebruikt om te verifiëren dat het bericht onderweg niet is gewijzigd. Ze kan aangemaakt zijn met hetzelfde geheim dat nodig is om te handtekening te verifiëren (dan spreken we over een _secret_) of kan ondertekend zijn met een geheim stuk data (_private key_) waarvoor de decryptiesleutel (_public key_) wel algemeen gekend is.
 
 #### Zet alles bij elkaar
 
