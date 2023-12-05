@@ -49,7 +49,7 @@ In dit voorbeeld gebruiken we de `jwt.sign` functie om een JWT te genereren met 
 De `jwt.verify()` functie is een functie in de **jsonwebtoken** npm package die wordt gebruikt om een JSON Web Token (JWT) te verifiëren en de bijbehorende gegevens te decoderen. De functie neemt een token en een geheime sleutel als argumenten en geeft de decodering van de token terug als een object. Hier is een voorbeeld van hoe de functie zou kunnen worden gebruikt:
 
 ```typescript
-const jwt = require('jsonwebtoken');
+import * as jwt from 'jsonwebtoken';
 
 const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';
 const secret = 'my_secret_key';
