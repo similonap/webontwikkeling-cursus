@@ -69,3 +69,6 @@ jwt.verify(token, secret, (err: any, decoded: any) => {
 
 In dit voorbeeld wordt de `jwt.verify()` functie gebruikt om een JWT te verifiëren en te decoderen met behulp van de gegeven geheime sleutel. Als de verificatie en decodering succesvol is, worden de gegevens van de JWT weergegeven als een object. Als er een fout optreedt bij het verifiëren of decoderen van de token, wordt een foutmelding weergegeven.
 
+{% hint style="warning" %}
+We hebben hierboven ondertekend en geverifieerd met een _secret_. Dit is normaal voldoende als je je tokens niet over meerdere websites wil delen. Je kan ook tekenen en verifiëren met een combinatie van een public en private key. Dat is handig wanneer de producent van het token niet de (enige) consument is.
+{% endhint %}
