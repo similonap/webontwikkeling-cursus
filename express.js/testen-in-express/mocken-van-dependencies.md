@@ -95,7 +95,7 @@ Deze code maakt uitvoerig gebruik van mocks om de principes te laten zien. In de
 {% endhint %}
 
 {% hint style="info" %}
-Deze techniek, waarbij je tijdens de uitvoering stukken van een module overschrijft, heet _monkey patching_. Dit is vaak een snelle manier om mocks te installeren. Een alternatieve, explicietere manier is _dependency injection_, maar die laten we voor een ander vak.
+Deze techniek, waarbij je tijdens de uitvoering stukken van een module overschrijft, heet _monkey patching_. Dit is vaak een snelle manier om mocks te installeren. Een alternatieve, explicietere manier is _dependency injection_.
 {% endhint %}
 
 #### Neveneffecten vermijden
@@ -110,7 +110,7 @@ Als we dit buiten de `describe`-blokken doen, gebeurt dit na elke test.
 
 ### Mocken van databasetoegang
 
-Met `spyOn` mocken we functies uit een module. Daarom zullen we het gebruik van de MongoDB client iets aanpassen, zodat we hem steeds via een functie krijgen:
+Hier gebruiken we een vorm van _setter-based dependency injection_. We zorgen dat de waarde die we anders rechtstreeks zouden gebruiken op voorhand kan worden ingesteld.
 
 {% hint style="info" %}
 Dezelfde techniek kan toegepast worden voor andere databases dan MongoDB.
@@ -127,8 +127,8 @@ export function getClient() {
         return client;
     }
     else {
-        console.log("should set new client");
-        return client;
+        console.log("should set client before invoking getter!");
+        return client; // zal undefined zijn!
     }
 }
 
@@ -158,16 +158,12 @@ describe("readFromMongoDB", () => {
   it("Should use people from the mock", async () => {
     const mockData = [{ name: "john", age: 42 }, { name: "mary", age: 11 }];
     const mockClient = {
-      db: (_dbname: string) => {
-        return {
-          collection: (_collectionName: string) => {
-            return { find: (_filter: object) => {
-              return { toArray: jest.fn().mockResolvedValue(mockData)} } }
-          }
-        }
-      }
+      db: jest.fn().mockReturnThis(),
+      collection: jest.fn().mockReturnThis(),
+      find: jest.fn().mockReturnThis(),
+      toArray: jest.fn().mockResolvedValue(mockData)
     }
-    jest.spyOn(db, 'getClient').mockImplementation(() => mockClient as any);
+    db.setClient(mockClient as any); // het is geen MongoClient, we doen alsof
     const response = await request(app).get('/readFromMongoDB').timeout(500);
     expect(response.status).toBe(200);
     expect(response.text).toContain('<li>');
@@ -177,7 +173,7 @@ describe("readFromMongoDB", () => {
 });
 ```
 
-Omdat we hier de op basis van de output zien dat de de mock data gebruikt is, gebruiken we geen Jest mocks voor `db`, `collection` en `find`. Dat kan uiteraard wel, het levert hier gewoon niet veel op. We gebruiken `mockResolvedValue` om de teruggegeven waarde in een `Promise` te plaatsen, want de applicatie verwacht dat (er staat immers `const data = await ...`).
+We gebruiken `mockResolvedValue` om de teruggegeven waarde in een `Promise` te plaatsen, want de applicatie verwacht dat (er staat immers `const data = await ...`).
 
 ### Mocken van een extern request
 
@@ -223,3 +219,11 @@ describe("pokemon", () => {
 {% hint style="warning" %}
 Mocks maken het vaak gemakkelijker om snel een grote reeks unit tests uit te voeren, maar je wil jezelf er wel van verzekeren dat de _echte_, volledige applicatie ook werkt. Daarom gebruik je ze beter niet in end-to-end testen.
 {% endhint %}
+
+
+
+### Monkey patching of dependency injection?
+
+Monkey patching is vaak handig om "snelle" aanpassingen te doen. Zeker bij gebruik van packages, wanneer de broncode niet zo makkelijk toegankelijk is, kan dit handig werken. Het vereist dan ook geen aanpassing van de broncode. Het nadeel is dat het onbedoelde neveneffecten kan introduceren.
+
+Dependency injection vereist dat je je code anders schrijft. Het zal duidelijker zijn wanneer bepaalde onderdelen vervangen (kunnen) worden, maar het brengt extra werk met zich mee.

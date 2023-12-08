@@ -12,9 +12,9 @@ Breid de voorbeeldcode rond Jest uit. Voorzie een test om na te gaan dat je geen
 
 Splits je code eerst, zodat `app.listen` niet in dezelfde file gebeurt waarin je je routes definieert.&#x20;
 
-Omdat we tijdens de Jest-tests de initialisatie niet meer doen, moet je je code aanpassen zodat de initiële lijst met spelers en met Pokémon door de tests ingesteld kan worden. Dit kan je doen op een gelijkaardige manier als in de uitleg over het mocken van de database, met functies `getPlayers`, `setPlayers`, `getAllPokemon` en `setAllPokemon`.
+Omdat we tijdens de Jest-tests de initialisatie niet meer doen, moet je je code aanpassen zodat de initiële lijst met spelers en met Pokémon door de tests ingesteld kan worden. Dit kan je doen op een gelijkaardige manier als in de uitleg over het mocken van de database, met functies `getPlayers`, `setPlayers`, `getAllPokemon` en `setAllPokemon`. Zet hierbij de lijsten met alle spelers / Pokémon samen in één file met deze getters en setters. Laat je leiden door de TypeScript compiler.
 
-Pas je code voor app.listen aan zodat ze ook deze methodes gebruikt. Gebruik `beforeEach` om te zorgen dat je Jest-testen mogen veronderstellen dat er spelers en Pokémon zijn. Je hoeft niet alle 151 Pokémon te gebruiken, dat levert geen toegevoegde waarde. Let wel op dat de ingestelde spelers alleen Pokémon gebruiken die voorkomen in de beperkte lijst.
+Pas ook je code voor app.listen aan zodat ze ook deze methodes gebruikt. Gebruik `beforeEach` om te zorgen dat je Jest-testen mogen veronderstellen dat er spelers en Pokémon zijn. Je hoeft niet alle 151 Pokémon te gebruiken, dat levert geen toegevoegde waarde. Let wel op dat de ingestelde spelers alleen Pokémon gebruiken die voorkomen in de beperkte lijst.
 
 #### Weergave formulieren
 
@@ -32,9 +32,15 @@ Controleer dat de nieuwe speler ook verschijnt in de database. Dit vereist dat j
 
 Test dat het bewaren van een speler zorgt voor de juiste oproep van `update` in MongoDB. Doe dit met de versie van je programma die de speler uit een JWT haalt. Je kan een JWT aanmaken via deze [website](https://jwt.io/).
 
-#### Optioneel: Bewaren speler (session)
+#### Logout met ongeldig token
 
-Doe hetzelfde, maar voor de versie die authenticatie via sessions afhandelt. Dit is lastiger omdat sessions op de backend bewaard worden. Gebruik hiervoor [supertest-session](https://github.com/rjz/supertest-session).
+Test dat een eventueel opgeslagen JWT wordt geschrapt als het niet geverifieerd kan worden. Je kan bijvoorbeeld een JWT ondertekenen met een ander geheim dan hetgeen je voor de applicatie gebruikt.
+
+#### Aanpassen team (JWT)
+
+Test dat, als je een Pokémon toevoegt aan je team, deze ook zichtbaar is in je JWT. Test eveneens voor het verwijderen van een Pokémon.
+
+Je zal hiervoor je JWT moeten decoderen. Dat kan je doen door `Buffer.from(base64Text,'base64').toString()` op te roepen. Hierbij vervang je `base64Text` door de tekst die je wil decoderen. Hier zal dat de payload van je JWT zijn. Je kan eventueel de resulterende tekst omzetten naar een object via `JSON.parse`.
 
 ## End-to-end testen
 
