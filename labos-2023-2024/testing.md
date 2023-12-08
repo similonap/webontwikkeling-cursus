@@ -8,6 +8,10 @@ Breid de voorbeeldcode rond Jest uit. Voorzie een test om na te gaan dat je geen
 
 ### In de Pokémonapplicatie
 
+{% hint style="info" %}
+Omwille van onze applicatie-opbouw zijn de unit testen nog niet zo "unit" als ze zouden kunnen zijn. We hebben namelijk niet veel onderscheid gemaakt tussen de "controllers" en het "domein".
+{% endhint %}
+
 #### Voorbereiding
 
 Splits je code eerst, zodat `app.listen` niet in dezelfde file gebeurt waarin je je routes definieert.&#x20;
