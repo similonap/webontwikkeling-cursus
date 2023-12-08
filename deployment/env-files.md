@@ -41,3 +41,6 @@ API_URL=**************************
 
 Een .`env`-bestand is een geweldige manier om al je omgevingsvariabelen op één plek te verzamelen. Zorg er wel voor dat je het `.env`-bestand niet in een version control systeem zoals Git plaatst. Anders bevat je version control historiek referenties van je omgevingsvariabelen. Dit zou een beveiligingsrisico vormen aangezien er gevoelige informatie in je omgevingsvariabelen kan staan.
 
+#### Gebruik in een Node applicatie
+
+Hiervoor heb je het dotenv package nodig. Importeer het via `import 'dotenv/config'` voor het eerste gebruik van een omgevingsvariabele. Hierna kan je gebruik maken van `process.env.VARIABELENAAM`. Omdat het mogelijk is dat een variabele geen waarde heeft gekregen, zijn dit soort waarden `String | undefined`. Indien een variabele aanwezig _moet_ zijn, kan je best bij opstart van de applicatie hier op checken. Indien hij dan niet bestaat, kan je een foutmelding geven en afsluiten via `process.exit(1)`.
