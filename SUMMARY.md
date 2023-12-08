@@ -51,7 +51,6 @@
 
 * [Deployment](deployment/README.md)
   * [Env files](deployment/env-files.md)
-  * [Development containers](deployment/development-containers.md)
   * [Error handling middleware](deployment/error-handling-middleware.md)
   * [Hosting en SSL-certifiëring](deployment/hosting-en-ssl-certifiering.md)
 * [Extra materiaal](extra-materiaal/README.md)
