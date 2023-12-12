@@ -60,3 +60,19 @@ Belangrijke onderdelen zijn hier:
 * request(app): dit is hoe `supertest` een HTTP-request creëert voor je app
 * `expect`: dit levert een "expectation", een object waarmee je bepaalde verwachtingen expliciet kan maken
 * `toBe`: dit is een voorbeeld van een _matcher_, een manier om zo'n verwachting uit te drukken. Er zijn ook matchers om na te gaan of een resultaat bepaalde tekst bevat, een bepaalde lengte heeft,... Je kan best de autocomplete van je editor gebruiken of [de documentatie van Jest raadplegen](https://jestjs.io/docs/using-matchers). Daar vind je nog meer matchers.
+
+#### Cookies in je request plaatsen
+
+Als je code gebruik maakt van cookies, kan je deze toevoegen aan je test requests door middel van set:
+
+```typescript
+// eerdere code...
+await request(app)
+  .set('Cookie', ['cookie1=12345667', 'cookie2=blah'])
+  .get("/route-die-cookies-gebruikt")
+// verder zoals andere requests met supertest
+```
+
+####
+
+###
