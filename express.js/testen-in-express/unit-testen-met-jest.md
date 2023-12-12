@@ -75,4 +75,6 @@ const response = await request(app)
 
 ####
 
+Checken van cookies vind je hier: [https://github.com/ladjs/supertest/issues/481](https://github.com/ladjs/supertest/issues/481)
+
 ###
