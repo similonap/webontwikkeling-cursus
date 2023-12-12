@@ -63,7 +63,7 @@ Belangrijke onderdelen zijn hier:
 
 #### Cookies in je request plaatsen
 
-Als je code gebruik maakt van cookies, kan je deze toevoegen aan je test requests door middel van set:
+Als je code verwacht dat een bepaalde cookie aanwezig is, kan je deze toevoegen aan je individuele requests door middel van set:
 
 ```typescript
 // eerdere code...
@@ -75,6 +75,12 @@ const response = await request(app)
 
 ####
 
-Checken van cookies vind je hier: [https://github.com/ladjs/supertest/issues/481](https://github.com/ladjs/supertest/issues/481)
+Als je wil controleren wat er met cookies gebeurt over een volledige request-response cyclus, plaats je deze beter in de "cookie jar" van de "agent". Deze "agent" kan je zien als de browser:
 
-###
+```
+const agent = request.agent(app);
+agent.jar.setCookie(`cookie1=abc`);
+const response = await agent.post('/myroute').send();
+const maybeModifiedCookie = agent.jar.getCookie('cookie1', CookieAccessInfo.All);
+// expect(maybeModifiedCookie)...
+```
