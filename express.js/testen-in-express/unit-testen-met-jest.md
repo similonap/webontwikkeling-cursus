@@ -68,8 +68,8 @@ Als je code gebruik maakt van cookies, kan je deze toevoegen aan je test request
 ```typescript
 // eerdere code...
 const response = await request(app)
-  .set('Cookie', ['cookie1=12345667', 'cookie2=blah'])
-  .get("/route-die-cookies-gebruikt");
+  .get("/route-die-cookies-gebruikt")
+  .set('Cookie', ['cookie1=12345667', 'cookie2=blah']);
 // verder zoals andere requests met supertest
 ```
 
