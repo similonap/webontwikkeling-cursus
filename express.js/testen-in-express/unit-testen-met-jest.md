@@ -73,11 +73,10 @@ const response = await request(app)
 // verder zoals andere requests met supertest
 ```
 
-####
-
 Als je wil controleren wat er met cookies gebeurt over een volledige request-response cyclus, plaats je deze beter in de "cookie jar" van de "agent". Deze "agent" kan je zien als de browser:
 
-```
+```typescript
+import { Cookie, CookieAccessInfo } from 'cookiejar';
 const agent = request.agent(app);
 agent.jar.setCookie(`cookie1=abc`);
 const response = await agent.post('/myroute').send();
