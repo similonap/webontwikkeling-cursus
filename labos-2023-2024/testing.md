@@ -63,6 +63,7 @@ Daarna laat je een browser (naar keuze) starten en volgende stappen doorlopen:
 * inloggen als die nieuwe user
 * 8 Pokémon naar keuze aanklikken om in het team te plaatsen
 * controleren dat de 6 recentste Pokémon er staan
-* uitloggen
+* naar de SAVE knop in het menu gaan en er op klikken
+* uitloggen (hiervoor dient de url `/forgetme`)
 * terug inloggen
 * controleren dat dezelfde 6 Pokémon er nog steeds staan
