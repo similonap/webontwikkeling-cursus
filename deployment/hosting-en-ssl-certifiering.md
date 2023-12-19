@@ -12,6 +12,10 @@ Render voorziet zelf een SSL-certificaat voor je website. Dit betekent dat je we
 
 Maak een repository voor het project dat je wil hosten. Push de code naar **Github** (niet Gitlab!). Zorg dat de repository de root folder van je applicatie is.
 
+{% hint style="warning" %}
+Indien je nog geen gebruik hebt gemaakt van Github, moet je vermoedelijk eerst een SSH-sleutelpaar aanmaken. Kort samengevat: voer het commando `ssh-keygen -t rsa` uit. Ga op Github naar je settings en zoek het onderdeel over SSH sleutels. Kies om een nieuwe toe te voegen, met een naam naar keuze. Ga dan op je PC naar de map `.ssh` die vermeld wordt na dat commando. Kopieer de inhoud van de file met de extensie `.pub` naar het tekstvak voor je sleutel op Github.&#x20;
+{% endhint %}
+
 ## Stap 2: een Render account aanmaken en connecteren met Github
 
 Maak een gratis account aan. Verbind hem met je Github account.
